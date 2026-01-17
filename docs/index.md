@@ -1,0 +1,57 @@
+# Índice de documentación
+
+- Estándar Git/Branches/Commits: `docs/git-workflow.md`
+- Plantilla de Pull Request y reglas de changelog: `docs/pr-template.md`
+- Plan general: `docs/plan-mvp.md`
+- Épica 1 Fundamentos:
+  - `docs/01-fundamentos/epica.md`
+  - `docs/01-fundamentos/backlog.md`
+  - TAs: `ta-f1-namespace-estructura.md`, `ta-f2-flavors-android.md`, `ta-f3-flavors-ios.md`, `ta-f4-makefile-seeds.md`, `ta-f5-koin-baseline.md`, `ta-f6-detekt.md`, `ta-f7-i18n-base.md`, `ta-f8-libs-config.md`
+- Épica 2 Design System:
+  - `docs/02-designsystem/epica.md`
+  - `docs/02-designsystem/backlog.md`
+  - TAs: `ta-f1-tokens-theming.md`, `ta-f2-make-shortcuts.md`, `ta-f3-atoms-bitacora.md`, `ta-f4-molecules-bitacora.md`, `ta-f5-a-organisms-general.md`, `ta-f5-b-organisms-game.md`, `ta-f5-c-organisms-chat.md`, `ta-f5-d-organisms-flags.md`, `ta-f6-accessibility.md`, `ta-f7-i18n-ds.md`
+- Épica 3 MagicsDui (SDUI):
+  - `docs/03-magicsdui/epica.md`
+  - `docs/03-magicsdui/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-contract.md`, `ta-f2-parser.md`, `ta-f3-renderer.md`, `ta-f4-make.md`, `ta-f5-samples.md`, `ta-f6-flags-ambientes.md`, `ta-f7-testing.md`
+- Épica 4 Inkribbon (State Record):
+  - `docs/04-inkribbon/epica.md`
+  - `docs/04-inkribbon/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-schema.md`, `ta-f2-hooks.md`, `ta-f3-writer.md`, `ta-f4-viewer.md`, `ta-f5-replay.md`, `ta-f6-make.md`, `ta-f7-testing.md`
+- Épica 5 Toad (External Record):
+  - `docs/05-toad/epica.md`
+  - `docs/05-toad/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-schema.md`, `ta-f2-interceptor.md`, `ta-f3-writer.md`, `ta-f4-correlation.md`, `ta-f5-viewer.md`, `ta-f6-make.md`, `ta-f7-testing.md`
+- Épica 6 Flags + Monitor:
+  - `docs/06-flags/epica.md`
+  - `docs/06-flags/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-providers.md`, `ta-f2-cache.md`, `ta-f3-monitor-ui.md`, `ta-f4-sdui.md`, `ta-f5-make.md`, `ta-f6-testing.md`
+- Épica 7 Selector de Ambientes:
+  - `docs/07-environments/epica.md`
+  - `docs/07-environments/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-persistence.md`, `ta-f2-ui.md`, `ta-f3-reconfigure.md`, `ta-f4-make.md`, `ta-f5-testing.md`
+- Épica 8 Network:
+  - `docs/08-network/epica.md`
+  - `docs/08-network/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-config.md`, `ta-f2-client.md`, `ta-f3-interceptors.md`, `ta-f4-firestore.md`, `ta-f5-smokes.md`, `ta-f6-make.md`, `ta-f7-testing.md`
+- Épica 9 Storage:
+  - `docs/09-storage/epica.md`
+  - `docs/09-storage/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-settings.md`, `ta-f2-dbconfig.md`, `ta-f3-di.md`, `ta-f4-smokes.md`, `ta-f5-make.md`, `ta-f6-testing.md`
+- Épica 10 Flujos del cliente:
+  - `docs/10-flujos/epica.md`
+  - `docs/10-flujos/backlog.md`
+  - TAs: `ta-f0-guards.md`, `ta-f1-contratos.md`, `ta-f2-handlers.md`, `ta-f3-make.md`, `ta-f4-testing.md`
+- Épica 11 Audio ES/EN:
+  - `docs/11-audio/epica.md`
+  - `docs/11-audio/backlog.md`
+  - TAs: `ta-f0-domain.md`, `ta-f1-catalog.md`, `ta-f2-toggle.md`, `ta-f3-hooks.md`, `ta-f4-spike-download.md`, `ta-f5-testing.md`
+- Épica 12 Web admin (mockserver):
+  - `docs/12-web/epica.md`
+  - `docs/12-web/backlog.md`
+  - TAs: `ta-f0-alcance.md`, `ta-f1-build.md`, `ta-f2-ds-sdui.md`, `ta-f3-smokes.md`, `ta-f4-make.md`, `ta-f5-testing.md`
+- Épica 13 CI/CD + Calidad:
+  - `docs/13-cicd/epica.md`
+  - `docs/13-cicd/backlog.md`
+  - TAs: `ta-f0-workflows.md`, `ta-f1-make.md`, `ta-f2-detekt.md`, `ta-f3-smokes.md`, `ta-f4-publish.md`, `ta-f5-gates.md`
