@@ -8,7 +8,7 @@
 - `feat/ht-ds-f1-tokens`
 
 ## Objetivo
-Diseñar la definición de tokens (colores, tipografía, `ThemeDimens`, shapes) y la estructura de temas (default + variantes daltónicas, sin UI completa), integrables con `ThemeManager`.
+Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`, shapes) y la estructura de temas (default + variantes daltónicas), con especificación suficiente para implementar sin decisiones adicionales.
 
 ## Alcance
 - Roles de color alineados a Material3 + necesidades Dui.
@@ -16,19 +16,145 @@ Diseñar la definición de tokens (colores, tipografía, `ThemeDimens`, shapes) 
 - `ThemeDimens`: espaciados, tamaños de ítems touch (>=48dp), alturas de inputs/dropdowns, radios.
 - Shapes: esquinas por jerarquía (card, dialog, chip).
 - Estructura de temas: default + variantes daltónicos (Deuteranopia, Tritanopia, Achromatopsia, High Contrast) definidas en tokens.
+ - Contrato de `ThemeManager` y selección de variante/tema.
 
 ## Diseño (doc)
-1) **Colores**
-   - Definir roles: primary, onPrimary, primaryContainer, secondary, onSecondary, secondaryContainer, tertiary, background, surface, surfaceVariant, error, outline, scrim, inverseSurface, etc.
-   - Paletas para: default, deuteranopia, tritanopia, achromatopsia, high-contrast (solo tokens; sin implementarlas en UI).
-2) **Tipografía**
-   - Definir escalas: Display, Headline, Title, Body, Label con pesos y tamaños; mapear a `MaterialTheme.typography`.
-3) **Dimensiones**
-   - `ThemeDimens`: spacing XS/S/M/L/XL, input heights (incl. dropdown 2-line), touch target >=48dp, paddings estándar, border widths.
-4) **Shapes**
-   - Radios para card, sheet/dialog, chip/pill; borde para focus/outline.
-5) **ThemeManager**
-   - Documentar cómo se conectarían tokens a `ThemeManager` (sin código): selector de tema, persistencia, fallback.
+### 1) Estructura de archivos esperada
+- `core/ui/theme/ColorTokens.kt`
+- `core/ui/theme/TypographyTokens.kt`
+- `core/ui/theme/ThemeDimens.kt`
+- `core/ui/theme/Shapes.kt`
+- `core/ui/theme/ThemeManager.kt`
+- `core/ui/theme/DuiTheme.kt` (wrapper de `MaterialTheme`)
+
+### 2) Tokens de color (roles + valores)
+**Roles obligatorios (alineados a MaterialTheme.colorScheme):**
+- `primary`, `onPrimary`, `primaryContainer`, `onPrimaryContainer`
+- `secondary`, `onSecondary`, `secondaryContainer`, `onSecondaryContainer`
+- `tertiary`, `onTertiary`, `tertiaryContainer`, `onTertiaryContainer`
+- `background`, `onBackground`
+- `surface`, `onSurface`, `surfaceVariant`, `onSurfaceVariant`
+- `error`, `onError`, `errorContainer`, `onErrorContainer`
+- `outline`, `outlineVariant`
+- `scrim`, `inverseSurface`, `inverseOnSurface`, `inversePrimary`
+
+**Paleta default (light) — valores iniciales obligatorios:**
+- `primary`: `#6750A4`
+- `onPrimary`: `#FFFFFF`
+- `primaryContainer`: `#EADDFF`
+- `onPrimaryContainer`: `#21005D`
+- `secondary`: `#625B71`
+- `onSecondary`: `#FFFFFF`
+- `secondaryContainer`: `#E8DEF8`
+- `onSecondaryContainer`: `#1D192B`
+- `tertiary`: `#7D5260`
+- `onTertiary`: `#FFFFFF`
+- `tertiaryContainer`: `#FFD8E4`
+- `onTertiaryContainer`: `#31111D`
+- `background`: `#FFFBFE`
+- `onBackground`: `#1C1B1F`
+- `surface`: `#FFFBFE`
+- `onSurface`: `#1C1B1F`
+- `surfaceVariant`: `#E7E0EC`
+- `onSurfaceVariant`: `#49454F`
+- `error`: `#B3261E`
+- `onError`: `#FFFFFF`
+- `errorContainer`: `#F9DEDC`
+- `onErrorContainer`: `#410E0B`
+- `outline`: `#79747E`
+- `outlineVariant`: `#CAC4D0`
+- `scrim`: `#000000`
+- `inverseSurface`: `#313033`
+- `inverseOnSurface`: `#F4EFF4`
+- `inversePrimary`: `#D0BCFF`
+
+**Paleta default (dark) — valores iniciales obligatorios:**
+- `primary`: `#D0BCFF`
+- `onPrimary`: `#381E72`
+- `primaryContainer`: `#4F378B`
+- `onPrimaryContainer`: `#EADDFF`
+- `secondary`: `#CCC2DC`
+- `onSecondary`: `#332D41`
+- `secondaryContainer`: `#4A4458`
+- `onSecondaryContainer`: `#E8DEF8`
+- `tertiary`: `#EFB8C8`
+- `onTertiary`: `#492532`
+- `tertiaryContainer`: `#633B48`
+- `onTertiaryContainer`: `#FFD8E4`
+- `background`: `#1C1B1F`
+- `onBackground`: `#E6E1E5`
+- `surface`: `#1C1B1F`
+- `onSurface`: `#E6E1E5`
+- `surfaceVariant`: `#49454F`
+- `onSurfaceVariant`: `#CAC4D0`
+- `error`: `#F2B8B5`
+- `onError`: `#601410`
+- `errorContainer`: `#8C1D18`
+- `onErrorContainer`: `#F9DEDC`
+- `outline`: `#938F99`
+- `outlineVariant`: `#49454F`
+- `scrim`: `#000000`
+- `inverseSurface`: `#E6E1E5`
+- `inverseOnSurface`: `#313033`
+- `inversePrimary`: `#6750A4`
+
+**Variantes daltónicas (MVP):**
+- Deuteranopia, Tritanopia, Achromatopsia, High Contrast **repiten los mismos valores** del tema default (light/dark).
+- Razón: se requiere implementación sin decisiones de color en esta etapa; la calibración de paletas será una historia de accesibilidad posterior.
+
+### 3) Tipografía (tokens + mapeo)
+**Familia base:** `Default/System` (sin fuente custom en esta historia).
+
+**Escala y tamaños (Material 3):**
+- Display: `displayLarge 57sp`, `displayMedium 45sp`, `displaySmall 36sp`
+- Headline: `headlineLarge 32sp`, `headlineMedium 28sp`, `headlineSmall 24sp`
+- Title: `titleLarge 22sp`, `titleMedium 16sp`, `titleSmall 14sp`
+- Body: `bodyLarge 16sp`, `bodyMedium 14sp`, `bodySmall 12sp`
+- Label: `labelLarge 14sp`, `labelMedium 12sp`, `labelSmall 11sp`
+
+**Pesos:**
+- `display/headline/title`: `SemiBold`
+- `body`: `Normal`
+- `label`: `Medium`
+
+**Mapeo obligatorio a `MaterialTheme.typography`:**
+- Usar la escala anterior en cada campo homónimo.
+
+### 4) ThemeDimens (valores obligatorios)
+- `SPACE_2 = 4.dp`
+- `SPACE_4 = 8.dp`
+- `SPACE_6 = 12.dp`
+- `SPACE_8 = 16.dp`
+- `SPACE_10 = 20.dp`
+- `SPACE_12 = 24.dp`
+- `SPACE_16 = 32.dp`
+- `SPACE_20 = 40.dp`
+- `SPACE_24 = 48.dp`
+- `TOUCH_TARGET_MIN = 48.dp`
+- `INPUT_HEIGHT_SINGLE = 48.dp`
+- `INPUT_HEIGHT_MULTI = 56.dp`
+- `DROPDOWN_HEIGHT = 56.dp`
+- `BORDER_WIDTH = 1.dp`
+- `DIVIDER_HEIGHT = 1.dp`
+
+### 5) Shapes (radios obligatorios)
+- `RADIUS_SM = 8.dp`
+- `RADIUS_MD = 12.dp`
+- `RADIUS_LG = 16.dp`
+- `RADIUS_XL = 24.dp`
+- `RADIUS_PILL = 999.dp`
+
+### 6) ThemeManager (contrato esperado)
+- `ThemeVariant`: `DEFAULT`, `DEUTERANOPIA`, `TRITANOPIA`, `ACHROMATOPSIA`, `HIGH_CONTRAST`
+- `ThemeMode`: `LIGHT`, `DARK`, `SYSTEM`
+- `ThemeSelection`:
+  - `variant: ThemeVariant`
+  - `mode: ThemeMode`
+- `ThemeManager` expone:
+  - `currentSelection` (estado observable)
+  - `setVariant(ThemeVariant)`
+  - `setMode(ThemeMode)`
+- Persistencia **no** se implementa aquí (se documenta como futura).
 
 ## Entregables (documento)
 - Lista de tokens por categoría (colores, tipografía, dimens, shapes).
@@ -37,7 +163,7 @@ Diseñar la definición de tokens (colores, tipografía, `ThemeDimens`, shapes) 
 
 ## Verificación futura
 - Tokens cubren todos los roles usados por átomos/moléculas/organismos Dui.
-- Temas daltónicos definidos a nivel de tokens.
+- Temas daltónicos definidos a nivel de tokens (en MVP con valores iguales al default).
 
 ## No incluido
 - Implementación de temas en código ni UI.
