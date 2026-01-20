@@ -57,11 +57,47 @@ Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/dee
 ## Validación Dev (rol QA)
 - [ ] Ejecutar cada comando Make y verificar apertura de pantalla correspondiente.
 - [ ] `run-bitacora-theme` renderiza lista completa de temas.
-- [ ] `run-bitacora-atoms|molecule|organism` renderiza título y placeholder.
+- [ ] `run-bitacora-atoms|molecule|organism` renderiza la estructura de servilleta definida.
 
 ## Entregables (documento)
 - Lista de rutas y targets Make.
 - Wireframe textual de cada pantalla mínima.
+
+## Wireframes (servilleta)
+```
+Bitácora de átomos
+────────────────────────────────────────
+[Sección: Texto]
+- DuiText.Title
+- DuiText.Body
+
+[Sección: Colores]
+- DuiColorSwatch (primary)
+- DuiColorSwatch (secondary)
+
+[Sección: Layout]
+- DuiSpacer
+- DuiDivider
+```
+
+```
+Bitácora de moléculas
+────────────────────────────────────────
+[Card] DuiCard
+  Title: "Tema ejemplo"
+  Body:  "Descripción de ejemplo"
+  [●][●][●][●][●][●]  (DuiColorSwatchRow)
+
+[Row] DuiColorSwatchRow (solo colores)
+[●][●][●][●][●][●]
+```
+
+```
+Bitácora de organismos
+────────────────────────────────────────
+[Sección: Placeholder]
+- Texto: "Pendiente catálogo de organismos"
+```
 
 ## Verificación futura
 - Comandos y rutas claros para uso por dev/QA al implementar.
