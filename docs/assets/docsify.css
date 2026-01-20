@@ -28,6 +28,16 @@ body {
   border-right: 1px solid #1f2937;
 }
 
+.sidebar-toggle {
+  background: #0f172a;
+  color: #e2e8f0;
+  z-index: 999;
+}
+
+.sidebar-toggle-button {
+  cursor: pointer;
+}
+
 .sidebar-nav li > a {
   border-radius: 6px;
   padding: 4px 8px;

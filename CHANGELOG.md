@@ -20,3 +20,4 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Navegacion de retorno en todos los disenos detallados.
 - Navegacion de retorno en guias base y plan MVP.
 - Fix CSS para clicks en subitems del sidebar.
+- Ajuste de tema y toggle del sidebar en Docsify.
