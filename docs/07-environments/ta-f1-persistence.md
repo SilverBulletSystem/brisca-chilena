@@ -1,5 +1,9 @@
 # TA-ENV-F1 — Persistencia/config de ambientes
 
+## Navegacion
+- [Volver a Epica](07-environments/epica.md)
+- [Volver a Backlog](07-environments/backlog.md)
+
 ## Rama
 - `feat/ht-env-f1-persistence`
 

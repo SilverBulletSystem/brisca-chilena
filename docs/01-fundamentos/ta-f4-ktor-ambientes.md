@@ -1,5 +1,9 @@
 # TA-F4 — Ktor y ambientes (mock/dev/prod)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/prod` de forma consistente con el proyecto base, incluyendo el detalle de implementación esperado.
 

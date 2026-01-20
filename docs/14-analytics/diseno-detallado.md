@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 14 Analytics (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](14-analytics/epica.md)
+- [Volver a Backlog](14-analytics/backlog.md)
+
 ## Contexto
 Analytics requiere un estandar de tagging transversal desde el DS para medir uso sin acoplar features.
 

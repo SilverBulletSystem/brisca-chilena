@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 17 Suscripcion (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](17-suscripcion/epica.md)
+- [Volver a Backlog](17-suscripcion/backlog.md)
+
 ## Contexto
 Gestion de suscripciones como fuente de ingresos y habilitacion de features.
 

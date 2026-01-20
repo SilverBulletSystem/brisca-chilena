@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 5 Toad (External Record) (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](05-toad/epica.md)
+- [Volver a Backlog](05-toad/backlog.md)
+
 ## Contexto
 External Record registra requests externos y los correlaciona con sesiones.
 

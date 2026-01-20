@@ -1,5 +1,9 @@
 # TA-INK-F2 — Hooks de captura (navegación/SDUI/acciones)
 
+## Navegacion
+- [Volver a Epica](04-inkribbon/epica.md)
+- [Volver a Backlog](04-inkribbon/backlog.md)
+
 ## Rama
 - `feat/ht-ink-f2-hooks`
 

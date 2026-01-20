@@ -1,5 +1,9 @@
 # TA-STORAGE-F3 — Factories/DI
 
+## Navegacion
+- [Volver a Epica](09-storage/epica.md)
+- [Volver a Backlog](09-storage/backlog.md)
+
 ## Rama
 - `feat/ht-storage-f3-di`
 

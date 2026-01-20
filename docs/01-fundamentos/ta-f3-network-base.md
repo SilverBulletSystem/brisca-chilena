@@ -1,5 +1,9 @@
 # TA-F3 — Network base (URL única temporal)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la primera integración de red para poder **probar** el cliente Ktor (versión más reciente), usando la API pública de Rick and Morty, con detalle de implementación esperado.
 

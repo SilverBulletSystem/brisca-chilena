@@ -1,5 +1,9 @@
 # TA-DS-F2 — Átomos Dui y bitácora
 
+## Navegacion
+- [Volver a Epica](02-designsystem/epica.md)
+- [Volver a Backlog](02-designsystem/backlog.md)
+
 ## Rama
 - `feat/ht-ds-f2-atoms`
 

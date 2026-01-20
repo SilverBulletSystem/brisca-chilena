@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 22 App Panel (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](22-app-panel/epica.md)
+- [Volver a Backlog](22-app-panel/backlog.md)
+
 ## Contexto
 Panel para monitoreo interno y alarmas operativas.
 

@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 7 Selector de Ambientes (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](07-environments/epica.md)
+- [Volver a Backlog](07-environments/backlog.md)
+
 ## Contexto
 Permite cambiar ambiente en cliente y reconfigurar servicios.
 

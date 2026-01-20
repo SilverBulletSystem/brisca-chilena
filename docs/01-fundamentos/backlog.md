@@ -1,5 +1,9 @@
 # Backlog tecnico — Epica 01 Fundamentos (Historias tecnicas)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Diseno detallado](01-fundamentos/diseno-detallado.md)
+
 ## HT-F1 Namespace y estructura
 - Objetivo: confirmar namespace `cl.silverbullet.multiplatform.brisca` y crear estructura base.
 - Entregables: arbol de carpetas, README de estructura, `.gitignore` base.

@@ -1,5 +1,18 @@
 # Epica 1 — Fundamentos del proyecto
 
+## Navegacion
+- [Backlog tecnico](01-fundamentos/backlog.md)
+- [Diseno detallado](01-fundamentos/diseno-detallado.md)
+- Historias tecnicas:
+  - [TA-F1 Namespace y estructura](01-fundamentos/ta-f1-namespace-estructura.md)
+  - [TA-F2 Koin baseline](01-fundamentos/ta-f2-koin-baseline.md)
+  - [TA-F3 Network base](01-fundamentos/ta-f3-network-base.md)
+  - [TA-F4 Ktor y ambientes](01-fundamentos/ta-f4-ktor-ambientes.md)
+  - [TA-F5 Detekt](01-fundamentos/ta-f5-detekt.md)
+  - [TA-F6 i18n base](01-fundamentos/ta-f6-i18n-base.md)
+  - [TA-F7 Libs y config](01-fundamentos/ta-f7-libs-config.md)
+  - [TA-F8 Flavors iOS](01-fundamentos/ta-f8-flavors-ios.md)
+
 ## Contexto
 Base tecnica para estructura, build, DI, i18n y calidad inicial.
 

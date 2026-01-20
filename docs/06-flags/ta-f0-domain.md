@@ -1,5 +1,9 @@
 # TA-FLAGS-F0 — Dominio/contratos de Feature Flags (DDD)
 
+## Navegacion
+- [Volver a Epica](06-flags/epica.md)
+- [Volver a Backlog](06-flags/backlog.md)
+
 ## Rama
 - `feat/ht-flags-f0-domain`
 

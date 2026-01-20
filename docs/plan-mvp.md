@@ -1,5 +1,8 @@
 # Plan MVP – Brisca Chilena 2026
 
+## Navegacion
+- [Volver al Inicio](README.md)
+
 ## Contexto y principios
 - Clean Architecture + DDD, UI solo presentación; validación en dominio.
 - SDUI (MagicsDui) sobre Design System Atomic (átomos→moléculas→organismos→pantallas→flujos).

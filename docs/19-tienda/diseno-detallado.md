@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 19 Tienda (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](19-tienda/epica.md)
+- [Volver a Backlog](19-tienda/backlog.md)
+
 ## Contexto
 Catalogo de items (burlas, naipes, temas) con compra in-app.
 

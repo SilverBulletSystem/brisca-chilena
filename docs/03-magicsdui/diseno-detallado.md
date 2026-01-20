@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 3 MagicsDui (SDUI) (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](03-magicsdui/epica.md)
+- [Volver a Backlog](03-magicsdui/backlog.md)
+
 ## Contexto
 MagicsDui interpreta contratos SDUI y renderiza componentes Dui con validacion y fallback seguro.
 

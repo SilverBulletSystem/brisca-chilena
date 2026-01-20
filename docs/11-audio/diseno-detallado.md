@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 11 Audio ES/EN (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](11-audio/epica.md)
+- [Volver a Backlog](11-audio/backlog.md)
+
 ## Contexto
 Audio por eventos de juego y UI con soporte ES/EN y toggle.
 

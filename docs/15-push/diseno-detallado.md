@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 15 Notificaciones Push (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](15-push/epica.md)
+- [Volver a Backlog](15-push/backlog.md)
+
 ## Contexto
 Soporte de push para promociones y anuncios propios.
 

@@ -1,5 +1,9 @@
 # TA-DS-F2 — Navegación/atajos Make para bitácoras
 
+## Navegacion
+- [Volver a Epica](02-designsystem/epica.md)
+- [Volver a Backlog](02-designsystem/backlog.md)
+
 ## Rama
 - `feat/ht-ds-f2-make-shortcuts`
 

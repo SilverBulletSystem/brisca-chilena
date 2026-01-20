@@ -1,5 +1,9 @@
 # TA-AUDIO-F5 — Testing/observabilidad
 
+## Navegacion
+- [Volver a Epica](11-audio/epica.md)
+- [Volver a Backlog](11-audio/backlog.md)
+
 ## Rama
 - `feat/ht-audio-f5-testing`
 

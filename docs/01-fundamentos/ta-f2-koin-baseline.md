@@ -1,5 +1,9 @@
 # TA-F2 — DI baseline con Koin
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar el wiring inicial de Koin usando **solo** el `applicationModule` (sin placeholders por capa), con detalle de implementación esperado.
 

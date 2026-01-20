@@ -1,5 +1,9 @@
 # TA-WEB-F2 — Adaptaciones DS/SDUI para web
 
+## Navegacion
+- [Volver a Epica](12-web/epica.md)
+- [Volver a Backlog](12-web/backlog.md)
+
 ## Rama
 - `feat/ht-web-f2-ds-sdui`
 

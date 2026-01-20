@@ -1,5 +1,9 @@
 # TA-FLAGS-F1 — Proveedores (local JSON / Firestore)
 
+## Navegacion
+- [Volver a Epica](06-flags/epica.md)
+- [Volver a Backlog](06-flags/backlog.md)
+
 ## Rama
 - `feat/ht-flags-f1-providers`
 

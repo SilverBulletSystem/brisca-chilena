@@ -1,5 +1,9 @@
 # TA-INK-F3 — Writer pipeline (buffer + persistencia)
 
+## Navegacion
+- [Volver a Epica](04-inkribbon/epica.md)
+- [Volver a Backlog](04-inkribbon/backlog.md)
+
 ## Rama
 - `feat/ht-ink-f3-writer`
 

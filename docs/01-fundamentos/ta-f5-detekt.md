@@ -1,5 +1,9 @@
 # TA-F5 — Detekt (reglas Cursor)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la adopción de Detekt usando la configuración del proyecto base, adaptada al namespace actual y las reglas del usuario (Cursor). Sin ejecución de la herramienta.
 

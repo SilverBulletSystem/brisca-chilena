@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 21 Bluetooth (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](21-bluetooth/epica.md)
+- [Volver a Backlog](21-bluetooth/backlog.md)
+
 ## Contexto
 Partidas locales sin internet con roles host/cliente.
 

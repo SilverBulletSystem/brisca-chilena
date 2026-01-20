@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 6 Flags + Monitor (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](06-flags/epica.md)
+- [Volver a Backlog](06-flags/backlog.md)
+
 ## Contexto
 Feature flags con proveedores multiples y monitor UI.
 

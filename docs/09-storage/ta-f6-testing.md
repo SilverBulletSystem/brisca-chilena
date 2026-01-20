@@ -1,5 +1,9 @@
 # TA-STORAGE-F6 — Testing/observabilidad
 
+## Navegacion
+- [Volver a Epica](09-storage/epica.md)
+- [Volver a Backlog](09-storage/backlog.md)
+
 ## Rama
 - `feat/ht-storage-f6-testing`
 

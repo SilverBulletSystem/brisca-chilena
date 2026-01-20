@@ -1,5 +1,9 @@
 # TA-TOAD-F7 — Testing/observabilidad
 
+## Navegacion
+- [Volver a Epica](05-toad/epica.md)
+- [Volver a Backlog](05-toad/backlog.md)
+
 ## Rama
 - `feat/ht-toad-f7-testing`
 

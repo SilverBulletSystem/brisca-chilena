@@ -1,5 +1,9 @@
 # TA-CICD-F4 — Publicación interna
 
+## Navegacion
+- [Volver a Epica](13-cicd/epica.md)
+- [Volver a Backlog](13-cicd/backlog.md)
+
 ## Rama
 - `feat/ht-cicd-f4-publish`
 

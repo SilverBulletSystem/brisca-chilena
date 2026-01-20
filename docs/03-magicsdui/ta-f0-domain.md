@@ -1,5 +1,9 @@
 # TA-SDUI-F0 — Modelo de dominio SDUI (DDD)
 
+## Navegacion
+- [Volver a Epica](03-magicsdui/epica.md)
+- [Volver a Backlog](03-magicsdui/backlog.md)
+
 ## Rama
 - `feat/ht-sdui-f0-domain`
 

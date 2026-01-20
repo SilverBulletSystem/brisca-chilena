@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 13 CI/CD + Calidad (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](13-cicd/epica.md)
+- [Volver a Backlog](13-cicd/backlog.md)
+
 ## Contexto
 Pipelines CI/CD multi-target con quality gates y detekt.
 
