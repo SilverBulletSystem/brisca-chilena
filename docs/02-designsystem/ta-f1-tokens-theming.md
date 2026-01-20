@@ -178,6 +178,10 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - `SPACE_16 = 32.dp`
 - `SPACE_20 = 40.dp`
 - `SPACE_24 = 48.dp`
+- `ICON_SM = 16.dp`
+- `ICON_MD = 24.dp`
+- `ICON_LG = 32.dp`
+- `SWATCH_MD = 24.dp`
 - `TOUCH_TARGET_MIN = 48.dp`
 - `INPUT_HEIGHT_SINGLE = 48.dp`
 - `INPUT_HEIGHT_MULTI = 56.dp`

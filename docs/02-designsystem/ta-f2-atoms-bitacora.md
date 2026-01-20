@@ -44,10 +44,6 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 **DuiIcon**
 - Estados: `normal`, `disabled`.
 - Tamaños: `ThemeDimens.ICON_SM`, `ThemeDimens.ICON_MD`, `ThemeDimens.ICON_LG`.
-- Si no existen, crear en `ThemeDimens`:
-  - `ICON_SM = 16.dp`
-  - `ICON_MD = 24.dp`
-  - `ICON_LG = 32.dp`
 
 **DuiButton**
 - Variantes: filled, tonal, outlined, text.
@@ -84,7 +80,6 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 **DuiColorSwatch**
 - Mostrar 6 swatches: `primary`, `secondary`, `tertiary`, `surface`, `background`, `error`.
 - Tamaño: `ThemeDimens.SWATCH_MD`.
-- Si no existe, crear en `ThemeDimens`: `SWATCH_MD = 24.dp`.
 - Borde: `outline` con `BORDER_WIDTH`.
 
 ### 3) Bitácora de Átomos (pantalla)
