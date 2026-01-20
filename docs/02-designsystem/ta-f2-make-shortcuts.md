@@ -23,10 +23,16 @@ Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/dee
   - Cada card: título, descripción y fila de 6 swatches (definida en TA-DS-F1).
 - **AtomsBitacoraScreen**:
   - Título: `DuiText.Title` con texto “Bitácora de átomos”.
-  - Contenedor vacío con texto “Pendiente catálogo de estados”.
+  - Lista mínima de átomos ya usados en `ThemeCatalogScreen`:
+    - `DuiText` (Title/Body).
+    - `DuiColorSwatch`.
+    - `DuiSpacer`.
+    - `DuiDivider`.
 - **MoleculesBitacoraScreen**:
   - Título: `DuiText.Title` con texto “Bitácora de moléculas”.
-  - Contenedor vacío con texto “Pendiente catálogo de estados”.
+  - Lista mínima de moléculas ya usadas en `ThemeCatalogScreen`:
+    - `DuiCard`.
+    - `DuiColorSwatchRow`.
 - **OrganismsBitacoraScreen**:
   - Título: `DuiText.Title` con texto “Bitácora de organismos”.
   - Contenedor vacío con texto “Pendiente catálogo de estados”.
