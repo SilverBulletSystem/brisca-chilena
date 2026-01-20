@@ -1,4 +1,4 @@
-# Flujo de Trabajo Git (adaptado desde ipchile-multiplatform)
+# Flujo de Trabajo Git
 
 El flujo de ramas, convención de commits y PRs debe respetarse en cada cambio del proyecto.
 

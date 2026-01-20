@@ -5,7 +5,7 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## Objetivo
-Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/prod` de forma consistente con el proyecto base, incluyendo el detalle de implementación esperado.
+Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/prod` de forma consistente con el proyecto, incluyendo el detalle de implementación esperado.
 
 ## Rama
 - Crear desde `main`: `feat/ht-f4-ktor-ambientes`.
@@ -33,7 +33,7 @@ Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/pro
    - Cliente en `core/network` con `baseUrl` inyectado.
    - Timeouts y headers estándar definidos como placeholders.
 4) Compatibilidad:
-   - Mantener nombres de claves alineados con el proyecto base.
+   - Mantener nombres de claves estables dentro del proyecto.
 5) Estrategia inicial de URLs (sin backend aún):
    - `mock`, `dev` y `prod` apuntan temporalmente a **Mockoon CLI** en la misma IP.
    - Se diferencian por **puerto**:

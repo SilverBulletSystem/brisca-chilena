@@ -9,7 +9,7 @@
 - Internacionalización obligatoria: ninguna string hardcodeada en UI; interfaces segregadas por pantalla.
 - Theming con `ThemeManager` y `ThemeDimens`; tokens preparados para accesibilidad y daltónicos (sin implementación visual completa en MVP).
 - Navegación con Decompose; DI con Koin; Compose Multiplatform (Android/iOS/Web).
-- Cache con Settings Multiplatform y persistencia con SQDelight (ambos en proyecto base).
+- Cache con Settings Multiplatform y persistencia con SQDelight.
 - Feature flags con interfaz en dominio y múltiples proveedores (JSON local, Firestore).
 - PRs pequeños y con foco: refinamiento continuo en Kanban (no sprints fijos).
 
@@ -47,7 +47,7 @@
 
 - ### 1. Fundamentos del proyecto
 - Objetivo: esqueleto KMP con módulos `core`, `commons`, `features`, `designsystem`, `magicsdui`, `inkribbon` (State Record), `toad` (External Record), `flags`, `network`, `storage`, flavours y Makefile.
-- Entregables: namespaces `cl.silverbullet.multiplatform.brisca`; configuración flavours mock/dev/prod; DI Koin base por plataforma; tareas make básicas usando `assemble<Flavor><BuildType>` (p. ej. `assembleMockDebug`, `assembleDevDebug`, `assembleProdRelease`) para evitar `build` completo; spike de Detekt para portar reglas de malas prácticas (alineadas a las reglas de Cursor) desde el proyecto base; **spike para configurar esquemas/flavors equivalentes en iOS (debug mock/dev/prod y release prod-tienda)**.
+- Entregables: namespaces `cl.silverbullet.multiplatform.brisca`; configuración flavours mock/dev/prod; DI Koin base por plataforma; tareas make básicas usando `assemble<Flavor><BuildType>` (p. ej. `assembleMockDebug`, `assembleDevDebug`, `assembleProdRelease`) para evitar `build` completo; spike de Detekt para reglas de malas prácticas (alineadas a las reglas de Cursor); **spike para configurar esquemas/flavors equivalentes en iOS (debug mock/dev/prod y release prod-tienda)**.
 - Refinar en tareas pequeñas: creación de carpetas + ajustes Gradle; configuración flavours; seeds de Makefile; hooks de DI mínimos; spike Detekt + configuración inicial; targets assemble por flavor; spike iOS esquemas/xcconfig para ambientes.
 
 ### 2. Design System Atomic + accesibilidad preparada
@@ -84,12 +84,12 @@
 
 ### 8. Network
 - Objetivo: Ktor configurado por flavor y Firestore mínimo para mobile.
-- Entregables: módulo network con timeouts/logging por ambiente; configuración de endpoints por flavor; wiring DI; pruebas smoke de conectividad mock/dev; reutilizar configuración del proyecto base en etapas tempranas.
+- Entregables: módulo network con timeouts/logging por ambiente; configuración de endpoints por flavor; wiring DI; pruebas smoke de conectividad mock/dev.
 - Refinar: setup Ktor; endpoints/flavors; logging per environment; Firestore client mínimo; tests smoke de red.
 
 ### 9. Storage
 - Objetivo: Settings MP para prefs ligeras y SQDelight integrado para persistencia (state/external records).
-- Entregables: wrapper Settings MP; inicialización SQDelight; wiring DI; migración de config base desde el proyecto de referencia (etapa temprana).
+- Entregables: wrapper Settings MP; inicialización SQDelight; wiring DI; migración de config base (etapa temprana).
 - Refinar: Settings wrapper; schema/init SQDelight; factories multiplataforma; pruebas básicas de lectura/escritura.
 
 ### 10. Flujos del cliente (SDUI-backed)
@@ -169,6 +169,6 @@
 
 ## Próximos pasos
 - Crear tablero Kanban con estas épicas.
-- Revisar `/Users/harttin.arce/Proyectos/kmp/ipchile-multiplatform` para copiar guías (Makefile, Detekt, estructura de docs).
+- Consolidar guías internas (Makefile, Detekt, estructura de docs).
 - Definir contratos SDUI iniciales y esquemas de State/External Record.
 - Configurar Mockoon base (JSON) y targets de Makefile para mockserver.

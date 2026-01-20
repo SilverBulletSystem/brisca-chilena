@@ -22,3 +22,4 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Fix CSS para clicks en subitems del sidebar.
 - Ajuste de tema y toggle del sidebar en Docsify.
 - Fix GitHub Pages: agregar `.nojekyll` para assets y sidebar.
+- Limpieza de referencias a proyecto base en la documentacion.

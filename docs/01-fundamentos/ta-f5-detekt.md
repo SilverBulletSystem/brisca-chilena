@@ -5,13 +5,13 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## Objetivo
-Diseñar la adopción de Detekt usando la configuración del proyecto base, adaptada al namespace actual y las reglas del usuario (Cursor). Sin ejecución de la herramienta.
+Diseñar la adopción de Detekt usando la configuración del proyecto, adaptada al namespace actual y las reglas del usuario (Cursor). Sin ejecución de la herramienta.
 
 ## Rama
 - Crear desde `main`: `feat/ht-f5-detekt`.
 
 ## Alcance
-- Portar `detekt.yml` del proyecto base, ajustar rutas/namespace.
+- Definir `detekt.yml` del proyecto, ajustar rutas/namespace.
 - Integrar tareas `detekt` y `detekt-fix` al Makefile (documentado).
 
 ## Diseño

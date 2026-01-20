@@ -11,7 +11,7 @@
 Portar y configurar Detekt con las reglas del proyecto (naming, i18n, no hardcode strings, atomic design) y alinearlo con CI/Make.
 
 ## Alcance
-- Importar `detekt.yml` del proyecto base; adaptar rutas/namespaces.
+- Definir `detekt.yml` del proyecto; adaptar rutas/namespaces.
 - Reglas clave: strings no hardcode en UI, naming conventions, temas/dimens centralizados, atomic design, prohibir prefijos/sufijos indebidos.
 - Integración:
   - Comando `make detekt`.

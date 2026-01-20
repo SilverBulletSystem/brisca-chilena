@@ -8,7 +8,7 @@
 - `feat/ht-ds-f2-make-shortcuts`
 
 ## Objetivo
-Definir rutas/deeplinks y comandos Make para abrir las bitácoras sin interacción manual (patrón `make run-bitacora` del proyecto base).
+Definir rutas/deeplinks y comandos Make para abrir las bitácoras sin interacción manual (patrón `make run-bitacora` del proyecto).
 
 ## Alcance
 - Rutas internas para bitácoras de átomos, moléculas y organismos (general, juego, chat, flags).
@@ -31,7 +31,7 @@ Definir rutas/deeplinks y comandos Make para abrir las bitácoras sin interacci�
    - `make run-bitacora-organisms-chat`
    - `make run-bitacora-organisms-flags`
 3) Notas:
-   - Mantener el patrón del proyecto base (`make run-...`) para consistencia.
+   - Mantener el patrón del proyecto (`make run-...`) para consistencia.
    - Documentar variables opcionales (ej. `FLAVOR=mock`) si se requiere.
 
 ## Validación Dev (rol QA)

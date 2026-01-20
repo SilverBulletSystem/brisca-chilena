@@ -8,7 +8,7 @@
 - `feat/ht-ds-f2-atoms`
 
 ## Objetivo
-Definir el catálogo de átomos `Dui*` (Atomic) y el diseño de la bitácora de átomos con todos sus estados, incluyendo navegación directa vía comando Make (similar a `make run-bitacora` del proyecto base). Sin implementación de código.
+Definir el catálogo de átomos `Dui*` (Atomic) y el diseño de la bitácora de átomos con todos sus estados, incluyendo navegación directa vía comando Make (similar a `make run-bitacora` del proyecto). Sin implementación de código.
 
 ## Alcance
 - Lista completa de átomos y estados (enabled/disabled/hover/focus/pressed/error).

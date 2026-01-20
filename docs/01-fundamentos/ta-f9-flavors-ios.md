@@ -5,7 +5,7 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## Objetivo
-Diseñar la configuración de esquemas y xcconfig por ambiente en iOS, alineado al base: **debug** para mock/dev y **release** para prod.
+Diseñar la configuración de esquemas y xcconfig por ambiente en iOS, alineado al estándar del proyecto: **debug** para mock/dev y **release** para prod.
 
 ## Rama
 - Crear desde `main`: `feat/ht-f9-flavors-ios`.

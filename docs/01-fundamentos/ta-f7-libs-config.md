@@ -5,13 +5,13 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## Objetivo
-Diseñar la alineación de versiones y configuraciones comunes basadas en el proyecto base. Sin ejecución ni cambios de código.
+Diseñar la alineación de versiones y configuraciones comunes del proyecto. Sin ejecución ni cambios de código.
 
 ## Rama
 - Crear desde `main`: `feat/ht-f7-libs-config`.
 
 ## Alcance
-- `libs.versions.toml` alineado al proyecto base (Kotlin, Compose, Ktor, Koin, etc.).
+- `libs.versions.toml` alineado al estándar del proyecto.
 - Plantillas de config locales (`local.properties.example`) y xcconfig.
 - Definir librerías mínimas requeridas por el MVP técnico.
 
@@ -19,7 +19,7 @@ Diseñar la alineación de versiones y configuraciones comunes basadas en el pro
 1) Librerías mínimas requeridas (MVP técnico):
    - **Imágenes**:
      - Android: Glide.
-     - Multiplataforma: Coil KMP (según proyecto base).
+    - Multiplataforma: Coil KMP.
    - **Settings**: Multiplatform Settings.
    - **DB**: SQLDelight:
      - Runtime.
@@ -46,14 +46,14 @@ Diseñar la alineación de versiones y configuraciones comunes basadas en el pro
      - Detekt
      - Kover
      - Skie (interop iOS)
-2) Librerías del proyecto base a considerar:
+2) Librerías adicionales a considerar:
    - **Coil KMP** (si se decide no usar Glide en Android, definir una única solución).
    - **Compose WebView** (si hay webviews en MVP).
    - **FontAwesome** (si hay íconos en MVP).
    - **Skie** (interop iOS).
 3) `libs.versions.toml`:
-   - Tomar versiones del proyecto base y listarlas (sin aplicar aún en el Gradle actual).
-   - Notar posibles upgrades futuros, pero documentar que se mantienen las del base para consistencia inicial.
+   - Definir versiones objetivo y listarlas (sin aplicar aún en el Gradle actual).
+   - Notar posibles upgrades futuros, pero documentar que se mantienen las definidas en esta historia para consistencia inicial.
    - Versiones base (referencia, excepto Kotlin/Compose/Koin/Ktor ya configurados):
      - `kotlinx-serialization = 1.7.3`
      - `kotlinx-datetime = 0.6.0`
@@ -82,7 +82,7 @@ Diseñar la alineación de versiones y configuraciones comunes basadas en el pro
 5) Orden de aplicación:
    - Primero consolidar las versiones en doc; luego, cuando se implemente, reemplazar el toml actual.
 
-6) Release notes a revisar (diferencias detectadas vs base):
+6) Release notes a revisar (diferencias detectadas vs objetivo):
    - **Kotlin**: 2.1.21 → 2.3.0 (wizard). Revisar compatibilidad.
    - **Compose Multiplatform**: 1.8.1 → 1.10.0 (wizard). Revisar compatibilidad.
    - **AGP**: 8.7.3 → 8.11.2 (wizard). Revisar compatibilidad.
@@ -109,7 +109,7 @@ Diseñar la alineación de versiones y configuraciones comunes basadas en el pro
    - Kover: https://github.com/Kotlin/kotlinx-kover/releases
    - Skie: https://skie.touchlab.co/changelog/
 
-8) Resultado de revisión (base vs última):
+8) Resultado de revisión (versión objetivo vs última):
    - **kotlinx-serialization**: base 1.7.3 → latest 1.10.0-RC (RC, validar).
    - **kotlinx-datetime**: base 0.6.0 → latest 0.7.1.
    - **multiplatform-settings**: base 1.3.0 → latest 1.3.0 (sin cambio).
@@ -133,10 +133,10 @@ Diseñar la alineación de versiones y configuraciones comunes basadas en el pro
    - **skie**: base 0.10.6 → latest 0.10.9.
 
 ## Entregables (doc)
-- Lista de versiones objetivo (copiadas del base) y listado de librerías mínimas.
+- Lista de versiones objetivo definidas en esta historia y listado de librerías mínimas.
 - Plantillas de configuración descritas.
 - Checklist futura:
-  - [ ] libs.versions.toml actualizado con versiones del base.
+  - [ ] libs.versions.toml actualizado con versiones objetivo.
   - [ ] local.properties.example y Config.xcconfig plantillas creadas.
 
 ## No incluido
