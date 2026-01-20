@@ -1,26 +1,30 @@
-# Épica 9 — Storage (Settings MP + SQDelight)
+# Epica 9 — Storage
+
+## Contexto
+Settings MP y SQDelight para persistencia local.
 
 ## Objetivo
-Definir la capa de almacenamiento local con enfoque DDD: Settings Multiplatform para preferencias ligeras y SQDelight para persistencia estructurada (State/External Record y futuros esquemas). Debe ser configurable por ambiente, con inicialización multiplataforma y DI (Koin).
-
-## Entregables
-- Contratos de dominio para storage (prefs y DB) y configuración por ambiente.
-- Wrapper Settings MP tipado y seguro.
-- Configuración e inicialización de SQDelight multiplataforma.
-- Factories/DI para proveedores de DB y prefs.
-- Smokes básicos de lectura/escritura.
-- Comandos Make para ejecutar smokes.
-- Plan de pruebas y observabilidad.
+Definir el modulo Storage con enfoque DDD, integracion con el ecosistema y reglas de calidad.
 
 ## Alcance
-- Plataformas: Android/iOS; Web no prioritaria en MVP.
-- Ambientes: mock/dev/prod; rutas/archivos separados cuando aplique.
-- Seguridad: sin PII en claro; doc de cifrado futuro (no implementar en MVP).
-- DDD: dominio define interfaces; infra provee Settings/SQDelight.
+- Contratos de dominio y casos de uso principales.
+- Integracion con flags/ambientes si aplica.
+- UI o herramientas asociadas (si aplica).
+- Observabilidad y testing.
+
+## Entregables
+- Modelo de dominio y contratos.
+- Flujos principales y casos borde.
+- Plan de pruebas y observabilidad.
 
 ## Fuera de alcance
-- Cifrado avanzado (solo documentado).
-- Migraciones complejas más allá de las tablas necesarias (State/External Record).
+- Implementacion productiva completa si no corresponde al MVP.
 
-## Orden sugerido
-1) F0 Dominio/contratos → 2) F1 Settings wrapper → 3) F2 Config DB/SQDelight → 4) F3 Factories/DI → 5) F4 Smokes → 6) F5 Make → 7) F6 Testing/observabilidad. 
+## Dependencias
+- Design System (Dui) para cualquier UI.
+- Network/Storage si requiere persistencia o fetch.
+- Flags/Ambientes si requiere control dinamico.
+
+## Riesgos
+- Integraciones externas o permisos pueden bloquear entregas.
+- Carga de datos sensibles requiere sanitizacion estricta.

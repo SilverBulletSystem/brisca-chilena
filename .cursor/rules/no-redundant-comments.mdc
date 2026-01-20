@@ -1,0 +1,249 @@
+# Reglas de Proyecto - Brisca Multiplatform
+
+## 🚫 PROHIBICIÓN ABSOLUTA: Comentarios Redundantes
+
+### REGLA CRÍTICA #4: NUNCA usar comentarios que explican código obvio
+
+**ESTÁ ESTRICTAMENTE PROHIBIDO:**
+- ❌ `// Ahora validamos el usuario`
+- ❌ `// Llamamos a la API`
+- ❌ `// Obtenemos los datos`
+- ❌ `// Creamos el componente`
+- ❌ `// Inicializamos el estado`
+- ❌ `// Configuramos el cliente HTTP`
+- ❌ `// Verificamos si está vacío`
+- ❌ `// Retornamos el resultado`
+- ❌ Cualquier comentario que describa lo que el código hace de forma obvia
+
+### ✅ OBLIGATORIO: Solo Javadoc/KDoc cuando sea necesario
+
+**SIEMPRE usar Javadoc/KDoc para documentar:**
+- Funciones públicas
+- Clases públicas
+- Propiedades públicas complejas
+- Lógica de negocio no obvia
+- Decisiones de diseño importantes
+- Parámetros y valores de retorno
+
+**NO usar comentarios para:**
+- Explicar código obvio
+- Describir lo que hace una línea de código
+- Comentar código que se puede entender leyendo el nombre de la función/clase
+
+### 📝 Formato de Javadoc/KDoc
+
+**Para funciones:**
+```kotlin
+/**
+ * Valida las credenciales del usuario y genera un token de autenticación.
+ *
+ * @param username Nombre de usuario
+ * @param password Contraseña del usuario
+ * @return Token de autenticación si las credenciales son válidas, null en caso contrario
+ * @throws NetworkException Si hay un error de conexión
+ */
+fun authenticate(username: String, password: String): String?
+```
+
+**Para clases:**
+```kotlin
+/**
+ * Componente que maneja la lógica de actualización opcional de la aplicación.
+ *
+ * Este componente coordina la obtención de información de actualización,
+ * la presentación al usuario y la navegación a la tienda de aplicaciones.
+ *
+ * @property state Estado actual del componente (Ready, Loading, Error)
+ */
+class OptionalUpdateComponent(...)
+```
+
+**Para propiedades complejas:**
+```kotlin
+/**
+ * URL base de la API configurada según el ambiente actual.
+ * Se actualiza dinámicamente cuando el usuario cambia de ambiente.
+ */
+val apiBaseUrl: String
+```
+
+### 🔍 Detección de Violaciones
+
+**ANTES de escribir un comentario, preguntar:**
+1. ¿El comentario solo repite lo que dice el código? → ELIMINAR
+2. ¿El código es obvio por su nombre? → ELIMINAR comentario
+3. ¿El comentario explica POR QUÉ, no QUÉ? → MANTENER si es relevante
+4. ¿El comentario documenta una decisión de diseño? → MANTENER como Javadoc/KDoc
+
+### ⚠️ Excepciones (MUY LIMITADAS)
+
+**ÚNICAMENTE se permiten comentarios inline cuando:**
+- **Explican POR QUÉ, no QUÉ:**
+  ```kotlin
+  // Usar 0.7f en lugar de 0.5f para ser más tolerante con el pull-to-refresh
+  const val PULL_TO_REFRESH_DRAG_MULTIPLIER = 0.7f
+  ```
+
+- **Documentan workarounds o bugs conocidos:**
+  ```kotlin
+  // Workaround: iOS requiere este delay para evitar race condition
+  delay(100)
+  ```
+
+- **Explican lógica compleja no obvia:**
+  ```kotlin
+  // Si el HTML contiene tags, renderizarlo completo; si no, dividir por líneas
+  val mejoras = if (htmlContent.contains("<")) {
+      listOf(htmlContent)
+  } else {
+      htmlContent.split("\n").filter { it.isNotBlank() }
+  }
+  ```
+
+**NUNCA para:**
+- Describir código obvio
+- Explicar lo que hace una función (eso va en Javadoc/KDoc)
+- Comentar cada línea de código
+- Traducir código a español en comentarios
+
+### 📝 Checklist Antes de Escribir Comentarios
+
+Antes de escribir cualquier comentario, verificar:
+
+- [ ] ¿El comentario solo repite el código? → ELIMINAR
+- [ ] ¿El código es obvio por su nombre? → ELIMINAR comentario
+- [ ] ¿Necesito documentar la función/clase? → Usar Javadoc/KDoc
+- [ ] ¿Explico POR QUÉ, no QUÉ? → MANTENER si es relevante
+- [ ] ¿Es un comentario inline innecesario? → ELIMINAR
+
+### 🎯 Ejemplo Correcto vs Incorrecto
+
+**❌ INCORRECTO:**
+```kotlin
+class LoginComponent {
+    // Inicializamos el estado
+    private val state = MutableValue(LoginState.Loading)
+    
+    // Llamamos a la API para autenticar
+    fun login(username: String, password: String) {
+        // Validamos que el username no esté vacío
+        if (username.isBlank()) {
+            // Retornamos error
+            return
+        }
+        
+        // Obtenemos el repositorio
+        val repository = get<AuthRepository>()
+        
+        // Llamamos al método de login
+        repository.login(username, password)
+    }
+    
+    // Creamos el componente
+    init {
+        // Cargamos el estado inicial
+        loadInitialState()
+    }
+}
+```
+
+**✅ CORRECTO:**
+```kotlin
+/**
+ * Componente que maneja la autenticación de usuarios.
+ *
+ * Coordina la validación de credenciales, la comunicación con el backend
+ * y la gestión del estado de autenticación.
+ */
+class LoginComponent {
+    private val state = MutableValue(LoginState.Loading)
+    
+    /**
+     * Autentica un usuario con las credenciales proporcionadas.
+     *
+     * @param username Nombre de usuario
+     * @param password Contraseña del usuario
+     * @throws ValidationException Si las credenciales son inválidas
+     */
+    fun login(username: String, password: String) {
+        if (username.isBlank()) {
+            return
+        }
+        
+        val repository = get<AuthRepository>()
+        repository.login(username, password)
+    }
+    
+    init {
+        loadInitialState()
+    }
+}
+```
+
+### 🔧 Cuando Encuentres Comentarios Redundantes
+
+**SI encuentras comentarios redundantes en código existente:**
+
+1. **Identificar el comentario:** ¿Explica código obvio?
+2. **Evaluar:** ¿El código se entiende sin el comentario?
+3. **Si es obvio:** Eliminar el comentario
+4. **Si necesita documentación:** Convertir a Javadoc/KDoc apropiado
+5. **Si explica POR QUÉ:** Mantener solo si es relevante
+
+### 📚 Buenas Prácticas
+
+**Código auto-documentado:**
+```kotlin
+// ❌ MAL
+// Validamos que el usuario no esté vacío
+if (user.isEmpty()) return
+
+// ✅ BIEN
+if (user.isEmpty()) return
+```
+
+**Nombres descriptivos:**
+```kotlin
+// ❌ MAL
+// Obtiene el usuario actual
+fun getUser(): User?
+
+// ✅ BIEN
+fun getCurrentUser(): User?
+```
+
+**Javadoc/KDoc para funciones públicas:**
+```kotlin
+// ❌ MAL
+// Función que valida el token
+fun validateToken(token: String): Boolean
+
+// ✅ BIEN
+/**
+ * Valida si un token de autenticación es válido y no ha expirado.
+ *
+ * @param token Token a validar
+ * @return true si el token es válido, false en caso contrario
+ */
+fun validateToken(token: String): Boolean
+```
+
+### 📚 Referencias
+
+- Clean Code: "Comments are a necessary evil"
+- Kotlin Style Guide: https://kotlinlang.org/docs/coding-conventions.html
+- Best Practice: El código debe ser auto-documentado
+
+---
+
+## ⚠️ RECORDATORIO CRÍTICO
+
+**CADA VEZ que escribas un comentario:**
+1. ¿El comentario solo repite el código? → ELIMINAR
+2. ¿El código es obvio? → ELIMINAR comentario
+3. ¿Necesito documentar? → Usar Javadoc/KDoc
+4. ¿Explico POR QUÉ, no QUÉ? → MANTENER solo si es relevante
+
+**NO HAY EXCUSAS. EL CÓDIGO DEBE SER AUTO-DOCUMENTADO.**
+
+**Los comentarios redundantes hacen el código más difícil de mantener y actualizar.**

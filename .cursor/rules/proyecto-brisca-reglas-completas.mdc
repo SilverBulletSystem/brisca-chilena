@@ -1,0 +1,663 @@
+---
+alwaysApply: true
+---
+
+# Reglas del Proyecto Brisca Multiplatform
+
+Este documento contiene todas las reglas, convenciones y lineamientos que DEBEN seguirse estrictamente en el proyecto Brisca Multiplatform.
+
+## 🚨 REGLA FUNDAMENTAL: NUNCA TOCAR MAIN DIRECTAMENTE
+
+**ANTES de hacer cualquier cambio en el código:**
+1. ✅ Crear una rama según el tipo de cambio (feat/, fix/, etc.)
+2. ✅ Leer las reglas de Git en `docs/git-workflow.md`
+3. ✅ Seguir el flujo de trabajo establecido
+4. ❌ NUNCA hacer commits directos a `main`
+5. ❌ NUNCA modificar código sin crear una rama primero
+
+---
+
+## 📋 FLUJO DE TRABAJO GIT
+
+### Tipos de Ramas (OBLIGATORIO)
+
+| Tipo | Prefijo | Descripción | Ejemplo |
+|------|---------|-------------|---------|
+| Feature | `feat/` | Nuevas características | `feat/fix-firebase-analytics-ios` |
+| Fix | `fix/` | Corrección de errores | `fix/login-crash` |
+| Documentation | `docs/` | Cambios en documentación | `docs/api-reference` |
+| Style | `style/` | Formato, espacios, etc. | `style/lint-fixes` |
+| Refactor | `refactor/` | Mejoras sin cambios funcionales | `refactor/authentication-flow` |
+| Test | `test/` | Añadir o corregir pruebas | `test/login-integration` |
+| Chore | `chore/` | Build o herramientas | `chore/gradle-update` |
+| Hotfix | `hotfix/` | Correcciones urgentes | `hotfix/security-vulnerability` |
+
+### Proceso de Trabajo
+
+1. **Crear rama desde main:**
+   ```bash
+   git checkout main
+   git pull origin main
+   git checkout -b fix/firebase-analytics-ios main
+   ```
+
+2. **Desarrollar en la rama:**
+   - Hacer cambios
+   - Commits siguiendo convenciones
+   - Push a remoto: `git push -u origin fix/firebase-analytics-ios`
+
+3. **Crear Pull Request hacia main:**
+   - Usar plantilla de PR
+   - Asignar revisores
+   - Esperar aprobación
+
+4. **Merge a main:**
+   - Solo después de revisión y aprobación
+   - Usar "Squash and merge"
+
+### Convenciones de Commits (OBLIGATORIO)
+
+**Formato estricto:**
+```
+<tipo>(<scope>): <descripción breve en minúsculas>
+
+<cuerpo detallado con bullets opcionales>
+
+[referencia PR]
+```
+
+**Reglas:**
+- Tipo siempre en **minúsculas**: `feat`, `fix`, `docs`, etc.
+- Scope para historias técnicas: `ht-XX` (ej: `ht-09`)
+- Scope para features: `auth`, `notif`, `ui`, `nav`, etc.
+- Descripción: Primera palabra en minúsculas, máximo 50 caracteres
+- Siempre incluir `(#número)` al final del título o cuerpo
+
+**Ejemplos correctos:**
+```bash
+fix(analytics): resolve firebase user properties errors in ios
+
+- Filter user_id from user properties (reserved name)
+- Truncate user_email to 36 characters max
+- Improve error handling to prevent app freezing
+
+(#XX)
+
+feat(ht-09): developer panel with FCM topics
+
+- DeveloperPanelScreen centralizado con 9 herramientas
+- TopicSubscriptionScreen para gestión de topics FCM
+- Sistema de navegación URI-based: brisca://developer-panel
+
+(#13)
+```
+
+**Ejemplos incorrectos (NO USAR):**
+```bash
+❌ Feat/ht 08 token renewal
+❌ Feature/ht-04 smart login implementation
+❌ feat(HT-17-NOTIF): implementar Koin DI
+❌ feat(auth): Implement Firebase Authentication  # Capitalizada
+❌ fix(analytics): resolve firebase errors  # Sin PR reference
+```
+
+---
+
+## 🏗️ ARQUITECTURA TÁCTICA
+
+### Stack Tecnológico
+
+- **Navegación**: Decompose (componentes con ciclo de vida)
+- **Arquitectura**: Clean Architecture + Domain Driven Design (DDD)
+- **Red**: Ktor Client 3.1.3 (HttpClient multiplataforma)
+- **DI**: Koin 4.0.4
+- **UI**: Compose Multiplatform
+- **Sistema de Diseño**: Dui (Design UI Components)
+
+### Decompose - Componentes
+
+**Principios:**
+- Cada feature/flujo es un **Component** independiente
+- Componentes tienen ciclo de vida propio
+- Navegación type-safe con sealed classes
+- Integración natural con Clean Architecture
+
+**Estructura de Component:**
+```kotlin
+class LoginComponent(
+    componentContext: ComponentContext,
+    private val login: Login,  // Use case
+    private val navigator: Navigator
+) : ComponentContext by componentContext {
+    
+    private val state = MutableValue(LoginState())
+    val stateValue: Value<LoginState> = state
+    
+    fun onIntent(intent: LoginIntent) {
+        // Procesar intents
+    }
+}
+```
+
+**Navegación:**
+```kotlin
+sealed class RootChild {
+    object Splash : RootChild()
+    object Login : RootChild()
+    data class Home(val tab: HomeTab) : RootChild()
+}
+
+val navigation = StackNavigation<RootChild>()
+val childStack = childStack(
+    source = navigation,
+    initialConfiguration = RootChild.Splash
+) { child, ctx ->
+    when (child) {
+        is RootChild.Splash -> SplashComponent(ctx)
+        is RootChild.Login -> LoginComponent(ctx, login, navigator)
+        is RootChild.Home -> HomeComponent(ctx, child.tab)
+    }
+}
+```
+
+### Clean Architecture + DDD
+
+**Estructura por Feature:**
+```
+features/auth/
+├── domain/
+│   ├── entity/          # Entidades con identidad y comportamiento
+│   ├── valueobject/     # Value objects inmutables
+│   ├── repository/      # Interfaces de repositorios
+│   └── usecase/         # Casos de uso (SIN sufijo "UseCase")
+├── data/
+│   ├── model/           # DTOs para transferencia
+│   ├── source/          # Fuentes de datos (remote/local)
+│   ├── repository/      # Implementaciones de repositorios
+│   └── mapper/          # Mappers entre entidades y DTOs
+└── presentation/
+    ├── component/       # Componentes Decompose
+    └── compose/         # Pantallas Compose
+```
+
+**Reglas de Dependencia:**
+- ✅ Domain NO depende de Data ni Presentation
+- ✅ Presentation depende de Domain
+- ✅ Data depende de Domain
+- ❌ Features NO dependen entre sí (usar `commons/` para compartir)
+
+**Casos de Uso:**
+- Nombres SIN sufijo "UseCase": `Login`, `GetNews`, `SendScreenInAnalytics`
+- Encapsulan lógica de negocio
+- Reciben repositorios por inyección
+- Retornan `Result<T>` o tipos específicos del dominio
+
+**Ejemplo:**
+```kotlin
+class Login(
+    private val authRepository: AuthRepository
+) {
+    suspend operator fun invoke(
+        credentials: Credentials
+    ): Result<User> {
+        // Validación y lógica de negocio
+        return authRepository.login(credentials)
+    }
+}
+```
+
+### Ktor - Infraestructura de Red
+
+**HttpClient:**
+- Usar `IpchileHttpClient` para requests
+- Configuración automática de headers (APP-KEY, Content-Type, User-Agent)
+- Manejo estandarizado de errores
+- Timeouts por entorno (DEV: 5s, STAGING: 15s, PROD: 30s)
+
+**Uso en Repositories:**
+```kotlin
+class NewsRepositoryImpl(
+    private val httpClient: HttpClient
+) : NewsRepository {
+    override suspend fun getNews(): List<News> {
+        val url = NetworkConfig.buildUrl(ApiEndpoints.NEWS_LIST)
+        return httpClient.get(url).body()
+    }
+}
+```
+
+**Manejo de Errores:**
+```kotlin
+try {
+    val response = httpClient.get(url)
+} catch (e: NetworkException.Unauthorized) {
+    // Error 401
+} catch (e: NetworkException.ValidationError) {
+    // Error 422
+} catch (e: NetworkException.ServerError) {
+    // Error 500
+} catch (e: NetworkException.NetworkError) {
+    // Error de red
+}
+```
+
+---
+
+## 🎨 SISTEMA DE DISEÑO Dui
+
+### Principios Dui
+
+1. **Reutilización Total**: Un componente para todos los casos
+2. **Configuración Simple**: Solo parámetros esenciales
+3. **Sin Textos Hardcodeados**: Todos los textos desde interfaces de strings
+4. **Consistencia Automática**: Mismo patrón de diseño
+5. **Composición Interna**: Dui usa Dui internamente, NO Material 3 directamente
+
+### Estructura Dui
+
+**Atomic Design:**
+- **Atoms**: `DuiButton`, `DuiText`, `DuiIcon`
+- **Molecules**: `DuiTextField`, `DuiCard`, `DuiToolbar`
+- **Organisms**: `DuiErrorScreen`, `DuiBottomNavigationBar`
+
+**Ubicación:**
+```
+core/ui/design/chameleon/
+├── atoms/        # Componentes básicos
+├── molecules/    # Componentes compuestos
+└── organisms/    # Componentes complejos
+```
+
+### Reglas de Uso Dui
+
+**✅ CORRECTO - Composición Interna:**
+```kotlin
+@Composable
+fun DuiSnackbar(
+    message: String,
+    actionLabel: String? = null
+) {
+    Snackbar(
+        action = actionLabel?.let { label ->
+            {
+                DuiTextButton(
+                    text = label,
+                    onClick = { /* ... */ }
+                )
+            }
+        }
+    ) {
+        DuiBodyText(text = message)
+    }
+}
+```
+
+**❌ INCORRECTO - Uso Directo de Material 3:**
+```kotlin
+@Composable
+fun DuiSnackbar(message: String) {
+    Snackbar {
+        Text(message)  // ❌ NO usar Text directamente
+    }
+}
+```
+
+### Dimensiones
+
+**Usar ThemeDimens global:**
+```kotlin
+// ✅ CORRECTO
+DuiSpacer(size = ThemeDimens.NORMAL_SPACING)
+padding = ThemeDimens.NORMAL_SPACING
+
+// ❌ INCORRECTO
+DuiSpacer(size = 16.dp)
+padding = 16.dp
+```
+
+### Colores
+
+**Usar MaterialTheme.colorScheme:**
+```kotlin
+// ✅ CORRECTO
+color = MaterialTheme.colorScheme.primary
+backgroundColor = MaterialTheme.colorScheme.surface
+
+// ❌ INCORRECTO
+color = ThemeColors.primary
+backgroundColor = Color(0xFF123456)
+```
+
+---
+
+## 🌐 INTERNACIONALIZACIÓN (OBLIGATORIO)
+
+### Reglas Estrictas
+
+1. **TODOS los textos visibles en UI DEBEN usar interfaces de strings**
+2. **NUNCA hardcodear strings en UI**
+3. **Seguir ADR-0019: Interfaces segregadas por pantalla**
+
+### Estructura de Strings
+
+**Interfaces por pantalla:**
+```kotlin
+interface LoginStrings {
+    val title: String
+    val emailLabel: String
+    val passwordLabel: String
+    val loginButton: String
+    val forgotPasswordButton: String
+}
+
+interface HomeStrings {
+    val welcomeMessage: String
+    val newsTitle: String
+    // ...
+}
+```
+
+**Uso en Componentes:**
+```kotlin
+@Composable
+fun LoginScreen(
+    strings: LoginStrings,
+    onLoginClick: () -> Unit
+) {
+    DuiTitleText(text = strings.title)
+    DuiTextField(
+        label = strings.emailLabel,
+        // ...
+    )
+    DuiButton(
+        text = strings.loginButton,
+        onClick = onLoginClick
+    )
+}
+```
+
+**❌ NUNCA hacer esto:**
+```kotlin
+// ❌ INCORRECTO
+Text("Iniciar Sesión")
+Button(onClick = {}) {
+    Text("Ingresar")
+}
+
+// ✅ CORRECTO
+DuiTitleText(text = loginStrings.title)
+DuiButton(
+    text = loginStrings.loginButton,
+    onClick = onLoginClick
+)
+```
+
+---
+
+## 📏 CONVENCIONES DE CÓDIGO
+
+### Nomenclatura
+
+- **Archivos y Clases**: PascalCase (`LoginComponent.kt`, `AuthRepository`)
+- **Funciones y Variables**: camelCase (`getUserData()`, `isLoading`)
+- **Constantes**: SNAKE_CASE (`MAX_RETRY_COUNT`, `API_BASE_URL`)
+- **Paquetes**: minúsculas con puntos (`cl.silverbullet.multiplatform.brisca.features.auth`)
+
+### Comentarios (PROHIBIDOS)
+
+**❌ NUNCA usar comentarios `//` que expliquen código obvio:**
+- ❌ `// Validamos el usuario`
+- ❌ `// Llamamos a la API`
+- ❌ `// Retornamos el resultado`
+- ❌ Cualquier comentario que describa lo que el código hace de forma obvia
+
+**✅ SOLO usar Javadoc/KDoc cuando sea necesario:**
+- Funciones públicas
+- Clases públicas
+- Propiedades públicas complejas
+- Lógica de negocio no obvia
+- Decisiones de diseño importantes
+
+**Ejemplo:**
+```kotlin
+/**
+ * Valida las credenciales del usuario y genera un token de autenticación.
+ *
+ * @param username Nombre de usuario
+ * @param password Contraseña del usuario
+ * @return Token de autenticación si las credenciales son válidas
+ */
+fun authenticate(username: String, password: String): String?
+```
+
+### Strings Hardcodeados (PROHIBIDOS)
+
+**❌ NUNCA usar strings hardcodeados en:**
+- Textos visibles al usuario
+- Mensajes de error mostrados al usuario
+- Textos de botones
+- Títulos, subtítulos, descripciones
+- Placeholders de inputs
+- Content descriptions de accesibilidad
+
+**✅ SIEMPRE usar interfaces de strings:**
+- Cada pantalla/feature tiene su propia interfaz de strings
+- Implementaciones por idioma
+- Inyección en componentes
+
+**Excepciones MUY LIMITADAS:**
+- Logs de debugging (`Log.d("TAG", "debug message")`)
+- Nombres de constantes técnicas (`const val API_KEY = "key123"`)
+- Regex patterns (`Regex("pattern")`)
+
+### Casos de Uso
+
+- **SIN sufijo "UseCase"**: `Login`, `GetNews`, `SendScreenInAnalytics`
+- **Con operador invoke**: `login(credentials)`
+- **Retornan Result o tipos del dominio**
+
+### Separación de Efectos
+
+**Efectos de Navegación:**
+- Manejar fuera del composable principal
+- En un handler de navegación separado
+
+**Efectos de Mensajes UI:**
+- Pueden manejarse dentro del composable
+- Snackbars, toasts, diálogos, banners
+
+**Ejemplo:**
+```kotlin
+// ViewModel
+private val _navigationEffects = MutableSharedFlow<NavigationEffect>()
+val navigationEffects: SharedFlow<NavigationEffect> = _navigationEffects
+
+private val _uiEffects = MutableSharedFlow<UiEffect>()
+val uiEffects: SharedFlow<UiEffect> = _uiEffects
+
+// En el entrypoint de la pantalla
+@Composable
+fun ExampleScreenEntryPoint(
+    viewModel: ExampleViewModel,
+    navigator: Navigator
+) {
+    val state by viewModel.state.collectAsState()
+
+    // Handler de navegación (fuera del composable principal)
+    LaunchedEffect(Unit) {
+        viewModel.navigationEffects.collect { effect ->
+            when (effect) {
+                is NavigationEffect.NavigateTo -> navigator.navigate(effect.uri)
+                NavigationEffect.CloseScreen -> navigator.close()
+            }
+        }
+    }
+
+    // Handler de efectos de UI (puede estar en el composable)
+    LaunchedEffect(Unit) {
+        viewModel.uiEffects.collect { effect ->
+            when (effect) {
+                is UiEffect.ShowSnackbar -> { /* Mostrar snackbar */ }
+            }
+        }
+    }
+
+    ExampleScreen(state = state, onIntent = viewModel::onIntent)
+}
+```
+
+---
+
+## 🧪 TESTING
+
+### Estrategia
+
+- **Casos de uso testables**: Lógica de negocio en casos de uso
+- **UI sin lógica de negocio**: Componentes solo presentación
+- **Mocks para repositorios**: Usar implementaciones en memoria
+
+### Estructura de Tests
+
+```
+commonTest/
+└── features/
+    └── auth/
+        └── domain/
+            └── usecase/
+                └── LoginTest.kt
+```
+
+---
+
+## 📁 ESTRUCTURA DEL PROYECTO
+
+### Organización
+
+```
+composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
+├── core/                    # Componentes base
+│   ├── platform/           # Abstracciones de plataforma
+│   ├── di/                 # Configuración DI (Koin)
+│   ├── network/            # Ktor HttpClient
+│   ├── storage/            # Almacenamiento local
+│   ├── utils/              # Utilities compartidas
+│   └── ui/                 # Dui y themes
+├── commons/                # Elementos compartidos entre features
+│   ├── domain/            # Entidades, casos de uso compartidos
+│   ├── data/              # Implementaciones compartidas
+│   └── presentation/      # ViewModels/Estados compartidos
+└── features/              # Features por funcionalidad
+    ├── auth/
+    │   ├── domain/        # Entidades, value objects, repositorios, casos de uso
+    │   ├── data/          # DTOs, fuentes de datos, implementaciones
+    │   └── presentation/   # Componentes Decompose, Compose
+    ├── notifications/
+    └── ...
+```
+
+### Reglas de Dependencia
+
+- ✅ Domain NO depende de Data ni Presentation
+- ✅ Presentation depende de Domain
+- ✅ Data depende de Domain
+- ❌ Features NO dependen entre sí (usar `commons/`)
+
+---
+
+## 🔧 INYECCIÓN DE DEPENDENCIAS (Koin)
+
+### Módulos
+
+- **CoreModule**: Configuración base
+- **NetworkModule**: HttpClient y configuración de red
+- **AnalyticsModule**: Firebase Analytics y Crashlytics
+- **Feature Modules**: Módulos por feature
+
+### Estrategia de Sharing
+
+- **Repositories**: `single` (una instancia compartida)
+- **Use Cases**: `factory` (nueva instancia cada vez)
+- **Components**: Inyectados en el constructor
+
+**Ejemplo:**
+```kotlin
+val analyticsModule = module {
+    single<AnalyticsProvider> {
+        CompositeAnalyticsProvider(providers = listOf(...))
+    }
+    factory { SetUserPropertiesInAnalytics(analyticsProvider = get()) }
+}
+```
+
+---
+
+## ⚠️ ERRORES COMUNES A EVITAR
+
+### ❌ NO hacer:
+
+1. **Commits directos a main**
+2. **Hardcodear strings en UI**
+3. **Usar Material 3 directamente en lugar de Dui**
+4. **Hardcodear dimensiones (usar ThemeDimens)**
+5. **Hardcodear colores (usar MaterialTheme.colorScheme)**
+6. **Crear casos de uso con sufijo "UseCase"**
+7. **Hacer que features dependan entre sí**
+8. **Mezclar lógica de negocio en UI**
+9. **Usar nombres de user properties reservados de Firebase** (`user_id` es reservado)
+10. **No validar límites de Firebase Analytics** (36 caracteres para user properties)
+11. **Implementar código sin diseño detallado aprobado**
+
+### ✅ SIEMPRE hacer:
+
+1. **Crear rama antes de modificar código**
+2. **Usar interfaces de strings para todos los textos**
+3. **Usar componentes Dui**
+4. **Usar ThemeDimens para dimensiones**
+5. **Usar MaterialTheme.colorScheme para colores**
+6. **Nombrar casos de uso sin sufijo "UseCase"**
+7. **Separar efectos de navegación y UI**
+8. **Validar propiedades de Firebase antes de enviarlas**
+9. **Manejar errores de red correctamente**
+10. **Seguir convenciones de commits**
+11. **Completar diseño detallado antes de implementar**
+
+---
+
+## 📚 DOCUMENTACIÓN DE REFERENCIA
+
+### Documentos Importantes
+
+- **Git Workflow**: `docs/git-workflow.md`
+- **Decompose Architecture**: `docs/development/decompose-architecture.md`
+- **Ktor Infrastructure**: `docs/technical/ktor-infrastructure-guide.md`
+- **Dui Design System**: `docs/architecture/decisions/0028-dui-design.md`
+- **Project Structure**: `docs/architecture/project-structure.md`
+
+### ADRs (Architecture Decision Records)
+
+- ADR-0019: Interfaces de strings segregadas por pantalla
+- ADR-0028: Sistema de Diseño Dui
+- ADR-0030: Sistema de Colores Material 3
+
+---
+
+## 🎯 CHECKLIST ANTES DE HACER CAMBIOS
+
+Antes de modificar cualquier código, verificar:
+
+- [ ] ¿Creé una rama según el tipo de cambio?
+- [ ] ¿Leí las reglas de Git workflow?
+- [ ] ¿Seguiré las convenciones de commits?
+- [ ] ¿Usaré componentes Dui en lugar de Material 3 directo?
+- [ ] ¿Usaré interfaces de strings para todos los textos?
+- [ ] ¿Usaré ThemeDimens para dimensiones?
+- [ ] ¿Usaré MaterialTheme.colorScheme para colores?
+- [ ] ¿El caso de uso no tiene sufijo "UseCase"?
+- [ ] ¿Validé las dependencias entre capas?
+- [ ] ¿Manejé correctamente los errores de red?
+- [ ] ¿Existe diseño detallado aprobado para este cambio?
+
+---
+
+**Última actualización**: 2024-11-26
+**Versión**: 1.0.0

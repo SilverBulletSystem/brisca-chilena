@@ -1,25 +1,30 @@
-# Épica 13 — CI/CD + Calidad
+# Epica 13 — CI/CD + Calidad
+
+## Contexto
+Workflows CI/CD, detekt, smokes y gates de calidad.
 
 ## Objetivo
-Diseñar la estrategia de CI/CD y calidad: GitHub Actions multi-target (Android/iOS/Web), jobs separados para assemble rápido y para tests, uso de Make, Detekt con reglas del proyecto, caché de dependencias y smoke tests mínimos por flavor mock.
-
-## Entregables
-- Workflows GH Actions base (Android/iOS/Web) con matrices de flavor/build donde aplique.
-- Make targets alineados a CI (assemble rápido, tests, lint/detekt, web build).
-- Detekt configurado y portable desde proyecto base.
-- Smoke tests mock por plataforma (rápidos, sin unit tests pesados en assemble local).
-- Publicación interna: Play Internal, TestFlight, deploy web mock.
-- Gates de calidad: checks de lint/detekt/smokes antes de merge.
+Definir el modulo CI/CD + Calidad con enfoque DDD, integracion con el ecosistema y reglas de calidad.
 
 ## Alcance
-- Repositorio GitHub Flow; branch main publica builds internos.
-- Usar `assemble<Flavor><BuildType>` para rapidez; tests en stage separado.
-- Cache de deps para acelerar pipelines.
-- Artefactos: APK/AAB mock/dev, ipa TestFlight (mock/dev), bundle web mock.
+- Contratos de dominio y casos de uso principales.
+- Integracion con flags/ambientes si aplica.
+- UI o herramientas asociadas (si aplica).
+- Observabilidad y testing.
+
+## Entregables
+- Modelo de dominio y contratos.
+- Flujos principales y casos borde.
+- Plan de pruebas y observabilidad.
 
 ## Fuera de alcance
-- Release store productiva completa (fuera del MVP).
-- Infra adicional (Sonar, SAST) más allá de Detekt/lints.
+- Implementacion productiva completa si no corresponde al MVP.
 
-## Orden sugerido
-1) F0 Workflows base → 2) F1 Make targets CI → 3) F2 Detekt config → 4) F3 Smokes CI → 5) F4 Publicación interna → 6) F5 Gates de calidad/checklist. 
+## Dependencias
+- Design System (Dui) para cualquier UI.
+- Network/Storage si requiere persistencia o fetch.
+- Flags/Ambientes si requiere control dinamico.
+
+## Riesgos
+- Integraciones externas o permisos pueden bloquear entregas.
+- Carga de datos sensibles requiere sanitizacion estricta.

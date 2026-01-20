@@ -1,57 +1,120 @@
 # Índice de documentación
 
+- Guia de niveles: `docs/00-niveles-documentacion.md`
+- Glosario: `docs/00-glosario.md`
+- Resumen alto nivel: `docs/00-resumen-alto-nivel.md`
+- Plantilla diseno detallado: `docs/00-plantilla-diseno-detallado.md`
+- Plantilla epica: `docs/00-plantilla-epica.md`
+- Plantilla backlog: `docs/00-plantilla-backlog.md`
+- Plantilla TA: `docs/00-plantilla-ta.md`
+- Templates Cursor: `docs/development/cursor-templates.md`
+- Guia de estilo de documentacion: `docs/development/documentation-style-guide.md`
+- GitHub Pages (documentacion): `docs/development/github-pages.md`
 - Estándar Git/Branches/Commits: `docs/git-workflow.md`
 - Plantilla de Pull Request y reglas de changelog: `docs/pr-template.md`
 - Plan general: `docs/plan-mvp.md`
 - Épica 1 Fundamentos:
   - `docs/01-fundamentos/epica.md`
   - `docs/01-fundamentos/backlog.md`
-  - TAs: `ta-f1-namespace-estructura.md`, `ta-f2-flavors-android.md`, `ta-f3-flavors-ios.md`, `ta-f4-makefile-seeds.md`, `ta-f5-koin-baseline.md`, `ta-f6-detekt.md`, `ta-f7-i18n-base.md`, `ta-f8-libs-config.md`
+  - Diseño detallado: `docs/01-fundamentos/diseno-detallado.md`
+  - TAs: `ta-f1-namespace-estructura.md`, `ta-f2-koin-baseline.md`, `ta-f3-network-base.md`, `ta-f4-ktor-ambientes.md`, `ta-f5-detekt.md`, `ta-f6-i18n-base.md`, `ta-f7-libs-config.md`, `ta-f8-flavors-ios.md`
 - Épica 2 Design System:
   - `docs/02-designsystem/epica.md`
   - `docs/02-designsystem/backlog.md`
+  - Diseño detallado: `docs/02-designsystem/diseno-detallado.md`
   - TAs: `ta-f1-tokens-theming.md`, `ta-f2-make-shortcuts.md`, `ta-f3-atoms-bitacora.md`, `ta-f4-molecules-bitacora.md`, `ta-f5-a-organisms-general.md`, `ta-f5-b-organisms-game.md`, `ta-f5-c-organisms-chat.md`, `ta-f5-d-organisms-flags.md`, `ta-f6-accessibility.md`, `ta-f7-i18n-ds.md`
 - Épica 3 MagicsDui (SDUI):
   - `docs/03-magicsdui/epica.md`
   - `docs/03-magicsdui/backlog.md`
+  - Diseño detallado: `docs/03-magicsdui/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-contract.md`, `ta-f2-parser.md`, `ta-f3-renderer.md`, `ta-f4-make.md`, `ta-f5-samples.md`, `ta-f6-flags-ambientes.md`, `ta-f7-testing.md`
 - Épica 4 Inkribbon (State Record):
   - `docs/04-inkribbon/epica.md`
   - `docs/04-inkribbon/backlog.md`
+  - Diseño detallado: `docs/04-inkribbon/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-schema.md`, `ta-f2-hooks.md`, `ta-f3-writer.md`, `ta-f4-viewer.md`, `ta-f5-replay.md`, `ta-f6-make.md`, `ta-f7-testing.md`
 - Épica 5 Toad (External Record):
   - `docs/05-toad/epica.md`
   - `docs/05-toad/backlog.md`
+  - Diseño detallado: `docs/05-toad/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-schema.md`, `ta-f2-interceptor.md`, `ta-f3-writer.md`, `ta-f4-correlation.md`, `ta-f5-viewer.md`, `ta-f6-make.md`, `ta-f7-testing.md`
 - Épica 6 Flags + Monitor:
   - `docs/06-flags/epica.md`
   - `docs/06-flags/backlog.md`
+  - Diseño detallado: `docs/06-flags/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-providers.md`, `ta-f2-cache.md`, `ta-f3-monitor-ui.md`, `ta-f4-sdui.md`, `ta-f5-make.md`, `ta-f6-testing.md`
 - Épica 7 Selector de Ambientes:
   - `docs/07-environments/epica.md`
   - `docs/07-environments/backlog.md`
+  - Diseño detallado: `docs/07-environments/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-persistence.md`, `ta-f2-ui.md`, `ta-f3-reconfigure.md`, `ta-f4-make.md`, `ta-f5-testing.md`
 - Épica 8 Network:
   - `docs/08-network/epica.md`
   - `docs/08-network/backlog.md`
+  - Diseño detallado: `docs/08-network/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-config.md`, `ta-f2-client.md`, `ta-f3-interceptors.md`, `ta-f4-firestore.md`, `ta-f5-smokes.md`, `ta-f6-make.md`, `ta-f7-testing.md`
 - Épica 9 Storage:
   - `docs/09-storage/epica.md`
   - `docs/09-storage/backlog.md`
+  - Diseño detallado: `docs/09-storage/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-settings.md`, `ta-f2-dbconfig.md`, `ta-f3-di.md`, `ta-f4-smokes.md`, `ta-f5-make.md`, `ta-f6-testing.md`
 - Épica 10 Flujos del cliente:
   - `docs/10-flujos/epica.md`
   - `docs/10-flujos/backlog.md`
+  - Diseño detallado: `docs/10-flujos/diseno-detallado.md`
   - TAs: `ta-f0-guards.md`, `ta-f1-contratos.md`, `ta-f2-handlers.md`, `ta-f3-make.md`, `ta-f4-testing.md`
 - Épica 11 Audio ES/EN:
   - `docs/11-audio/epica.md`
   - `docs/11-audio/backlog.md`
+  - Diseño detallado: `docs/11-audio/diseno-detallado.md`
   - TAs: `ta-f0-domain.md`, `ta-f1-catalog.md`, `ta-f2-toggle.md`, `ta-f3-hooks.md`, `ta-f4-spike-download.md`, `ta-f5-testing.md`
 - Épica 12 Web admin (mockserver):
   - `docs/12-web/epica.md`
   - `docs/12-web/backlog.md`
+  - Diseño detallado: `docs/12-web/diseno-detallado.md`
   - TAs: `ta-f0-alcance.md`, `ta-f1-build.md`, `ta-f2-ds-sdui.md`, `ta-f3-smokes.md`, `ta-f4-make.md`, `ta-f5-testing.md`
 - Épica 13 CI/CD + Calidad:
   - `docs/13-cicd/epica.md`
   - `docs/13-cicd/backlog.md`
+  - Diseño detallado: `docs/13-cicd/diseno-detallado.md`
   - TAs: `ta-f0-workflows.md`, `ta-f1-make.md`, `ta-f2-detekt.md`, `ta-f3-smokes.md`, `ta-f4-publish.md`, `ta-f5-gates.md`
+- Épica 14 Analytics:
+  - `docs/14-analytics/epica.md`
+  - `docs/14-analytics/backlog.md`
+  - Diseño detallado: `docs/14-analytics/diseno-detallado.md`
+- Épica 15 Notificaciones Push:
+  - `docs/15-push/epica.md`
+  - `docs/15-push/backlog.md`
+  - Diseño detallado: `docs/15-push/diseno-detallado.md`
+- Épica 16 Encrypted Storage:
+  - `docs/16-encrypted/epica.md`
+  - `docs/16-encrypted/backlog.md`
+  - Diseño detallado: `docs/16-encrypted/diseno-detallado.md`
+- Épica 17 Suscripcion:
+  - `docs/17-suscripcion/epica.md`
+  - `docs/17-suscripcion/backlog.md`
+  - Diseño detallado: `docs/17-suscripcion/diseno-detallado.md`
+- Épica 18 Publicidad:
+  - `docs/18-publicidad/epica.md`
+  - `docs/18-publicidad/backlog.md`
+  - Diseño detallado: `docs/18-publicidad/diseno-detallado.md`
+- Épica 19 Tienda:
+  - `docs/19-tienda/epica.md`
+  - `docs/19-tienda/backlog.md`
+  - Diseño detallado: `docs/19-tienda/diseno-detallado.md`
+- Épica 20 Multimedia Manager:
+  - `docs/20-multimedia/epica.md`
+  - `docs/20-multimedia/backlog.md`
+  - Diseño detallado: `docs/20-multimedia/diseno-detallado.md`
+- Épica 21 Bluetooth:
+  - `docs/21-bluetooth/epica.md`
+  - `docs/21-bluetooth/backlog.md`
+  - Diseño detallado: `docs/21-bluetooth/diseno-detallado.md`
+- Épica 22 App Panel:
+  - `docs/22-app-panel/epica.md`
+  - `docs/22-app-panel/backlog.md`
+  - Diseño detallado: `docs/22-app-panel/diseno-detallado.md`
+- Épica 23 Resilience Toggles:
+  - `docs/23-resilience-toggles/epica.md`
+  - `docs/23-resilience-toggles/backlog.md`
+  - Diseño detallado: `docs/23-resilience-toggles/diseno-detallado.md`

@@ -1,0 +1,30 @@
+---
+alwaysApply: true
+---
+
+# Reglas del Proyecto Brisca Multiplatform
+
+Este archivo referencia las reglas completas del proyecto.
+
+**📖 Ver reglas completas en:** `.cursor/rules/proyecto-brisca-reglas-completas.mdc`
+
+## 🚨 REGLA FUNDAMENTAL
+
+**NUNCA tocar código en main directamente. SIEMPRE crear una rama primero.**
+
+Antes de hacer cualquier cambio:
+1. Leer `docs/git-workflow.md`
+2. Crear rama según tipo: `feat/`, `fix/`, `docs/`, etc.
+3. Seguir convenciones de commits estrictas
+4. Crear PR hacia main
+
+## 📋 Resumen Rápido
+
+- **Git**: Ramas obligatorias, commits con formato estricto
+- **Arquitectura**: Decompose + Clean Architecture + DDD + Ktor
+- **Dui**: Sistema de diseño, usar componentes Dui, NO Material 3 directo
+- **i18n**: TODOS los textos desde interfaces de strings
+- **Dimensiones**: Usar `ThemeDimens`, NO hardcodear
+- **Colores**: Usar `MaterialTheme.colorScheme`, NO hardcodear
+- **Use Cases**: SIN sufijo "UseCase" en nombres
+- **Diseno**: Diseno completo antes de implementar codigo

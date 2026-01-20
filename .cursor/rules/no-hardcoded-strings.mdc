@@ -1,0 +1,182 @@
+# Reglas de Proyecto - Brisca Multiplatform
+
+## 🚫 PROHIBICIÓN ABSOLUTA: Strings Hardcodeados
+
+### REGLA CRÍTICA #1: NUNCA usar strings hardcodeados en código UI/Composable
+
+**ESTÁ ESTRICTAMENTE PROHIBIDO:**
+- ❌ `Text("Hola mundo")` 
+- ❌ `Button(onClick = { }, text = "Actualizar")`
+- ❌ `title = "Nueva Versión Disponible"`
+- ❌ Cualquier string literal dentro de funciones `@Composable`
+- ❌ Strings en parámetros de funciones que renderizan UI
+- ❌ Mensajes de error hardcodeados
+- ❌ Textos de botones hardcodeados
+- ❌ Placeholders hardcodeados
+- ❌ Content descriptions hardcodeados
+
+### ✅ OBLIGATORIO: Usar Interfaces de Strings
+
+**SIEMPRE usar interfaces de strings siguiendo ADR-0019:**
+
+1. **Cada pantalla/feature tiene su propia interfaz de strings:**
+   ```kotlin
+   interface FeatureStrings {
+       val title: String
+       val buttonText: String
+       val errorMessage: String
+   }
+   ```
+
+2. **Implementaciones por idioma:**
+   ```kotlin
+   object FeatureStringsEs : FeatureStrings {
+       override val title = "Título en Español"
+       override val buttonText = "Botón en Español"
+       override val errorMessage = "Error en Español"
+   }
+   
+   object FeatureStringsEn : FeatureStrings {
+       override val title = "Title in English"
+       override val buttonText = "Button in English"
+       override val errorMessage = "Error in English"
+   }
+   ```
+
+3. **Inyección en componentes:**
+   ```kotlin
+   class FeatureComponent(
+       componentContext: ComponentContext,
+       private val featureStrings: FeatureStrings // ✅ Inyectado
+   ) : ComponentContext by componentContext
+   ```
+
+4. **Uso en UI:**
+   ```kotlin
+   @Composable
+   fun FeatureContent(
+       component: FeatureComponent,
+       strings: FeatureStrings // ✅ Recibido como parámetro
+   ) {
+       Text(text = strings.title) // ✅ Usar desde interfaz
+       Button(onClick = { }, text = strings.buttonText) // ✅ Usar desde interfaz
+   }
+   ```
+
+### 📍 Ubicación de Interfaces de Strings
+
+- **Patrón de nombres:** `{FeatureName}Strings.kt`
+- **Ubicación:** `features/{feature}/domain/strings/` o `features/{feature}/presentation/strings/`
+- **Ejemplos:**
+  - `features/updateapp/optional/domain/OptionalUpdateStrings.kt`
+  - `features/auth/domain/usecase/LoginStrings.kt`
+  - `features/maintenance/domain/strings/MaintenanceStrings.kt`
+
+### 🔍 Detección de Violaciones
+
+**ANTES de escribir código, verificar:**
+1. ¿Este string se muestra en la UI? → DEBE estar en una interfaz
+2. ¿Este string es visible al usuario? → DEBE estar en una interfaz
+3. ¿Este string está en una función `@Composable`? → DEBE estar en una interfaz
+4. ¿Este string está en un parámetro de componente UI? → DEBE estar en una interfaz
+
+### ⚠️ Excepciones (MUY LIMITADAS)
+
+**ÚNICAMENTE se permiten strings hardcodeados en:**
+- Logs de debugging (`Log.d("TAG", "debug message")`)
+- Nombres de constantes técnicas (`const val API_KEY = "key123"`)
+- Valores de configuración técnica (`BuildConfig.API_URL`)
+- Regex patterns (`Regex("pattern")`)
+- Keys de mapas técnicos (`mapOf("key" to value)`)
+
+**NUNCA en:**
+- Textos visibles al usuario
+- Mensajes de error mostrados al usuario
+- Textos de botones
+- Títulos, subtítulos, descripciones
+- Placeholders de inputs
+- Content descriptions de accesibilidad
+- Mensajes de validación
+- Textos de diálogos
+
+### 📝 Checklist Antes de Proponer Código
+
+Antes de escribir cualquier código con strings, verificar:
+
+- [ ] ¿Hay strings visibles al usuario? → Crear/actualizar interfaz de strings
+- [ ] ¿La interfaz de strings existe para esta feature? → Verificar en `features/{feature}/domain/strings/`
+- [ ] ¿Los strings están siendo inyectados en el componente? → Verificar inyección de dependencias
+- [ ] ¿Los strings se pasan como parámetro a funciones Composable? → Verificar firma de función
+- [ ] ¿Todos los textos visibles vienen de la interfaz? → Revisar TODOS los strings literales
+
+### 🎯 Ejemplo Correcto vs Incorrecto
+
+**❌ INCORRECTO:**
+```kotlin
+@Composable
+fun MyScreen() {
+    Text("Nueva Versión Disponible") // ❌ PROHIBIDO
+    Button(onClick = { }, text = "Actualizar") // ❌ PROHIBIDO
+    Text("Error al cargar") // ❌ PROHIBIDO
+}
+```
+
+**✅ CORRECTO:**
+```kotlin
+// 1. Definir interfaz
+interface MyScreenStrings {
+    val title: String
+    val updateButton: String
+    val errorMessage: String
+}
+
+// 2. Implementación
+object MyScreenStringsEs : MyScreenStrings {
+    override val title = "Nueva Versión Disponible"
+    override val updateButton = "Actualizar"
+    override val errorMessage = "Error al cargar"
+}
+
+// 3. Inyectar en componente
+class MyScreenComponent(
+    componentContext: ComponentContext,
+    private val strings: MyScreenStrings // ✅ Inyectado
+) : ComponentContext by componentContext
+
+// 4. Usar en UI
+@Composable
+fun MyScreenContent(
+    component: MyScreenComponent,
+    strings: MyScreenStrings // ✅ Recibido como parámetro
+) {
+    Text(text = strings.title) // ✅ Desde interfaz
+    Button(onClick = { }, text = strings.updateButton) // ✅ Desde interfaz
+    Text(text = strings.errorMessage) // ✅ Desde interfaz
+}
+```
+
+### 🔧 Cuando Encuentres Strings Hardcodeados
+
+**SI encuentras strings hardcodeados en código existente:**
+1. Identificar qué interfaz de strings debería contenerlo
+2. Agregar el string a la interfaz correspondiente
+3. Crear implementaciones para todos los idiomas soportados
+4. Refactorizar el código para usar la interfaz
+5. Verificar que la interfaz se inyecta correctamente
+
+### 📚 Referencias
+
+- ADR-0019: Interfaces segregadas por pantalla
+- `docs/development/cursor-templates.md` - Templates para nuevas pantallas
+- Ejemplos existentes en `features/*/domain/strings/` o `features/*/presentation/strings/`
+
+---
+
+## ⚠️ RECORDATORIO CRÍTICO
+
+**CADA VEZ que escribas código:**
+1. Si hay un string visible al usuario → DEBE estar en una interfaz
+2. Si estás en una función `@Composable` → TODOS los strings DEBEN venir de interfaces
+3. Si propones código con strings hardcodeados → EL CÓDIGO ESTÁ INCORRECTO
+
+**NO HAY EXCUSAS. NO HAY EXCEPCIONES PARA UI.**

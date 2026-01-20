@@ -1,19 +1,19 @@
-# TA-F5 — DI baseline con Koin
+# TA-F2 — DI baseline con Koin
 
 ## Objetivo
-Diseñar el wiring inicial de Koin (sin lógica), dejando módulos listos para registrar dependencias por capa.
+Diseñar el wiring inicial de Koin usando **solo** el `applicationModule` (sin placeholders por capa), con detalle de implementación esperado.
 
 ## Rama
-- Crear desde `main`: `feat/ht-f5-koin-baseline`.
+- Crear desde `main`: `feat/ht-f2-koin-baseline`.
 
 ## Alcance
-- Módulos vacíos/placeholder por capa.
+- Un único `applicationModule` con definiciones reales mínimas.
 - Hook de arranque en Android/iOS documentado.
 
 ## Diseño
-1) Módulos Koin (placeholders):
-   - `coreModule`, `networkModule`, `storageModule`, `flagsModule`, `magicsduiModule`, `designsystemModule`.
-   - Sin bindings reales; solo funciones `module { }` vacías documentadas.
+1) Módulo Koin único:
+   - Definir `applicationModule` con dependencias reales mínimas para arrancar:
+     - `HttpClient` Ktor configurado.
 2) Arranque:
    - Android: documentar `startKoin` en `Application`/entrypoint con lista de módulos.
    - iOS: documentar inicialización desde `initKoin()` expuesto a Swift (pattern del proyecto base).
@@ -28,7 +28,7 @@ Diseñar el wiring inicial de Koin (sin lógica), dejando módulos listos para r
 - Checklist futura:
   - [ ] startKoin declarado en Android.
   - [ ] initKoin documentado para iOS.
-  - [ ] Módulos declarados sin dependencias reales.
+  - [ ] `applicationModule` declara dependencias reales mínimas.
 
 ## No incluido
-- Implementación de dependencias reales ni wiring concreto.
+- Módulos por capa.

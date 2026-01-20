@@ -1,0 +1,217 @@
+# Reglas de Proyecto - Brisca Multiplatform
+
+## 🚫 PROHIBICIÓN ABSOLUTA: Rutas Completas (Fully Qualified Names)
+
+### REGLA CRÍTICA #3: NUNCA usar rutas completas de paquetes en el código
+
+**ESTÁ ESTRICTAMENTE PROHIBIDO:**
+- ❌ `cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings`
+- ❌ `androidx.compose.ui.text.style.TextAlign`
+- ❌ `com.arkivanov.decompose.ComponentContext`
+- ❌ `org.koin.core.component.inject`
+- ❌ Cualquier referencia usando el nombre completo del paquete
+
+### ✅ OBLIGATORIO: Usar Imports
+
+**SIEMPRE usar imports al inicio del archivo:**
+
+1. **Imports al inicio del archivo:**
+   ```kotlin
+   package cl.silverbullet.multiplatform.brisca.features.auth.ui
+   
+   import cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings
+   import androidx.compose.ui.text.style.TextAlign
+   import com.arkivanov.decompose.ComponentContext
+   import org.koin.core.component.inject
+   
+   @Composable
+   fun LoginScreen(
+       strings: LoginStrings, // ✅ Usar solo el nombre de la clase
+       textAlign: TextAlign = TextAlign.Start // ✅ Usar solo el nombre
+   ) {
+       // ...
+   }
+   ```
+
+2. **Imports agrupados por tipo:**
+   ```kotlin
+   // Imports de Kotlin stdlib
+   import kotlinx.coroutines.launch
+   
+   // Imports de Android/Compose
+   import androidx.compose.foundation.layout.Column
+   import androidx.compose.material3.Text
+   import androidx.compose.ui.text.style.TextAlign
+   
+   // Imports del proyecto
+   import cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings
+   import cl.silverbullet.multiplatform.brisca.core.ui.design.ThemeDimens
+   
+   // Imports de librerías externas
+   import com.arkivanov.decompose.ComponentContext
+   import org.koin.core.component.inject
+   ```
+
+### 🔍 Detección de Violaciones
+
+**ANTES de escribir código, verificar:**
+1. ¿Hay un punto (`.`) después de un nombre de clase? → DEBE ser un import
+2. ¿Estoy usando `paquete.completo.Clase` en el código? → DEBE estar en imports
+3. ¿Hay referencias con múltiples puntos? → DEBE ser un import
+4. ¿El IDE sugiere agregar un import? → SIEMPRE aceptar
+
+### ⚠️ Excepciones (MUY LIMITADAS)
+
+**ÚNICAMENTE se permiten rutas completas en:**
+- **Comentarios de documentación** (KDoc):
+  ```kotlin
+  /**
+   * @see cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings
+   */
+  ```
+
+- **Strings de reflexión o metadatos** (muy raro):
+  ```kotlin
+  val className = "cl.silverbullet.multiplatform.brisca.features.auth.LoginComponent"
+  ```
+
+**NUNCA en:**
+- Código de funciones
+- Parámetros de funciones
+- Tipos de retorno
+- Declaraciones de variables
+- Expresiones
+- Cualquier lugar donde se use un tipo o clase
+
+### 📝 Checklist Antes de Proponer Código
+
+Antes de escribir cualquier código, verificar:
+
+- [ ] ¿Todas las clases usadas tienen su import? → Verificar imports al inicio del archivo
+- [ ] ¿Hay referencias con puntos en el código? → Mover a imports
+- [ ] ¿El IDE muestra errores de "Unresolved reference"? → Agregar import
+- [ ] ¿Hay conflictos de nombres? → Usar alias de import (`import com.example.Foo as Bar`)
+
+### 🎯 Ejemplo Correcto vs Incorrecto
+
+**❌ INCORRECTO:**
+```kotlin
+package cl.silverbullet.multiplatform.brisca.features.auth.ui
+
+@Composable
+fun LoginScreen() {
+    Column(
+        modifier = Modifier
+            .padding(cl.silverbullet.multiplatform.brisca.core.ui.design.ThemeDimens.NORMAL_SPACING) // ❌ PROHIBIDO
+    ) {
+        Text(
+            text = "Login",
+            textAlign = androidx.compose.ui.text.style.TextAlign.Center // ❌ PROHIBIDO
+        )
+        
+        val strings: cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings = // ❌ PROHIBIDO
+            cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStringsEs
+    }
+}
+```
+
+**✅ CORRECTO:**
+```kotlin
+package cl.silverbullet.multiplatform.brisca.features.auth.ui
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import cl.silverbullet.multiplatform.brisca.core.ui.design.ThemeDimens
+import cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings
+import cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStringsEs
+
+@Composable
+fun LoginScreen() {
+    Column(
+        modifier = Modifier
+            .padding(ThemeDimens.NORMAL_SPACING) // ✅ Usar solo el nombre
+    ) {
+        Text(
+            text = "Login",
+            textAlign = TextAlign.Center // ✅ Usar solo el nombre
+        )
+        
+        val strings: LoginStrings = LoginStringsEs // ✅ Usar solo el nombre
+    }
+}
+```
+
+### 🔧 Cuando Encuentres Rutas Completas
+
+**SI encuentras rutas completas en código existente:**
+
+1. **Identificar la clase:** ¿Qué clase o tipo se está usando con ruta completa?
+2. **Agregar import:** Agregar el import al inicio del archivo
+3. **Reemplazar:** Reemplazar todas las referencias de ruta completa por solo el nombre
+4. **Verificar:** Asegurar que el código compila correctamente
+5. **Si hay conflicto de nombres:** Usar alias de import:
+   ```kotlin
+   import com.example.Foo as Bar
+   import com.other.Foo as Baz
+   ```
+
+### 📚 Tipos de Imports Comunes
+
+**Android/Compose:**
+```kotlin
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.runtime.Composable
+```
+
+**Decompose:**
+```kotlin
+import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.value.MutableValue
+```
+
+**Koin:**
+```kotlin
+import org.koin.core.component.inject
+import org.koin.core.component.KoinComponent
+```
+
+**Proyecto:**
+```kotlin
+import cl.silverbullet.multiplatform.brisca.core.ui.design.ThemeDimens
+import cl.silverbullet.multiplatform.brisca.features.auth.domain.usecase.LoginStrings
+```
+
+### 🛠️ Resolución de Conflictos de Nombres
+
+**Si dos clases tienen el mismo nombre, usar alias:**
+```kotlin
+import cl.silverbullet.multiplatform.brisca.features.auth.LoginComponent
+import cl.silverbullet.multiplatform.brisca.features.splash.LoginComponent as SplashLoginComponent
+
+// Uso
+val authComponent: LoginComponent = ...
+val splashComponent: SplashLoginComponent = ...
+```
+
+### 📚 Referencias
+
+- Kotlin Style Guide: https://kotlinlang.org/docs/coding-conventions.html
+- Best Practices: Siempre usar imports para mejorar legibilidad
+
+---
+
+## ⚠️ RECORDATORIO CRÍTICO
+
+**CADA VEZ que escribas código:**
+1. Si usas una clase de otro paquete → DEBE tener import
+2. Si hay un punto (`.`) después de un nombre de clase → DEBE ser un import
+3. Si propones código con rutas completas → EL CÓDIGO ESTÁ INCORRECTO
+
+**NO HAY EXCUSAS. SIEMPRE USAR IMPORTS.**
+
+**El código debe ser legible y mantenible. Las rutas completas hacen el código ilegible y difícil de mantener.**
