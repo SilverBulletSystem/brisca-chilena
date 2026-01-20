@@ -1,5 +1,8 @@
 # Resumen alto nivel - Brisca Chilena 2026
 
+## Navegacion
+- [Volver al Inicio](README.md)
+
 ## Proposito
 Crear una suite multiplataforma para construir aplicaciones de negocio (iniciando con Brisca) con SDUI, Design System atomic, observabilidad local y escalabilidad en features.
 

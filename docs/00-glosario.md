@@ -1,5 +1,8 @@
 # Glosario
 
+## Navegacion
+- [Volver al Inicio](README.md)
+
 ## Epica
 Conjunto de capacidades de alto nivel con objetivos y alcance definidos.
 
