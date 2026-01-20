@@ -8,7 +8,7 @@
 - Objetivo: definir tokens, roles y ThemeDimens con variantes de tema.
 - Entregables: listado de tokens, estructura de temas, reglas de naming.
 - Verificacion: tokens y mapping documentados.
-- Dependencias: Epica 1 (i18n base y ThemeDimens).
+- Dependencias: Epica 1 (i18n base y ThemeDimens), TA-DS-F2A (navegación).
 
 ## TA-DS-F2A Bitácoras mínimas + shortcuts Make
 - Objetivo: crear pantallas mínimas de bitácoras y definir rutas/comandos Make para abrirlas.
@@ -65,4 +65,4 @@
 - Dependencias: Epica 1 (i18n base).
 
 ## Notas
-- Orden sugerido: F1 → F2A → F2B → F3 → F4A/B/C/D → F5 → F6.
+- Orden sugerido: F2A → F1 → F2B → F3 → F4A/B/C/D → F5 → F6.

@@ -22,6 +22,7 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 
 ## Dependencias
 - Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
+- TA-DS-F2A: wiring de navegación de bitácoras.
 
 ## Modelo de dominio
 - **Token**: valor atómico reutilizable (color, tipografía, dimensión, shape).

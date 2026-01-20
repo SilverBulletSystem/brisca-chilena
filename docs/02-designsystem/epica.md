@@ -3,9 +3,9 @@
 ## Navegacion
 - [Backlog tecnico](02-designsystem/backlog.md)
 - [Diseno detallado](02-designsystem/diseno-detallado.md)
-- Historias tecnicas:
-  - [TA-DS-F1 Tokens y theming](02-designsystem/ta-f1-tokens-theming.md)
+- Historias tecnicas (orden de ejecución):
   - [TA-DS-F2A Make shortcuts bitacoras](02-designsystem/ta-f2-make-shortcuts.md)
+  - [TA-DS-F1 Tokens y theming](02-designsystem/ta-f1-tokens-theming.md)
   - [TA-DS-F2B Atomos y bitacora](02-designsystem/ta-f2-atoms-bitacora.md)
   - [TA-DS-F3 Moleculas y bitacora](02-designsystem/ta-f3-molecules-bitacora.md)
   - [TA-DS-F4A Organismos generales](02-designsystem/ta-f4-a-organisms-general.md)

@@ -57,6 +57,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F4A define bitácora de organismos generales con wireframe.
 - TA-DS-F4B define bitácora de organismos juego con wireframe.
 - TA-DS-F4C define bitácora de chat/soporte con wireframe.
+- Epica 02: orden de ejecución actualizado (F2A antes de F1).
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
