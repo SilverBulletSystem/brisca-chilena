@@ -1,5 +1,9 @@
 # TA-F7 — Libs y config comunes
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la alineación de versiones y configuraciones comunes basadas en el proyecto base. Sin ejecución ni cambios de código.
 

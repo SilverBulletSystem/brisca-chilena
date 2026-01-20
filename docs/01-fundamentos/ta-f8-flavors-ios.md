@@ -1,5 +1,9 @@
 # TA-F8 — Esquemas/Flavors iOS (spike)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la configuración de esquemas y xcconfig por ambiente en iOS, alineado al base: **debug** para mock/dev y **release** para prod.
 

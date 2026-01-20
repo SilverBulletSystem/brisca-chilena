@@ -1,5 +1,9 @@
 # TA-F6 — i18n base ES/EN
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Diseñar la primera implementación mínima de i18n: un string de nombre en ES/EN y un Splash vacío que lo muestre según idioma seleccionado.
 

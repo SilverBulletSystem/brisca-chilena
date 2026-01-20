@@ -15,3 +15,4 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
 - Ajuste de enlaces internos en epica de Fundamentos.
+- Navegacion de retorno en backlog y TAs de Fundamentos.
