@@ -28,7 +28,6 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 - `DuiToggle` (switch con label/estado)
 - `DuiListItem` (leading/trailing)
 - `DuiSettingsItem`
-- `DuiCard`
 - `DuiBanner`
 - `DuiSnackbar`
 - `DuiDialog`/`DuiBottomSheet`
@@ -41,7 +40,6 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 - `DuiMessageStatus`
 - Botones con identidad: `DuiLoginButton`, `DuiRegisterButton`, `DuiRecoverButton`, `DuiVerifyAccountButton`, `DuiLogoutButton`
 - Selectores: `DuiLanguageSelector`/`DuiLanguageOption`, `DuiSoundToggle`
-- `DuiColorSwatchRow`
 
 ### 2) Estados y props por molécula (cerrado)
 **DuiIconButton**
@@ -125,7 +123,7 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
   - `DuiTextField` (normal/focused/error/disabled).
   - `DuiCheckbox`, `DuiToggle`, `DuiDropdown`, `DuiSelect`.
 - **Sección Listas/Cards:**
-  - `DuiListItem`, `DuiSettingsItem`, `DuiCard`, `DuiItemCard`.
+  - `DuiListItem`, `DuiSettingsItem`, `DuiItemCard`.
 - **Sección Feedback:**
   - `DuiBanner`, `DuiSnackbar`, `DuiDialog`, `DuiBottomSheet`.
 - **Sección Navegación secundaria:**
@@ -135,7 +133,7 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 - **Sección Chat/Estado:**
   - `DuiTypingIndicator`, `DuiMessageStatus`, `DuiAvatar`.
 - **Sección Tema:**
-  - `DuiColorSwatchRow`.
+  - (No aplica en esta historia).
 
 ### 4) Navegación/Make
 - Ruta: `app://bitacora/molecules`.
@@ -151,7 +149,7 @@ Checkbox / Toggle / Dropdown / Select
 
 [Sección: Listas/Cards]
 ListItem / SettingsItem
-Card / ItemCard
+ItemCard
 
 [Sección: Feedback]
 Banner / Snackbar
@@ -166,8 +164,6 @@ Login / Register / Recover / Verify / Logout
 [Sección: Chat/Estado]
 TypingIndicator / MessageStatus / Avatar
 
-[Sección: Tema]
-ColorSwatchRow
 ```
 
 ## Entregables (documento)
