@@ -51,12 +51,34 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 - Props obligatorias:
   - `url: String`
   - `contentDescription: String`
-  - `size: Dp` (usar `ThemeDimens.IMAGE_SM = 40.dp` y `ThemeDimens.IMAGE_MD = 64.dp`)
+  - `size: Dp` (usar `ThemeDimens.IMAGE_SM` y `ThemeDimens.IMAGE_MD`)
 - Estados:
   - `loading` (placeholder)
   - `success` (imagen)
   - `error` (fallback)
 - Regla: siempre mostrar placeholder mientras carga; fallback si falla.
+
+**Biblioteca obligatoria (KMP):**
+- Coil KMP (`io.coil-kt:coil-compose` y engine multiplataforma).
+
+**URL de prueba (obligatoria):**
+- `https://rickandmortyapi.com/api/character/avatar/15.jpeg`
+
+**Código de referencia (KMP):**
+```kotlin
+@Composable
+fun DuiRemoteImage(
+    url: String,
+    contentDescription: String,
+    size: Dp
+) {
+    AsyncImage(
+        model = url,
+        contentDescription = contentDescription,
+        modifier = Modifier.size(size)
+    )
+}
+```
 
 **DuiTextField**
 - Variantes: single / password.

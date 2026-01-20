@@ -17,6 +17,7 @@
 - [GitHub Pages](development/github-pages.md)
 
 ## ADRs
+- [Listado de ADRs](architecture/decisions/README.md)
 - [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
 
 ## Epicas

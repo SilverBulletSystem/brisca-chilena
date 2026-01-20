@@ -10,6 +10,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Guia de GitHub Pages para publicar la documentacion.
 - Docsify con sidebar, navbar y cover para GitHub Pages.
 - ADR-0001 para estandar de iconos.
+- Indice de ADRs.
 
 ### Changed
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
@@ -43,6 +44,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F3 define bitácora de moléculas con catálogo y wireframe.
 - TA-DS-F3 excluye moléculas ya creadas (DuiCard y swatch row).
 - TA-DS-F3 agrega DuiRemoteImage y tamaños IMAGE_*.
+- TA-DS-F3 define biblioteca y código para imágenes remotas.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
