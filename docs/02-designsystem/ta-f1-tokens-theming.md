@@ -316,3 +316,4 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - [ ] Enlace a la épica `docs/02-designsystem/epica.md`.
 - [ ] Cumple `docs/git-workflow.md`.
 - [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+- [ ] `make detekt` pasa sin findings nuevos.
