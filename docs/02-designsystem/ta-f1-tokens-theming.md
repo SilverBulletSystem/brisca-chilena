@@ -17,6 +17,8 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - Shapes: esquinas por jerarquía (card, dialog, chip).
 - Estructura de temas: default + variantes daltónicos (Deuteranopia, Tritanopia, Achromatopsia, High Contrast) definidas en tokens.
 - Contrato de `ThemeManager` y selección de variante/tema.
+- Menú mínimo de selección de tema para validación manual.
+- Comandos Make para probar variantes y modos.
 
 ## Dependencias
 - Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
@@ -204,12 +206,34 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 
 ## UI y UX
 - El DS no define pantallas de negocio; solo temas y tokens.
-- Bitácoras usarán estos tokens en historias posteriores.
+- Se requiere **menú mínimo de temas** para validar variantes y modos.
+
+**Menú de temas (alcance mínimo):**
+- Pantalla simple con:
+  - Selector de variante (`DEFAULT`, `DEUTERANOPIA`, `TRITANOPIA`, `ACHROMATOPSIA`, `HIGH_CONTRAST`).
+  - Selector de modo (`LIGHT`, `DARK`, `SYSTEM`).
+  - Vista previa con 2 bloques:
+    - Botón primario + texto sobre `primary`.
+    - Card/surface con `surface` y texto `onSurface`.
+- La pantalla se expone vía ruta de bitácora: `app://bitacora/theme`.
+
+**Make targets:**
+- `make run-bitacora-theme-default-light`
+- `make run-bitacora-theme-default-dark`
+- `make run-bitacora-theme-deuteranopia-light`
+- `make run-bitacora-theme-deuteranopia-dark`
+- `make run-bitacora-theme-tritanopia-light`
+- `make run-bitacora-theme-tritanopia-dark`
+- `make run-bitacora-theme-achromatopsia-light`
+- `make run-bitacora-theme-achromatopsia-dark`
+- `make run-bitacora-theme-high-contrast-light`
+- `make run-bitacora-theme-high-contrast-dark`
 
 ## Flujos y secuencias
-1) Selección de variante de tema (default o daltónica).
-2) Selección de modo (light/dark/system).
-3) Aplicación de tokens en `DuiTheme`.
+1) Abrir bitácora de temas vía Make.
+2) Selección de variante de tema.
+3) Selección de modo (light/dark/system).
+4) Aplicación de tokens en `DuiTheme`.
 
 ## Seguridad y privacidad
 - No aplica (sin PII ni persistencia en esta historia).
@@ -223,12 +247,15 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 ## Testing
 - Checklist de consistencia: roles completos y mapeo correcto.
 - Verificación manual de que `MaterialTheme` recibe todos los tokens.
+- Validación visual de menú de temas para cada variante/modo.
 
 ## Criterios de aceptacion
 - Tokens definidos con roles completos y valores explícitos.
 - Tipografía mapeada a `MaterialTheme.typography` con tamaños/pesos definidos.
 - `ThemeDimens` y shapes con valores definidos.
 - `ThemeManager` con contrato de selección de variante/modo.
+- Existe bitácora de temas con selección de variante/modo.
+- Existen comandos Make para abrir cada variante/modo.
 
 ## Pendientes y riesgos
 - Ajuste futuro de paletas daltónicas reales.
@@ -245,6 +272,7 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 
 ## No incluido
 - Implementación de temas en código ni UI.
+ - UI de configuración persistente del tema (se define en historia futura).
 
 ## Pull Request (contenido esperado)
 **Titulo sugerido:** `docs(ds-f1): tokens y theming base (#2)`
