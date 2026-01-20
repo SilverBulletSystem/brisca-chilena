@@ -11,6 +11,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Docsify con sidebar, navbar y cover para GitHub Pages.
 - ADR-0001 para estandar de iconos.
 - Indice de ADRs.
+- README con sección ADRs para navegación.
 
 ### Changed
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
