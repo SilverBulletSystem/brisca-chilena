@@ -182,6 +182,8 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - `ICON_MD = 24.dp`
 - `ICON_LG = 32.dp`
 - `SWATCH_MD = 24.dp`
+- `IMAGE_SM = 40.dp`
+- `IMAGE_MD = 64.dp`
 - `TOUCH_TARGET_MIN = 48.dp`
 - `INPUT_HEIGHT_SINGLE = 48.dp`
 - `INPUT_HEIGHT_MULTI = 56.dp`

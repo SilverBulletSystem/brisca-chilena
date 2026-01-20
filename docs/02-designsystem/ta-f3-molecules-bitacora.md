@@ -23,6 +23,7 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 ## Diseño (doc)
 ### 1) Catálogo completo de moléculas (Dui)
 - `DuiIconButton`
+- `DuiRemoteImage` (carga desde URL)
 - `DuiTextField` (single/password, con iconos/label)
 - `DuiCheckbox`
 - `DuiToggle` (switch con label/estado)
@@ -45,6 +46,17 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 **DuiIconButton**
 - Estados: normal, disabled, pressed.
 - Tamaño: usar `ThemeDimens.ICON_MD`.
+
+**DuiRemoteImage**
+- Props obligatorias:
+  - `url: String`
+  - `contentDescription: String`
+  - `size: Dp` (usar `ThemeDimens.IMAGE_SM = 40.dp` y `ThemeDimens.IMAGE_MD = 64.dp`)
+- Estados:
+  - `loading` (placeholder)
+  - `success` (imagen)
+  - `error` (fallback)
+- Regla: siempre mostrar placeholder mientras carga; fallback si falla.
 
 **DuiTextField**
 - Variantes: single / password.
@@ -124,6 +136,8 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
   - `DuiCheckbox`, `DuiToggle`, `DuiDropdown`, `DuiSelect`.
 - **Sección Listas/Cards:**
   - `DuiListItem`, `DuiSettingsItem`, `DuiItemCard`.
+- **Sección Media:**
+  - `DuiRemoteImage` en `IMAGE_SM` y `IMAGE_MD` (loading/success/error).
 - **Sección Feedback:**
   - `DuiBanner`, `DuiSnackbar`, `DuiDialog`, `DuiBottomSheet`.
 - **Sección Navegación secundaria:**
@@ -150,6 +164,9 @@ Checkbox / Toggle / Dropdown / Select
 [Sección: Listas/Cards]
 ListItem / SettingsItem
 ItemCard
+
+[Sección: Media]
+RemoteImage SM/MD (loading/success/error)
 
 [Sección: Feedback]
 Banner / Snackbar
