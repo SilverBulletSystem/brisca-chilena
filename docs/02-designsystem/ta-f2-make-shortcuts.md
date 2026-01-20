@@ -8,46 +8,54 @@
 - `feat/ht-ds-f2-make-shortcuts`
 
 ## Objetivo
-Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/deeplinks y comandos Make para abrirlas sin interacción manual (patrón `make run-bitacora`).
+Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/deeplinks y comandos Make concretos para abrirlas sin interacción manual.
 
 ## Alcance
 - Bitácoras mínimas reales (pantallas destino) para temas, átomos, moléculas y organismos.
-- Rutas internas para bitácoras de temas, átomos, moléculas y organismos (general, juego, chat, flags).
-- Targets Make que lancen la app en cada ruta.
+- Ruta interna por bitácora.
+- Comandos Make concretos para abrir cada bitácora.
 
 ## Diseño (doc)
-1) Bitácoras mínimas:
-   - Crear pantallas destino con layout básico.
-   - Deben ser navegables y renderizar sin fallas.
-   - La bitácora de temas **no** es placeholder: debe renderizar la lista definida en TA-DS-F1.
-2) Rutas propuestas:
-   - Temas: `app://bitacora/theme`
-   - Átomos: `app://bitacora/atoms`
-   - Moléculas: `app://bitacora/molecules`
-   - Organismos:
-     - General: `app://bitacora/organisms/general`
-     - Juego: `app://bitacora/organisms/game`
-     - Chat/Soporte: `app://bitacora/organisms/chat`
-     - Flags/Monitores: `app://bitacora/organisms/flags`
-3) Targets Make propuestos (explícitos):
-   - `make run-bitacora-theme`
-   - `make run-bitacora-atoms`
-   - `make run-bitacora-molecules`
-   - `make run-bitacora-organisms-general`
-   - `make run-bitacora-organisms-game`
-   - `make run-bitacora-organisms-chat`
-   - `make run-bitacora-organisms-flags`
-4) Notas:
-   - Mantener el patrón del proyecto (`make run-...`) para consistencia.
-   - Documentar variables opcionales (ej. `FLAVOR=mock`) si se requiere.
+### 1) Pantallas mínimas (layout cerrado)
+- **ThemeCatalogScreen**:
+  - Título: `DuiText.Title` con texto “Bitácora de temas”.
+  - Lista vertical de cards (una por tema).
+  - Cada card: título, descripción y fila de 6 swatches (definida en TA-DS-F1).
+- **AtomsBitacoraScreen**:
+  - Título: `DuiText.Title` con texto “Bitácora de átomos”.
+  - Contenedor vacío con texto “Pendiente catálogo de estados”.
+- **MoleculesBitacoraScreen**:
+  - Título: `DuiText.Title` con texto “Bitácora de moléculas”.
+  - Contenedor vacío con texto “Pendiente catálogo de estados”.
+- **OrganismsBitacoraScreen**:
+  - Título: `DuiText.Title` con texto “Bitácora de organismos”.
+  - Contenedor vacío con texto “Pendiente catálogo de estados”.
+
+### 2) Rutas internas
+- Temas: `app://bitacora/theme`
+- Átomos: `app://bitacora/atoms`
+- Moléculas: `app://bitacora/molecules`
+- Organismos: `app://bitacora/organisms`
+
+### 3) Comandos Make (existentes y obligatorios)
+- `make run-bitacora-theme`
+- `make run-bitacora-atoms`
+- `make run-bitacora-molecule`
+- `make run-bitacora-organism`
+
+### 4) Reglas
+- Las rutas deben mapear 1:1 a cada comando.
+- Tema **no** es placeholder: debe renderizar todos los temas definidos en TA-DS-F1.
+- Átomos/moléculas/organismos pueden ser placeholders hasta sus historias.
 
 ## Validación Dev (rol QA)
-- [ ] Ejecutar cada comando Make y verificar que abre la ruta correspondiente sin interacción manual.
-- [ ] Confirmar carga de la pantalla destino (aunque esté vacía inicialmente) y que la ruta se refleje en logs/arranque.
+- [ ] Ejecutar cada comando Make y verificar apertura de pantalla correspondiente.
+- [ ] `run-bitacora-theme` renderiza lista completa de temas.
+- [ ] `run-bitacora-atoms|molecule|organism` renderiza título y placeholder.
 
 ## Entregables (documento)
 - Lista de rutas y targets Make.
-- Descripción de bitácoras mínimas creadas.
+- Wireframe textual de cada pantalla mínima.
 
 ## Verificación futura
 - Comandos y rutas claros para uso por dev/QA al implementar.

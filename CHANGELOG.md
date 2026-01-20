@@ -28,6 +28,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F1 agrega checklist con detekt.
 - TA-DS-F1 agrega wireframe de bitácora de temas.
 - TA-DS-F2A incluye bitácora de temas y comando Make.
+- TA-DS-F2A detalla pantallas mínimas y comandos Make reales.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
