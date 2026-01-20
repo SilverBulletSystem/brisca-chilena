@@ -208,12 +208,12 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 ### 7) Componentes requeridos para Bitácora de Temas
 **Átomos (Dui):**
 - `DuiText` (Title/Body) para nombre y descripción del tema.
-- `DuiIcon` para representar cada color del tema.
+- `DuiColorSwatch` para representar cada color del tema.
 - `DuiSpacer`, `DuiDivider` para separación visual.
 
 **Moléculas (Dui):**
 - `DuiCard` para contener cada tema.
-- `DuiColorSwatchRow` (fila de iconos con colores del tema).
+- `DuiColorSwatchRow` (fila de `DuiColorSwatch` con colores del tema).
 
 **Organismos (Dui):**
 - `DuiThemeCatalog` (lista de tarjetas de tema).
