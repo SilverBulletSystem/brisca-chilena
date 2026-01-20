@@ -218,6 +218,31 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 **Organismos (Dui):**
 - `DuiThemeCatalog` (lista de tarjetas de tema).
 
+### 8) Contratos mínimos de componentes (sin decisiones del dev)
+**DuiColorSwatch (átomo)**
+- **Props obligatorias:**
+  - `color: Color` (token a representar).
+  - `size: Dp` (solo valores permitidos: `24.dp` o `32.dp`).
+  - `shape: Shape` (usar `RADIUS_SM` para 24.dp y `RADIUS_MD` para 32.dp).
+  - `showBorder: Boolean` (por defecto `true`).
+- **Reglas:**
+  - `size=24.dp` para listas compactas; `size=32.dp` para encabezados.
+  - Borde: `BORDER_WIDTH` y color `outline` del tema.
+  - Fondo: `color` directo (sin opacidad).
+
+**DuiColorSwatchRow (molécula)**
+- **Props obligatorias:**
+  - `colors: List<Color>` en orden fijo: `primary`, `secondary`, `tertiary`, `surface`, `background`, `error`.
+  - `swatchSize: Dp` (usar `24.dp`).
+  - `spacing: Dp` (usar `SPACE_4`).
+- **Reglas:**
+  - Renderiza exactamente 6 swatches en el orden definido.
+  - No colapsa ni reordena colores.
+
+**DuiThemeCatalog (organismo)**
+- Renderiza lista vertical de tarjetas (una por tema).
+- Cada tarjeta contiene: título (Title), descripción (Body) y `DuiColorSwatchRow`.
+
 ## UI y UX
 - El DS no define pantallas de negocio; solo temas y tokens.
 - Bitácora de temas con listado de todos los temas soportados.
