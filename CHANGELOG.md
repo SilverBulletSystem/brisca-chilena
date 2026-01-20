@@ -36,6 +36,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F2B define bitácora de átomos con wireframe y criterios.
 - TA-DS-F2B incluye catálogo completo de átomos y estados.
 - TA-DS-F2B reemplaza tamaños hardcode por ThemeDimens.
+- TA-DS-F2B mueve tamaño de swatch a ThemeDimens.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.

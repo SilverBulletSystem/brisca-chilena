@@ -83,7 +83,8 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 
 **DuiColorSwatch**
 - Mostrar 6 swatches: `primary`, `secondary`, `tertiary`, `surface`, `background`, `error`.
-- Tamaño: `24.dp`.
+- Tamaño: `ThemeDimens.SWATCH_MD`.
+- Si no existe, crear en `ThemeDimens`: `SWATCH_MD = 24.dp`.
 - Borde: `outline` con `BORDER_WIDTH`.
 
 ### 3) Bitácora de Átomos (pantalla)
