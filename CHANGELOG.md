@@ -31,6 +31,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F2A detalla pantallas mínimas y comandos Make reales.
 - TA-DS-F1 nombra la pantalla ThemeCatalogScreen.
 - TA-DS-F2A lista átomos y moléculas mínimas usadas en tema.
+- TA-DS-F2A agrega sección de Pull Request.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.

@@ -68,3 +68,17 @@ Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/dee
 
 ## No incluido
 - Catálogos completos de componentes (van en TA-DS-F2B/F3/F5).
+
+## Pull Request (contenido esperado)
+**Titulo sugerido:** `docs(ds-f2a): bitacoras minimas y make (#2)`
+
+**Incluye:**
+- Actualización de `docs/02-designsystem/ta-f2-make-shortcuts.md`.
+- Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+
+**Checklist:**
+- [ ] Solo documentación (sin código).
+- [ ] Enlace a la épica `docs/02-designsystem/epica.md`.
+- [ ] Cumple `docs/git-workflow.md`.
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+- [ ] `make detekt` pasa sin findings nuevos.
