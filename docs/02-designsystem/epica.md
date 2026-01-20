@@ -4,16 +4,16 @@
 - [Backlog tecnico](02-designsystem/backlog.md)
 - [Diseno detallado](02-designsystem/diseno-detallado.md)
 - Historias tecnicas (orden de ejecución):
-  - [TA-DS-F2A Make shortcuts bitacoras](02-designsystem/ta-f2-make-shortcuts.md)
-  - [TA-DS-F1 Tokens y theming](02-designsystem/ta-f1-tokens-theming.md)
-  - [TA-DS-F2B Atomos y bitacora](02-designsystem/ta-f2-atoms-bitacora.md)
-  - [TA-DS-F3 Moleculas y bitacora](02-designsystem/ta-f3-molecules-bitacora.md)
-  - [TA-DS-F4A Organismos generales](02-designsystem/ta-f4-a-organisms-general.md)
-  - [TA-DS-F4B Organismos juego](02-designsystem/ta-f4-b-organisms-game.md)
-  - [TA-DS-F4C Organismos chat/soporte](02-designsystem/ta-f4-c-organisms-chat.md)
-  - [TA-DS-F4D Organismos flags/monitores](02-designsystem/ta-f4-d-organisms-flags.md)
-  - [TA-DS-F5 Accesibilidad](02-designsystem/ta-f5-accessibility.md)
-  - [TA-DS-F6 i18n estricto](02-designsystem/ta-f6-i18n-ds.md)
+  - [TA-DS-F1 Navegación bitácoras](02-designsystem/ta-f1-navigation.md)
+  - [TA-DS-F2 Tokens y theming](02-designsystem/ta-f2-tokens-theming.md)
+  - [TA-DS-F3 Atomos y bitacora](02-designsystem/ta-f3-atoms-bitacora.md)
+  - [TA-DS-F4 Moleculas y bitacora](02-designsystem/ta-f4-molecules-bitacora.md)
+  - [TA-DS-F5A Organismos generales](02-designsystem/ta-f5-a-organisms-general.md)
+  - [TA-DS-F5B Organismos juego](02-designsystem/ta-f5-b-organisms-game.md)
+  - [TA-DS-F5C Organismos chat/soporte](02-designsystem/ta-f5-c-organisms-chat.md)
+  - [TA-DS-F5D Organismos flags/monitores](02-designsystem/ta-f5-d-organisms-flags.md)
+  - [TA-DS-F6 Accesibilidad](02-designsystem/ta-f6-accessibility.md)
+  - [TA-DS-F7 i18n estricto](02-designsystem/ta-f7-i18n-ds.md)
 
 ## 1. Contexto
 El Design System (Dui) define los tokens, reglas y componentes base que garantizan consistencia visual, accesibilidad e i18n en toda la suite.

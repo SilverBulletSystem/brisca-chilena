@@ -1,11 +1,11 @@
-# TA-DS-F2 — Átomos Dui y bitácora
+# TA-DS-F3 — Átomos Dui y bitácora
 
 ## Navegacion
 - [Volver a Epica](02-designsystem/epica.md)
 - [Volver a Backlog](02-designsystem/backlog.md)
 
 ## Rama
-- `feat/ht-ds-f2-atoms`
+- `feat/ht-ds-f3-atoms`
 
 ## Objetivo
 Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados y validación visual. Sin implementación de código.
@@ -17,8 +17,8 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 - Ruta y comando Make para abrir esta pantalla.
 
 ## Dependencias
-- TA-DS-F1 (tokens y theming).
-- TA-DS-F2A (rutas y comandos Make).
+- TA-DS-F2 (tokens y theming).
+- TA-DS-F1 (rutas y comandos Make).
 
 ## Diseño (doc)
 ### 1) Catálogo completo de átomos (Dui)
@@ -39,7 +39,7 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 **DuiText**
 - Variantes: `Title`, `Subtitle`, `Body`, `Caption`.
 - Estados: `normal`, `disabled` (usar `onSurfaceVariant`).
-- Tamaños: usar escala definida en TA-DS-F1.
+- Tamaños: usar escala definida en TA-DS-F2.
 
 **DuiIcon**
 - Estados: `normal`, `disabled`.
@@ -162,10 +162,10 @@ Switch (off/on/disabled)
 - Implementación en código ni creación real de la pantalla.
 
 ## Pull Request (contenido esperado)
-**Titulo sugerido:** `docs(ds-f2b): bitacora atomos (#2)`
+**Titulo sugerido:** `docs(ds-f3): bitacora atomos (#2)`
 
 **Incluye:**
-- Actualización de `docs/02-designsystem/ta-f2-atoms-bitacora.md`.
+- Actualización de `docs/02-designsystem/ta-f3-atoms-bitacora.md`.
 - Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
 
 **Checklist:**

@@ -1,11 +1,11 @@
-# TA-DS-F1 — Tokens y theming base
+# TA-DS-F2 — Tokens y theming base
 
 ## Navegacion
 - [Volver a Epica](02-designsystem/epica.md)
 - [Volver a Backlog](02-designsystem/backlog.md)
 
 ## Rama
-- `feat/ht-ds-f1-tokens`
+- `feat/ht-ds-f2-tokens`
 
 ## Objetivo
 Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`, shapes) y la estructura de temas (default + variantes daltónicas), con especificación suficiente para implementar sin decisiones adicionales.
@@ -22,7 +22,7 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 
 ## Dependencias
 - Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
-- TA-DS-F2A: wiring de navegación de bitácoras.
+- TA-DS-F1: wiring de navegación de bitácoras.
 
 ## Modelo de dominio
 - **Token**: valor atómico reutilizable (color, tipografía, dimensión, shape).
@@ -328,10 +328,10 @@ Body:  "Tema base morado/amarillo"
  - UI de configuración persistente del tema (se define en historia futura).
 
 ## Pull Request (contenido esperado)
-**Titulo sugerido:** `docs(ds-f1): tokens y theming base (#2)`
+**Titulo sugerido:** `docs(ds-f2): tokens y theming base (#2)`
 
 **Incluye:**
-- Actualización de `docs/02-designsystem/ta-f1-tokens-theming.md`.
+- Actualización de `docs/02-designsystem/ta-f2-tokens-theming.md`.
 - Actualización de `docs/02-designsystem/backlog.md` si aplica.
 - Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
 

@@ -35,7 +35,7 @@ Excluye:
   - Tipografía: `text.title`, `text.subtitle`, `text.body`, `text.caption`.
   - Dimensiones: `dimens.spacing.*`, `dimens.radius.*`.
 - **Estructura de temas**:
-  - `default`, `daltonicA`, `daltonicB` (nombres por definir en TA-DS-F1).
+- `default`, `daltonicA`, `daltonicB` (nombres por definir en TA-DS-F2).
 - **Interfaces de strings**:
   - Por bitácora/pantalla DS (TA-DS-F6).
 

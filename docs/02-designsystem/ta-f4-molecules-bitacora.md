@@ -1,11 +1,11 @@
-# TA-DS-F3 — Moléculas Dui y bitácora
+# TA-DS-F4 — Moléculas Dui y bitácora
 
 ## Navegacion
 - [Volver a Epica](02-designsystem/epica.md)
 - [Volver a Backlog](02-designsystem/backlog.md)
 
 ## Rama
-- `feat/ht-ds-f3-molecules`
+- `feat/ht-ds-f4-molecules`
 
 ## Objetivo
 Definir y crear el catálogo completo de moléculas Dui y su bitácora, con estados/variantes cerrados y validación visual. Sin implementación de código.
@@ -17,8 +17,8 @@ Definir y crear el catálogo completo de moléculas Dui y su bitácora, con esta
 - Ruta y comando Make para abrir esta pantalla.
 
 ## Dependencias
-- TA-DS-F1 (tokens y theming).
-- TA-DS-F2A (rutas y comandos Make).
+- TA-DS-F2 (tokens y theming).
+- TA-DS-F1 (rutas y comandos Make).
 
 ## Diseño (doc)
 ### 1) Catálogo completo de moléculas (Dui)
@@ -223,10 +223,10 @@ TypingIndicator / MessageStatus / Avatar
 - Implementación en código.
 
 ## Pull Request (contenido esperado)
-**Titulo sugerido:** `docs(ds-f3): bitacora moleculas (#2)`
+**Titulo sugerido:** `docs(ds-f4): bitacora moleculas (#2)`
 
 **Incluye:**
-- Actualización de `docs/02-designsystem/ta-f3-molecules-bitacora.md`.
+- Actualización de `docs/02-designsystem/ta-f4-molecules-bitacora.md`.
 - Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
 
 **Checklist:**
