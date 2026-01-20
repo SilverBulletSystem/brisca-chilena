@@ -7,6 +7,7 @@ Publicar toda la documentacion del proyecto en GitHub Pages usando la carpeta `d
 - Publicacion automatica de `docs/index.md` como portada.
 - Navegacion por enlaces relativos entre documentos.
 - Sin cambios de codigo ni generadores externos.
+ - UI mejorada con Docsify (sin build).
 
 ## Requisitos
 - Repositorio en GitHub con rama `main`.
@@ -19,6 +20,15 @@ Publicar toda la documentacion del proyecto en GitHub Pages usando la carpeta `d
    - **Folder**: `/docs`
 3) Guardar cambios.
 4) Esperar la URL publicada (GitHub la mostrara en la misma seccion).
+
+## Tema y navegacion (Docsify)
+Se usa Docsify para renderizar los Markdown con sidebar, navbar y cover:
+- Entrada: `docs/index.html`
+- Contenido principal: `docs/index.md`
+- Sidebar: `docs/_sidebar.md`
+- Navbar: `docs/_navbar.md`
+- Cover: `docs/_coverpage.md`
+- Estilos: `docs/assets/docsify.css`
 
 ## Estructura recomendada
 - `docs/index.md` como entrada principal.

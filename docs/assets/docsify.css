@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --base-font-size: 16px;
+  --theme-color: #4f46e5;
+  --sidebar-width: 290px;
+  --sidebar-background: #0f172a;
+  --sidebar-text-color: #e2e8f0;
+  --sidebar-link-color: #cbd5f5;
+  --sidebar-link-color--active: #ffffff;
+  --sidebar-nav-link-font-weight: 500;
+  --sidebar-nav-link-font-weight--active: 600;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.cover-main h1 {
+  font-weight: 700;
+}
+
+.app-name-link img {
+  display: none;
+}
+
+.sidebar {
+  border-right: 1px solid #1f2937;
+}
+
+.sidebar-nav li > a {
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.sidebar-nav li > a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.markdown-section h2 {
+  margin-top: 36px;
+}
