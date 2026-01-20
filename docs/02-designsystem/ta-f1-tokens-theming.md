@@ -35,12 +35,12 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 
 ## Diseño (doc)
 ### 1) Estructura de archivos esperada
-- `core/ui/theme/ColorTokens.kt`
-- `core/ui/theme/TypographyTokens.kt`
-- `core/ui/theme/ThemeDimens.kt`
-- `core/ui/theme/Shapes.kt`
-- `core/ui/theme/ThemeManager.kt`
-- `core/ui/theme/DuiTheme.kt` (wrapper de `MaterialTheme`)
+- `magicsdui/theme/ColorTokens.kt`
+- `magicsdui/theme/TypographyTokens.kt`
+- `magicsdui/theme/ThemeDimens.kt`
+- `magicsdui/theme/Shapes.kt`
+- `magicsdui/theme/ThemeManager.kt`
+- `magicsdui/theme/DuiTheme.kt` (wrapper de `MaterialTheme`)
 
 ### 2) Tokens de color (roles + valores)
 **Roles obligatorios (alineados a MaterialTheme.colorScheme):**
