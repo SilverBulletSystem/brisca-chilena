@@ -286,7 +286,6 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - Existe comando Make para abrir la bitácora.
 
 ## Pendientes y riesgos
-- Ajuste futuro de paletas daltónicas reales.
 - Riesgo de inconsistencias si se agregan roles fuera del estándar.
 
 ## Entregables (documento)
