@@ -38,6 +38,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F2B reemplaza tamaños hardcode por ThemeDimens.
 - TA-DS-F2B mueve tamaño de swatch a ThemeDimens.
 - TA-DS-F1 define ICON_* y SWATCH_MD en ThemeDimens.
+- TA-DS-F3 define bitácora de moléculas con catálogo y wireframe.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
