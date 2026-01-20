@@ -258,6 +258,23 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 **Make target:**
 - `make run-bitacora-theme`
 
+**Wireframe (servilleta):**
+```
+Bitácora de temas
+────────────────────────────────────────
+[Card]
+Title: "DEFAULT · LIGHT"
+Body:  "Tema base morado/amarillo"
+[●][●][●][●][●][●]  (primary, secondary, tertiary, surface, background, error)
+
+[Card]
+Title: "DEFAULT · DARK"
+Body:  "Tema base morado/amarillo"
+[●][●][●][●][●][●]
+
+... (resto de variantes y modos)
+```
+
 ## Flujos y secuencias
 1) Abrir bitácora de temas vía Make.
 2) Renderizar lista con todos los temas soportados (variant + mode).

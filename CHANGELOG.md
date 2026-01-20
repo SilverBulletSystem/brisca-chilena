@@ -26,6 +26,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F1 define contratos mínimos para DuiColorSwatch y fila.
 - TA-DS-F1 elimina pendiente de paletas daltónicas.
 - TA-DS-F1 agrega checklist con detekt.
+- TA-DS-F1 agrega wireframe de bitácora de temas.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
