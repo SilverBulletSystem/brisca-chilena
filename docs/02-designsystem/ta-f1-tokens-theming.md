@@ -245,3 +245,17 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 
 ## No incluido
 - Implementación de temas en código ni UI.
+
+## Pull Request (contenido esperado)
+**Titulo sugerido:** `docs(ds-f1): tokens y theming base (#2)`
+
+**Incluye:**
+- Actualización de `docs/02-designsystem/ta-f1-tokens-theming.md`.
+- Actualización de `docs/02-designsystem/backlog.md` si aplica.
+- Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+
+**Checklist:**
+- [ ] Solo documentación (sin código).
+- [ ] Enlace a la épica `docs/02-designsystem/epica.md`.
+- [ ] Cumple `docs/git-workflow.md`.
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
