@@ -17,8 +17,8 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - Shapes: esquinas por jerarquía (card, dialog, chip).
 - Estructura de temas: default + variantes daltónicos (Deuteranopia, Tritanopia, Achromatopsia, High Contrast) definidas en tokens.
 - Contrato de `ThemeManager` y selección de variante/tema.
-- Menú mínimo de selección de tema para validación manual.
-- Comandos Make para probar variantes y modos.
+- Bitácora de temas: listado de temas soportados con su paleta visible.
+- Comando Make para abrir la bitácora de temas.
 
 ## Dependencias
 - Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
@@ -33,6 +33,7 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - Los tokens se definen como constantes tipadas (Color, TextStyle, Dp).
 - Los nombres de roles deben coincidir con `MaterialTheme.colorScheme` y `MaterialTheme.typography`.
 - `ThemeManager` expone selección actual y setters para variante y modo.
+- La bitácora lista todos los temas soportados (variant + mode).
 
 ## Diseño (doc)
 ### 1) Estructura de archivos esperada
@@ -204,112 +205,38 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - Persistencia **no** se implementa aquí (se documenta como futura).
 
 ### 7) Catálogo completo DS (definido en esta historia)
+### 7) Componentes requeridos para Bitácora de Temas
 **Átomos (Dui):**
-- `DuiText` (Title/Subtitle/Body/Caption)
-- `DuiIcon`
-- `DuiButton` (filled/tonal/outlined/text + icon)
-- `DuiFab`
-- `DuiDivider`
-- `DuiSpacer`
-- `DuiChip`/`DuiTag`
-- `DuiBadge` (incl. numérica)
-- `DuiProgress` (linear/circular)
-- `DuiRadio`
-- `DuiSwitch`
+- `DuiText` (Title/Body) para nombre y descripción del tema.
+- `DuiIcon` para representar cada color del tema.
+- `DuiSpacer`, `DuiDivider` para separación visual.
 
 **Moléculas (Dui):**
-- `DuiIconButton`
-- `DuiTextField` (single/password, con iconos/label)
-- `DuiCheckbox`
-- `DuiToggle` (switch con label/estado)
-- `DuiListItem` (leading/trailing)
-- `DuiSettingsItem`
-- `DuiCard`
-- `DuiBanner`
-- `DuiSnackbar`
-- `DuiDialog`/`DuiBottomSheet`
-- `DuiDropdown`/`DuiSelect`
-- `DuiTabs`/`DuiFilterChips`
-- `DuiAccordion`
-- `DuiAvatar`
-- `DuiItemCard`
-- `DuiTypingIndicator`
-- `DuiMessageStatus`
-- Botones con identidad: `DuiLoginButton`, `DuiRegisterButton`, `DuiRecoverButton`, `DuiVerifyAccountButton`, `DuiLogoutButton`
-- Selectores: `DuiLanguageSelector`/`DuiLanguageOption`, `DuiSoundToggle`
+- `DuiCard` para contener cada tema.
+- `DuiColorSwatchRow` (fila de iconos con colores del tema).
 
-**Organismos (Dui) — generales:**
-- `DuiAppScaffold` (top/bottom bars, drawer)
-- `DuiTopBar`
-- `DuiBottomNav`/`DuiBottomBar`
-- `DuiNavigationRail`/`DuiDrawer`/`DuiSideMenu`
-- `DuiList`/`DuiSection`/`DuiGrid`
-- `DuiSettingsList`
-- `DuiEmptyState`, `DuiErrorState`, `DuiLoading`
-- `DuiThemeSelector`
-- `DuiEnvironmentSelector`/`DuiEnvironmentItem`
-- `DuiLogoutDialog`
-- `DuiSoundSetting`
-
-**Organismos (Dui) — juego:**
-- `DuiCardFace`/`DuiNaipe`
-- `DuiCardDeck`/`DuiShuffleControl`
-- `DuiDealControl`
-- `DuiHand`/`DuiPlayList`/`DuiCardHand`
-- Acciones: `DuiRenuncio`, `DuiCobrarRenuncio`, `DuiVale`, `DuiCobrarVale`, `DuiAcceptPlay`, `DuiRejectPlay`, `DuiReady`, `DuiStartMatch`, `DuiLeaveMatch`
-- Estado/turno: `DuiTurnState`, `DuiTimer`/`DuiCountdown`
-- Score: `DuiScoreboard1v1`, `DuiScoreboard2v2`, `DuiScoreTable1v1`, `DuiScoreTable2v2`
-- `DuiTeamPanel`/`DuiPlayerStatus`
-- Match/session: `DuiMatchInviteCard`, `DuiLobbyList`/`DuiPlayerSeat`
-- `DuiPauseOverlay`/`DuiResumeButton`
-- `DuiMatchHistoryList`
-- `DuiAchievementItem`, `DuiCapoteBanner`
-
-**Organismos (Dui) — chat/soporte:**
-- `DuiMessageBubble`
-- `DuiMessageInput` + send
-- `DuiMessageList`
-- `DuiTypingIndicator`
-- `DuiAttachmentAction`
-- `DuiSupportForm`
-
-**Organismos (Dui) — flags/monitores:**
-- `DuiFlagList` (con `DuiToggle`)
-- `DuiTable`/two-column item
-- `DuiLogList`
-- `DuiTimeline`
-- Filtros (`DuiFilterChips`/`DuiSelect`)
+**Organismos (Dui):**
+- `DuiThemeCatalog` (lista de tarjetas de tema).
 
 ## UI y UX
 - El DS no define pantallas de negocio; solo temas y tokens.
-- Se requiere **menú mínimo de temas** para validar variantes y modos.
+- Bitácora de temas con listado de todos los temas soportados.
 
-**Menú de temas (alcance mínimo):**
-- Pantalla simple con:
-  - Selector de variante (`DEFAULT`, `DEUTERANOPIA`, `TRITANOPIA`, `ACHROMATOPSIA`, `HIGH_CONTRAST`).
-  - Selector de modo (`LIGHT`, `DARK`, `SYSTEM`).
-  - Vista previa con 2 bloques:
-    - Botón primario + texto sobre `primary`.
-    - Card/surface con `surface` y texto `onSurface`.
-- La pantalla se expone vía ruta de bitácora: `app://bitacora/theme`.
+**Bitácora de temas (alcance mínimo):**
+- Lista de tarjetas (una por tema soportado).
+- Cada tarjeta incluye:
+  - Título (nombre del tema).
+  - Descripción corta (qué variante/modo es).
+  - Fila de iconos de color que muestran: `primary`, `secondary`, `tertiary`, `surface`, `background`, `error`.
+- La pantalla se expone vía ruta: `app://bitacora/theme`.
 
-**Make targets:**
-- `make run-bitacora-theme-default-light`
-- `make run-bitacora-theme-default-dark`
-- `make run-bitacora-theme-deuteranopia-light`
-- `make run-bitacora-theme-deuteranopia-dark`
-- `make run-bitacora-theme-tritanopia-light`
-- `make run-bitacora-theme-tritanopia-dark`
-- `make run-bitacora-theme-achromatopsia-light`
-- `make run-bitacora-theme-achromatopsia-dark`
-- `make run-bitacora-theme-high-contrast-light`
-- `make run-bitacora-theme-high-contrast-dark`
+**Make target:**
+- `make run-bitacora-theme`
 
 ## Flujos y secuencias
 1) Abrir bitácora de temas vía Make.
-2) Selección de variante de tema.
-3) Selección de modo (light/dark/system).
-4) Aplicación de tokens en `DuiTheme`.
+2) Renderizar lista con todos los temas soportados (variant + mode).
+3) Aplicación de tokens por tarjeta en su preview.
 
 ## Seguridad y privacidad
 - No aplica (sin PII ni persistencia en esta historia).
@@ -323,15 +250,15 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 ## Testing
 - Checklist de consistencia: roles completos y mapeo correcto.
 - Verificación manual de que `MaterialTheme` recibe todos los tokens.
-- Validación visual de menú de temas para cada variante/modo.
+- Validación visual de bitácora con todos los temas listados.
 
 ## Criterios de aceptacion
 - Tokens definidos con roles completos y valores explícitos.
 - Tipografía mapeada a `MaterialTheme.typography` con tamaños/pesos definidos.
 - `ThemeDimens` y shapes con valores definidos.
 - `ThemeManager` con contrato de selección de variante/modo.
-- Existe bitácora de temas con selección de variante/modo.
-- Existen comandos Make para abrir cada variante/modo.
+- Existe bitácora de temas con listado de todas las variantes y modos.
+- Existe comando Make para abrir la bitácora.
 
 ## Pendientes y riesgos
 - Ajuste futuro de paletas daltónicas reales.
@@ -341,12 +268,12 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - Lista de tokens por categoría (colores, tipografía, dimens, shapes).
 - Tabla/resumen de temas y roles.
 - Pauta de integración con `ThemeManager`.
-- Catálogo completo de átomos, moléculas y organismos.
+- Componentes mínimos requeridos para la bitácora de temas.
 
 ## Verificación futura
 - Tokens cubren todos los roles usados por átomos/moléculas/organismos Dui.
 - Variantes daltónicas definen primary/secondary y containers según tabla.
-- Catálogo DS completo queda centralizado en esta historia.
+- Bitácora de temas muestra todas las variantes y modos.
 
 ## No incluido
 - Implementación de temas en código ni UI.
