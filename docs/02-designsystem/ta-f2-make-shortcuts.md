@@ -43,13 +43,29 @@ Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/dee
 - Moléculas: `app://bitacora/molecules`
 - Organismos: `app://bitacora/organisms`
 
-### 3) Comandos Make (existentes y obligatorios)
+### 3) Navegación Decompose (obligatoria)
+- Definir `sealed class BitacoraRoute` con:
+  - `Theme`, `Atoms`, `Molecules`, `Organisms`, `OrganismsGame`, `OrganismsChat`, `OrganismsFlags`.
+- Resolver URI → ruta:
+  - `app://bitacora/theme` → `BitacoraRoute.Theme`
+  - `app://bitacora/atoms` → `BitacoraRoute.Atoms`
+  - `app://bitacora/molecules` → `BitacoraRoute.Molecules`
+  - `app://bitacora/organisms` → `BitacoraRoute.Organisms`
+  - `app://bitacora/organisms/game` → `BitacoraRoute.OrganismsGame`
+  - `app://bitacora/organisms/chat` → `BitacoraRoute.OrganismsChat`
+  - `app://bitacora/organisms/flags` → `BitacoraRoute.OrganismsFlags`
+- Configurar `childStack` con rutas anteriores y mapear a pantallas:
+  - `ThemeCatalogScreen`, `AtomsBitacoraScreen`, `MoleculesBitacoraScreen`,
+    `OrganismsBitacoraScreen`, `OrganismsGameScreen`, `OrganismsChatScreen`, `OrganismsFlagsScreen`.
+- Si URI no coincide, navegar a `ThemeCatalogScreen` por defecto.
+
+### 4) Comandos Make (existentes y obligatorios)
 - `make run-bitacora-theme`
 - `make run-bitacora-atoms`
 - `make run-bitacora-molecule`
 - `make run-bitacora-organism`
 
-### 4) Reglas
+### 5) Reglas
 - Las rutas deben mapear 1:1 a cada comando.
 - Tema **no** es placeholder: debe renderizar todos los temas definidos en TA-DS-F1.
 - Átomos/moléculas/organismos pueden ser placeholders hasta sus historias.

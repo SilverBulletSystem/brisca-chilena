@@ -42,6 +42,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F2A lista átomos y moléculas mínimas usadas en tema.
 - TA-DS-F2A agrega sección de Pull Request.
 - TA-DS-F2A agrega wireframes de bitácoras mínimas.
+- TA-DS-F2A define wiring Decompose para rutas de bitácoras.
 - TA-DS-F2B define bitácora de átomos con wireframe y criterios.
 - TA-DS-F2B incluye catálogo completo de átomos y estados.
 - TA-DS-F2B reemplaza tamaños hardcode por ThemeDimens.
