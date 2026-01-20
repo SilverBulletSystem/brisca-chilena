@@ -1,5 +1,8 @@
 # ADR-0001: Estandar de iconos centralizados
 
+## Navegacion
+- [Volver al listado](architecture/decisions/README.md)
+
 ## Estado
 Aceptado
 
