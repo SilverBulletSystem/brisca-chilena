@@ -5,10 +5,9 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## 1. Contexto y objetivo
-La Epica 1 define la base tecnica del proyecto Brisca para garantizar consistencia arquitectonica, builds reproducibles y reglas de calidad. Esta epica debe alinearse con el proyecto base `ipchile-multiplatform` y sus ADRs.
+La Epica 1 define la base tecnica del proyecto Brisca para garantizar consistencia arquitectonica, builds reproducibles y reglas de calidad. Esta epica debe alinearse con los ADRs del proyecto.
 
-## 2. Referencias del proyecto base
-- Estructura: `ipchile-multiplatform/docs/architecture/project-structure.md`
+## 2. Referencias de arquitectura
 - Clean Architecture + DDD + MVI: `docs/architecture/decisions/0001-clean-architecture-ddd.md`
 - Atomic Design: `docs/architecture/decisions/0017-atomic-design-system.md`
 - i18n (interfaces por pantalla): `docs/architecture/decisions/0019-internationalization-language-handling.md`
@@ -16,9 +15,6 @@ La Epica 1 define la base tecnica del proyecto Brisca para garantizar consistenc
 - Koin: `docs/architecture/decisions/0004-dependency-injection-koin.md`
 - Detekt: `docs/architecture/decisions/0005-static-code-analysis-detekt.md`
 - Flavors/env strategy: `docs/architecture/decisions/0026-environment-configuration-strategy.md`
-- Build reference: `ipchile-multiplatform/composeApp/build.gradle.kts`
-- Makefile reference: `ipchile-multiplatform/Makefile`
-- Versions: `ipchile-multiplatform/gradle/libs.versions.toml`
 
 ## 3. Alcance
 - Namespace y estructura de carpetas.
@@ -33,7 +29,7 @@ La Epica 1 define la base tecnica del proyecto Brisca para garantizar consistenc
 ## 4. Estructura de carpetas y paquetes
 **Namespace base**: `cl.silverbullet.multiplatform.brisca`
 
-**Estructura logica (alineada al base, sin modulos Gradle separados):**
+**Estructura logica (alineada al proyecto, sin modulos Gradle separados):**
 ```
 composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
 ├── core/
@@ -76,7 +72,7 @@ composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
 - `features/mesa`
 
 ## 5. Flavors Android (mock/dev/prod)
-**Objetivo:** replicar la estrategia del base, agregando `mock` para Mockoon.
+**Objetivo:** replicar la estrategia definida, agregando `mock` para Mockoon.
 
 **Gradle - reglas minimas:**
 - `flavorDimensions += "env"`
@@ -90,7 +86,7 @@ composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
   - `APP_KEY` (placeholder)
 
 **IP dinamica:**
-- Usar `localIp` por Gradle property, como en el base.
+- Usar `localIp` por Gradle property.
 - Script sugerido: `scripts/get-local-ip.sh`.
 
 **Build types:**
@@ -141,9 +137,9 @@ composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
 **Arranque iOS:** `initKoin()` expuesto a Swift.
 
 ## 8. Detekt
-**Base:** `ipchile-multiplatform/composeApp/config/detekt/detekt.yml`.
+**Referencia objetivo:** `composeApp/config/detekt/detekt.yml`.
 
-**Decision:** agregar reglas extra (spike) ademas del base.
+**Decision:** agregar reglas extra (spike) ademas de las reglas base del proyecto.
 
 **Reglas obligatorias:**
 - Sin strings hardcode en UI.
@@ -172,7 +168,7 @@ composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
 - Splash mínimo renderiza `appName` según idioma.
 
 ## 10. Alineacion de versiones
-**Base:** `ipchile-multiplatform/gradle/libs.versions.toml`.
+**Referencia objetivo:** `gradle/libs.versions.toml`.
 
 **Claves a alinear:**
 - Kotlin, Compose Multiplatform, Ktor, Koin, Firebase, Detekt, Kover.
@@ -185,7 +181,7 @@ composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/
 - Cambio de locale refleja ES/EN en pantalla ejemplo.
 
 ## 12. Riesgos
-- Desalineacion con base en versiones y estructura.
+- Desalineacion interna en versiones y estructura.
 - Errores en flavors/xcconfig que bloquean build.
 - Falta de reglas detekt que permitan strings hardcode.
 

@@ -20,7 +20,7 @@ Diseñar el wiring inicial de Koin usando **solo** el `applicationModule` (sin p
      - `HttpClient` Ktor configurado.
 2) Arranque:
    - Android: documentar `startKoin` en `Application`/entrypoint con lista de módulos.
-   - iOS: documentar inicialización desde `initKoin()` expuesto a Swift (pattern del proyecto base).
+   - iOS: documentar inicialización desde `initKoin()` expuesto a Swift (patrón recomendado).
 3) Organización de paquetes:
    - Ubicar módulos en sus paquetes correspondientes (`network`, `storage`, etc.) bajo `cl.silverbullet.multiplatform.brisca`.
 4) Extensión futura:

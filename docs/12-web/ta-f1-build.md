@@ -11,7 +11,7 @@
 Documentar la configuración de build y deploy web (Compose Multiplatform) para el admin mock, reutilizando scripts base y asegurando consumo de mockserver.
 
 ## Alcance
-- Target web en Gradle (ya en proyecto base): confirmar ajustes de bundling/minificación.
+- Target web en Gradle: confirmar ajustes de bundling/minificación.
 - Build scripts:
   - Make: `make web-run-mock`, `make web-build-mock`.
   - GH Actions: job para build web mock (sin Firestore).

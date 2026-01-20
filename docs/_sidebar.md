@@ -16,6 +16,10 @@
 - [Guia de estilo](development/documentation-style-guide.md)
 - [GitHub Pages](development/github-pages.md)
 
+## ADRs
+- [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
+- [ADR-0002 Estrategia de idiomas escalable](architecture/decisions/adr-0002-estrategia-idiomas.md)
+
 ## Epicas
 - [Epica 01 - Fundamentos](01-fundamentos/epica.md)
 - [Epica 02 - Design System](02-designsystem/epica.md)

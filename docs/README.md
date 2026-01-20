@@ -10,3 +10,7 @@ Bienvenido. Esta documentación está organizada por niveles, épicas y TAs.
 
 ## Navegación
 Usa el menú lateral para recorrer las épicas y sus documentos.
+
+## ADRs
+- [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
+- [ADR-0002 Estrategia de idiomas escalable](architecture/decisions/adr-0002-estrategia-idiomas.md)

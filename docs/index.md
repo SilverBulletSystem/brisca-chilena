@@ -21,6 +21,9 @@ Bienvenido. Usa este índice para navegar toda la documentación del proyecto.
 - [Estandar Git/Branches/Commits](git-workflow.md)
 - [Plantilla de Pull Request y reglas de changelog](pr-template.md)
 
+## ADRs
+- [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
+
 ## Epicas
 ### Epica 01 - Fundamentos
 - [Epica](01-fundamentos/epica.md)
@@ -41,8 +44,8 @@ Bienvenido. Usa este índice para navegar toda la documentación del proyecto.
 - [Backlog](02-designsystem/backlog.md)
 - [Diseno detallado](02-designsystem/diseno-detallado.md)
 - TAs:
-  - [TA-F1 Tokens y theming](02-designsystem/ta-f1-tokens-theming.md)
-  - [TA-F2 Make shortcuts](02-designsystem/ta-f2-make-shortcuts.md)
+  - [TA-F1 Navegación bitácoras](02-designsystem/ta-f1-navigation.md)
+  - [TA-F2 Tokens y theming](02-designsystem/ta-f2-tokens-theming.md)
   - [TA-F3 Atoms bitacora](02-designsystem/ta-f3-atoms-bitacora.md)
   - [TA-F4 Molecules bitacora](02-designsystem/ta-f4-molecules-bitacora.md)
   - [TA-F5-A Organisms general](02-designsystem/ta-f5-a-organisms-general.md)

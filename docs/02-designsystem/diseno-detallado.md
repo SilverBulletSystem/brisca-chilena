@@ -4,41 +4,72 @@
 - [Volver a Epica](02-designsystem/epica.md)
 - [Volver a Backlog](02-designsystem/backlog.md)
 
-## Contexto
-El Design System es la base visual y funcional para SDUI y UI nativa. Define tokens, accesibilidad y catalogos de componentes con bitacoras.
+## 1. Contexto y objetivo
+El Design System (Dui) es la base visual y funcional para SDUI y UI nativa. Define tokens, theming, accesibilidad e i18n, y entrega bitácoras para inspección y QA.
 
-## Alcance
-- Tokens (color, tipografia, dimensiones, shapes).
-- Theming con soporte para daltonicos a nivel de tokens.
-- Catalogo de atomos, moleculas y organismos Dui.
-- Bitacoras navegables por categoria con atajos Make.
+Incluye:
+- Tokens (color, tipografía, dimensiones, shapes).
+- Theming con variantes (incluye tokens para daltonismo).
+- Catálogo de átomos, moléculas y organismos Dui.
+- Bitácoras navegables por categoría con atajos Make.
 - i18n estricto en componentes DS.
 
-## TA-DS-F1 Tokens y theming
-- Definir roles de color, tipografia, ThemeDimens y shapes.
-- Estructura de temas: default + variantes daltonicas.
-- Integracion documentada con ThemeManager.
+Excluye:
+- Pantallas de negocio y flujos de usuario.
+- Contratos SDUI y data providers.
 
-## TA-DS-F2 Make shortcuts bitacoras
-- Rutas internas para bitacoras.
-- Targets Make para abrir bitacoras sin clicks.
+## 2. Dependencias
+- Epica 1 (Fundamentos): i18n base, ThemeDimens y reglas de calidad.
+- ADRs de arquitectura y estilo (Atomic Design, i18n, ThemeDimens).
 
-## TA-DS-F3 Atomos y bitacora
-- Catalogo completo de atomos Dui y estados.
-- Pantalla de bitacora con secciones por categoria.
+## 3. Modelo de dominio
+- **Token**: valor atómico reutilizable (color, tipografía, espaciado, shape).
+- **Theme**: conjunto de tokens agrupados por rol (default + variantes).
+- **ComponentSpec**: definición de props/estados de un componente Dui.
+- **BitacoraSection**: agrupación de componentes por categoría.
+- **AccessibilityRule**: regla verificable por componente (contraste, tamaño mínimo, foco).
 
-## TA-DS-F4 Moleculas y bitacora
-- Catalogo completo de moleculas Dui y variantes.
-- Pantalla de bitacora con props y estados.
+## 4. Contratos y datos
+- **Naming de tokens**:
+  - Colores: `color.primary`, `color.onPrimary`, `color.surface`, `color.error`.
+  - Tipografía: `text.title`, `text.subtitle`, `text.body`, `text.caption`.
+  - Dimensiones: `dimens.spacing.*`, `dimens.radius.*`.
+- **Estructura de temas**:
+- `default`, `daltonicA`, `daltonicB` (nombres por definir en TA-DS-F2).
+- **Interfaces de strings**:
+  - Por bitácora/pantalla DS (TA-DS-F6).
 
-## TA-DS-F5 Organismos y bitacoras
-- Organismos generales, juego, chat/soporte, flags/monitores.
-- Bitacoras por lote para evitar PRs grandes.
+## 5. UI y UX
+- Bitácoras con lista de categorías y detalles por componente.
+- Estados por componente: normal, disabled, loading, error (si aplica).
+- Accesibilidad: foco visible, contrastes mínimos, tamaños táctiles.
 
-## TA-DS-F6 Accesibilidad
-- Contraste, estados, tamanos minimos, reduce motion.
-- Checklist por componente.
+## 6. Flujos y secuencias
+1) Abrir bitácora por comando Make.
+2) Seleccionar categoría (átomos, moléculas u organismos).
+3) Ver variantes y estados del componente.
+4) Validar checklist de accesibilidad e i18n.
 
-## TA-DS-F7 i18n estricto
-- Sin strings literales en DS.
-- Textos via interfaces por pantalla.
+## 7. Seguridad y privacidad
+- No maneja PII ni datos sensibles.
+
+## 8. Performance
+- Bitácoras con listas perezosas (lazy) para grandes catálogos.
+- Evitar previews pesadas simultáneas.
+
+## 9. Observabilidad
+- Logs mínimos en modo debug para navegación de bitácoras.
+
+## 10. Testing
+- Checklist manual por componente (estados + accesibilidad + i18n).
+- Smoke de navegación de bitácoras.
+
+## 11. Criterios de aceptacion
+- Tokens y themes documentados con naming consistente.
+- Catálogo de átomos, moléculas y organismos completo y versionado.
+- Bitácoras navegables por categoría con comandos Make.
+- Checklist de accesibilidad e i18n definido y aplicado.
+
+## 12. Pendientes y riesgos
+- Definir naming final de variantes de tema.
+- Riesgo de duplicación de componentes sin reglas claras.

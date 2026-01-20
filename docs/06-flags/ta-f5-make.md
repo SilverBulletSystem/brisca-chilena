@@ -16,7 +16,7 @@ Definir comandos Make/deeplinks para abrir el monitor de flags y forzar refresh 
   - `make refresh-flags FLAVOR=mock|dev|prod` → fuerza fetch/merge y muestra resultado en logs.
 - Deeplinks/rutas:
   - `app://flags/monitor`
-- Variables: `FLAVOR` reutiliza navegación rápida del proyecto base; validar que la app esté instalada en ese flavor.
+- Variables: `FLAVOR` reutiliza navegación rápida del proyecto; validar que la app esté instalada en ese flavor.
 - Comportamiento sin datos: monitor debe mostrar empty state con mensaje i18n.
 
 ## Entregables (documento)

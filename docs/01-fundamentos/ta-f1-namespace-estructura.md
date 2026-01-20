@@ -22,7 +22,7 @@ Validar el namespace actual y definir la estructura de módulos/carpetas base si
   - `features/` (solo funcionalidades Brisca, ej: `mesa`).
   - `designsystem`, `magicsdui`, `inkribbon`, `toad`, `flags`.
 - README breve en `composeApp` con el árbol objetivo y ejemplos.
-- `.gitignore` alineado al proyecto base (excluir build/, .idea/, *.iml, .DS_Store, outputs Gradle/Xcode).
+- `.gitignore` alineado al proyecto (excluir build/, .idea/, *.iml, .DS_Store, outputs Gradle/Xcode).
 
 ## Diseño (pasos documentados)
 1) Verificar namespace en archivos `build.gradle.kts` y paquetes base.

@@ -18,7 +18,7 @@ Definir atajos Make/deeplinks para abrir el visor de State Record y reproducir s
   - `app://inkribbon/viewer`
   - `app://inkribbon/viewer/{sessionId}`
   - `app://inkribbon/replay/{sessionId}`
-- Variables: `FLAVOR` reutiliza configuraciones de navegación rápida del proyecto base.
+- Variables: `FLAVOR` reutiliza configuraciones de navegación rápida del proyecto.
 - Validación Dev: comandos ejecutan sin intervención humana; fallos deben loggear error claro.
 
 ## Diseño (doc)
