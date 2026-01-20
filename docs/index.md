@@ -21,6 +21,9 @@ Bienvenido. Usa este índice para navegar toda la documentación del proyecto.
 - [Estandar Git/Branches/Commits](git-workflow.md)
 - [Plantilla de Pull Request y reglas de changelog](pr-template.md)
 
+## ADRs
+- [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
+
 ## Epicas
 ### Epica 01 - Fundamentos
 - [Epica](01-fundamentos/epica.md)
