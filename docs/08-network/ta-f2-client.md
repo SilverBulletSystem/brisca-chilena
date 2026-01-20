@@ -1,5 +1,9 @@
 # TA-NET-F2 — Cliente Ktor base
 
+## Navegacion
+- [Volver a Epica](08-network/epica.md)
+- [Volver a Backlog](08-network/backlog.md)
+
 ## Rama
 - `feat/ht-net-f2-client`
 

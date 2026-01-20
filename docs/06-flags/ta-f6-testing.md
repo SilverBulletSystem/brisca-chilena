@@ -1,5 +1,9 @@
 # TA-FLAGS-F6 — Testing/observabilidad
 
+## Navegacion
+- [Volver a Epica](06-flags/epica.md)
+- [Volver a Backlog](06-flags/backlog.md)
+
 ## Rama
 - `feat/ht-flags-f6-testing`
 

@@ -1,5 +1,9 @@
 # TA-SDUI-F6 — Flags/ambientes/inyección de datos
 
+## Navegacion
+- [Volver a Epica](03-magicsdui/epica.md)
+- [Volver a Backlog](03-magicsdui/backlog.md)
+
 ## Rama
 - `feat/ht-sdui-f6-flags`
 

@@ -1,5 +1,9 @@
 # TA-SDUI-F7 — Plan de pruebas SDUI (QA/Dev)
 
+## Navegacion
+- [Volver a Epica](03-magicsdui/epica.md)
+- [Volver a Backlog](03-magicsdui/backlog.md)
+
 ## Rama
 - `feat/ht-sdui-f7-testing`
 

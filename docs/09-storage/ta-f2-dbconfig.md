@@ -1,5 +1,9 @@
 # TA-STORAGE-F2 — Config DB / SQDelight
 
+## Navegacion
+- [Volver a Epica](09-storage/epica.md)
+- [Volver a Backlog](09-storage/backlog.md)
+
 ## Rama
 - `feat/ht-storage-f2-dbconfig`
 

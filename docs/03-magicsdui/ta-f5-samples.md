@@ -1,5 +1,9 @@
 # TA-SDUI-F5 — Mockoon samples + casos borde
 
+## Navegacion
+- [Volver a Epica](03-magicsdui/epica.md)
+- [Volver a Backlog](03-magicsdui/backlog.md)
+
 ## Rama
 - `feat/ht-sdui-f5-samples`
 

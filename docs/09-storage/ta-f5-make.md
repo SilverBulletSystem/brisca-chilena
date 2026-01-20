@@ -1,5 +1,9 @@
 # TA-STORAGE-F5 — Make/atajos Storage
 
+## Navegacion
+- [Volver a Epica](09-storage/epica.md)
+- [Volver a Backlog](09-storage/backlog.md)
+
 ## Rama
 - `feat/ht-storage-f5-make`
 

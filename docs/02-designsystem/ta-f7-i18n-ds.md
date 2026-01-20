@@ -1,5 +1,9 @@
 # TA-DS-F7 — i18n estricto en Design System
 
+## Navegacion
+- [Volver a Epica](02-designsystem/epica.md)
+- [Volver a Backlog](02-designsystem/backlog.md)
+
 ## Rama
 - `feat/ht-ds-f7-i18n`
 

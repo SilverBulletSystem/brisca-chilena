@@ -1,5 +1,9 @@
 # TA-ENV-F3 — Reconfiguración de servicios al cambiar ambiente
 
+## Navegacion
+- [Volver a Epica](07-environments/epica.md)
+- [Volver a Backlog](07-environments/backlog.md)
+
 ## Rama
 - `feat/ht-env-f3-reconfigure`
 

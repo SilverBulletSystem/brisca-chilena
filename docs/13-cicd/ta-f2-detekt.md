@@ -1,5 +1,9 @@
 # TA-CICD-F2 — Detekt config
 
+## Navegacion
+- [Volver a Epica](13-cicd/epica.md)
+- [Volver a Backlog](13-cicd/backlog.md)
+
 ## Rama
 - `feat/ht-cicd-f2-detekt`
 

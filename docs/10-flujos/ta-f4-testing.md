@@ -1,5 +1,9 @@
 # TA-FLUJOS-F4 — Testing por flujo
 
+## Navegacion
+- [Volver a Epica](10-flujos/epica.md)
+- [Volver a Backlog](10-flujos/backlog.md)
+
 ## Rama
 - `feat/ht-flujos-f4-testing`
 

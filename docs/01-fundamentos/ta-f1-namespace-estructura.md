@@ -4,6 +4,10 @@
 - [Volver a Epica](01-fundamentos/epica.md)
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## Objetivo
 Validar el namespace actual y definir la estructura de módulos/carpetas base sin implementación de lógica.
 

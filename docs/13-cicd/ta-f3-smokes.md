@@ -1,5 +1,9 @@
 # TA-CICD-F3 — Smokes CI
 
+## Navegacion
+- [Volver a Epica](13-cicd/epica.md)
+- [Volver a Backlog](13-cicd/backlog.md)
+
 ## Rama
 - `feat/ht-cicd-f3-smokes`
 

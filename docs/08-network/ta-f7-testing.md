@@ -1,5 +1,9 @@
 # TA-NET-F7 — Testing/observabilidad
 
+## Navegacion
+- [Volver a Epica](08-network/epica.md)
+- [Volver a Backlog](08-network/backlog.md)
+
 ## Rama
 - `feat/ht-net-f7-testing`
 
