@@ -24,7 +24,7 @@
    - Comandos ejecutados o “no aplica” (justificar).
 4) **Checklist**
    - [ ] Cumple `docs/git-workflow.md` (ramas/commits)
-   - [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]` (Added/Changed/Fixed) o justificación de no entrada
+   - [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]` (obligatoria para cambios de sistema)
    - [ ] Sin binarios/artefactos generados
    - [ ] Docs actualizadas si aplica
    - [ ] Pruebas declaradas
@@ -36,13 +36,13 @@
    - Capturas/logs/links a pruebas si aplica
 
 ## Changelog (Keep a Changelog + SemVer)
-- Cada PR con impacto funcional agrega entrada en `CHANGELOG.md` → `[Unreleased]` → sección adecuada:
+- Cada PR con impacto en el sistema agrega entrada en `CHANGELOG.md` → `[Unreleased]` → sección adecuada:
   - Added: nuevas funcionalidades/componentes/pantallas.
   - Changed: cambios de comportamiento, refactors visibles, config.
   - Fixed: bugs corregidos.
 - Formato de bullet conciso y técnico.
 - Versionado: las entradas permanecen en `[Unreleased]` hasta corte de release.
-- Si no aplica entrada (docs/housekeeping), explicitarlo en la sección de Checklist.
+ - Si no aplica entrada, explicitarlo en la sección de Checklist.
 
 ## Rama y merge
 - Rama desde `main` con prefijo correcto (ver `docs/git-workflow.md`).

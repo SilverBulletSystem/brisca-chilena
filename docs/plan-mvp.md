@@ -118,6 +118,46 @@
 - Entregables: workflows Android/iOS/Web; make goals alineados; Detekt configurado (reglas del proyecto); smoke tests mock flavor; publicación interna (Play Internal, TestFlight, deploy web); jobs separados para assemble rápido vs. stage de unit tests (los tests no se corren en `assemble` local); cache de dependencias.
 - Refinar: workflows base; cache deps; detekt config; tests mínimos; despliegues mock; gates de calidad; separar stages assemble (rápido) y test.
 
+### 14. Analytics
+- Objetivo: estandar de tagging y captura de eventos transversal al DS.
+- Entregables: taxonomia de eventos, collector, provider externo, monitor local.
+
+### 15. Notificaciones Push
+- Objetivo: soporte push para promociones y anuncios propios.
+- Entregables: permisos, tokens, routing por deeplink, observabilidad.
+
+### 16. Encrypted Storage
+- Objetivo: cifrar datos locales y definir gestion de claves.
+- Entregables: wrapper cifrado de Settings y DB, plan de migracion.
+
+### 17. Suscripcion
+- Objetivo: habilitar modelo de suscripcion y entitlements.
+- Entregables: integracion Play/StoreKit, UI de gestion, validacion de recibos.
+
+### 18. Publicidad
+- Objetivo: publicidad propia gestionada por el equipo.
+- Entregables: modelo de anuncios, scheduling, placements UI y medicion.
+
+### 19. Tienda
+- Objetivo: catalogo y compra de items (temas, naipes, burlas).
+- Entregables: catalogo, inventario, UI de tienda e integracion de compra.
+
+### 20. Multimedia Manager
+- Objetivo: descarga y cache de assets pesados bajo demanda.
+- Entregables: catalogo de assets, downloader, politicas de cache y limpieza.
+
+### 21. Bluetooth
+- Objetivo: partidas locales sin internet.
+- Entregables: discovery, sesion host/cliente, sincronizacion de partida.
+
+### 22. App Panel
+- Objetivo: panel interno para monitoreo y alarmas.
+- Entregables: ingestion desde records, UI admin y alertas.
+
+### 23. Resilience Toggles
+- Objetivo: autoapagado de features ante errores repetidos y escalamiento.
+- Entregables: deteccion de errores, reglas y escalation al panel.
+
 ## Criterios para PR pequeños
 - Máx ~300-400 LOC netos por PR (guía); una epic se baja en múltiples PR secuenciales.
 - Cada PR debe agregar valor observable: contrato, parser parcial, un componente DS, etc.

@@ -1,63 +1,41 @@
-# Backlog técnico — Épica 1 Fundamentos
+# Backlog tecnico — Epica 01 Fundamentos (Historias tecnicas)
 
-Referencia: `01-fundamentos/epica.md`. Solo documentación de tareas, sin implementación.
+## HT-F1 Namespace y estructura
+- Objetivo: confirmar namespace `cl.silverbullet.multiplatform.brisca` y crear estructura base.
+- Entregables: arbol de carpetas, README de estructura, `.gitignore` base.
+- Verificacion: `./gradlew :composeApp:assembleDebug`.
 
-## F1 – Namespace y estructura de módulos
-- Confirmar namespace `cl.silverbullet.multiplatform.brisca` (sin renombrar si ya es correcto).
-- Definir árbol de carpetas/módulos lógicos: `core`, `commons`, `features`, `designsystem`, `magicsdui`, `inkribbon`, `toad`, `flags`, `network`, `storage`.
-- Añadir README corto con el árbol esperado.
-- Planear y ejecutar el **primer commit**:
-  - `git init` si aún no existe repo local.
-  - Commit inicial `chore(init): initialize repository structure` con la estructura base y docs (incluye `docs/git-workflow.md` y `docs/01-fundamentos/*`), sin código generado ni bins.
-  - Respetar `docs/git-workflow.md` para naming de ramas/commits/PRs desde este punto.
-  - Incluir `.gitignore` alineado al proyecto base (excluir build/, .idea/, *.iml, .DS_Store, outputs Gradle/Xcode); no commitear artefactos generados.
-- Verificación: mientras no exista F2, usar `./gradlew :composeApp:assembleDebug`; cuando F2 defina flavors, validar con `assembleMockDebug`.
-- No incluido: wiring de DI, lógica de features.
-- Rama: `feat/ht-f1-namespace-structure`.
+## HT-F2 Koin baseline
+- Objetivo: wiring base de DI con `applicationModule`.
+- Entregables: `applicationModule` + arranque Android/iOS.
+- Verificacion: app arranca sin fallas en debug.
 
-## F2 – Flavors Android (mock/dev/prod)
-- Definir flavors con `applicationIdSuffix` y `versionNameSuffix`.
-- Configurar `BuildConfig`/resources por flavor (endpoints placeholders, logging level).
-- Actualizar Makefile con comandos assemble por flavor.
-- Verificación: `assembleMockDebug`, `assembleDevDebug`, `assembleProdRelease` corren sin tests (reemplaza el uso provisional de `assembleDebug` en F1).
-- Nota: mock server aún no existe; documentar endpoints placeholders y apuntar a la épica/tarea futura de mock server.
-- Rama: `feat/ht-f2-flavors-android`.
+## HT-F3 Network base (URL unica temporal)
+- Objetivo: cliente Ktor base con API publica de Rick and Morty para probar conectividad.
+- Entregables: GET `/api/character` verificado.
+- Verificacion: respuesta 200 y body no vacio.
 
-## F3 – Esquemas/Flavors iOS (spike)
-- Crear esquemas `MockDebug`, `DevDebug`, `ProdRelease`.
-- xcconfig por ambiente con endpoints/logging placeholders.
-- Mini guía de ejecución en Xcode.
-- Verificación: cada esquema compila; variables accesibles en Swift.
-- Nota: mock server no implementado; dejar endpoint placeholder.
-- Rama: `feat/ht-f3-flavors-ios`.
+## HT-F4 Ktor y ambientes (mock/dev/prod)
+- Objetivo: definir ambientes, flavors Android y Mockoon CLI para pruebas.
+- Entregables: contrato `NetworkEnvironment`, `mock/dev/prod`, puertos 3002/3003/3004, comandos make.
+- Verificacion: `env-start|check|stop` operativos por ambiente.
 
-## F4 – Makefile seeds (assemble-first)
-- Comandos: `assemble-mock-debug`, `assemble-dev-debug`, `assemble-prod-release`.
-- Comandos de calidad: `test-unit`, `detekt`, `mockoon-*` placeholders, `help`.
-- Verificación: assemble no dispara tests; help lista comandos.
-- Rama: `feat/ht-f4-makefile-seeds`.
+## HT-F5 Detekt (spike reglas extra)
+- Objetivo: portar detekt base + reglas custom (comentarios, .dp/.sp, strings).
+- Entregables: `detekt.yml` ajustado + plan de reglas custom.
+- Verificacion: `./gradlew detekt` pasa en estado base.
 
-## F5 – DI baseline con Koin
-- Definir módulos vacíos/placeholder por capa (core, network, storage, feature-flags, sdui).
-- Hook de arranque por plataforma (documentado).
-- Verificación: arranque sin fallar en assemble mock.
-- Rama: `feat/ht-f5-koin-baseline`.
+## HT-F6 i18n base ES/EN
+- Objetivo: interfaces segregadas por pantalla y wiring base de idioma.
+- Entregables: contratos ES/EN + ejemplo aplicado.
+- Verificacion: cambio de locale refleja textos.
 
-## F6 – Detekt (reglas Cursor)
-- Portar `detekt.yml` del proyecto base al nuevo namespace.
-- Reglas clave: sin strings hardcode en UI, naming casos de uso, uso de `ThemeDimens`, Atomic, capas limpias.
-- Integrar tarea `detekt` en Makefile.
-- Verificación: `./gradlew detekt` pasa en limpio con el estado actual.
-- Rama: `feat/ht-f6-detekt`.
+## HT-F7 Libs y config comunes
+- Objetivo: alinear versiones y plantillas de config con base.
+- Entregables: `libs.versions.toml`, `local.properties.example`, `Config.xcconfig`.
+- Verificacion: assemble mock funciona con versiones fijadas.
 
-## F7 – i18n base ES/EN
-- Definir contratos de strings por pantalla (interfaces segregadas).
-- Ejemplo aplicado en una pantalla (Splash/Login) para validar wiring.
-- Verificación: cambio de locale muestra ES/EN en la pantalla ejemplo.
-- Rama: `feat/ht-f7-i18n-base`.
-
-## F8 – Libs y config comunes
-- Alinear `libs.versions.toml` (Kotlin/Compose/Ktor/Koin) con el proyecto base.
-- Plantillas `local.properties.example` y `Config.xcconfig`.
-- Verificación: assemble mock funciona con las versiones fijadas.
-- Rama: `feat/ht-f8-libs-config`.
+## HT-F8 Esquemas iOS (spike)
+- Objetivo: resolver 3 ambientes iOS con configs y schemes.
+- Entregables: `MockDebug`, `DevDebug`, `ProdRelease` + xcconfig por env.
+- Verificacion: cada esquema compila y expone variables.

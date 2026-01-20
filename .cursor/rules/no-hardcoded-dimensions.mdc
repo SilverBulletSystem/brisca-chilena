@@ -1,0 +1,226 @@
+# Reglas de Proyecto - Brisca Multiplatform
+
+## 🚫 PROHIBICIÓN ABSOLUTA: Dimensiones Hardcodeadas (.dp y .sp)
+
+### REGLA CRÍTICA #2: NUNCA usar `.dp` o `.sp` hardcodeados en código UI/Composable
+
+**ESTÁ ESTRICTAMENTE PROHIBIDO:**
+- ❌ `.padding(16.dp)`
+- ❌ `.height(48.dp)`
+- ❌ `.width(100.dp)`
+- ❌ `fontSize = 16.sp`
+- ❌ `spacing = 24.dp`
+- ❌ `border(1.dp)`
+- ❌ `elevation(2.dp)`
+- ❌ Cualquier valor numérico seguido de `.dp` o `.sp` fuera de `ThemeDimens`
+
+### ✅ OBLIGATORIO: Usar ThemeDimens
+
+**SIEMPRE usar `ThemeDimens` que centraliza todas las dimensiones:**
+
+1. **ThemeDimens contiene todas las dimensiones:**
+   ```kotlin
+   object ThemeDimens {
+       // Espaciado
+       val XS_SPACING = 4.dp
+       val SM_SPACING = 8.dp
+       val NORMAL_SPACING = 16.dp
+       val LG_SPACING = 24.dp
+       val XL_SPACING = 32.dp
+       
+       // Componentes
+       val BUTTON_HEIGHT = 48.dp
+       val INPUT_HEIGHT = 36.dp
+       val ICON_SIZE_SM = 16.dp
+       val ICON_SIZE_MD = 24.dp
+       val ICON_SIZE_LG = 32.dp
+       
+       // Texto
+       val TEXT_SIZE_SM = 12.sp
+       val TEXT_SIZE_MD = 14.sp
+       val TEXT_SIZE_LG = 16.sp
+       val FONT_SIZE_BODY_LARGE = 16.sp
+       // ... más dimensiones
+   }
+   ```
+
+2. **Uso correcto en componentes:**
+   ```kotlin
+   @Composable
+   fun MyComponent() {
+       Column(
+           modifier = Modifier
+               .fillMaxWidth()
+               .padding(ThemeDimens.NORMAL_SPACING) // ✅ Usar ThemeDimens
+       ) {
+           Spacer(modifier = Modifier.height(ThemeDimens.SM_SPACING)) // ✅
+           
+           Button(
+               modifier = Modifier
+                   .height(ThemeDimens.BUTTON_HEIGHT) // ✅
+                   .padding(ThemeDimens.XS_SPACING), // ✅
+               onClick = { }
+           ) {
+               Text(
+                   text = "Botón",
+                   fontSize = ThemeDimens.TEXT_SIZE_LG // ✅
+               )
+           }
+       }
+   }
+   ```
+
+### 📍 Ubicación de ThemeDimens
+
+- **Archivo:** `composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/core/ui/design/ThemeDimens.kt`
+- **Referencia:** ADR-0029: Sistema de Dimensiones con ThemeDimens
+
+### 🔍 Detección de Violaciones
+
+**ANTES de escribir código, verificar:**
+1. ¿Hay un número seguido de `.dp`? → DEBE estar en `ThemeDimens`
+2. ¿Hay un número seguido de `.sp`? → DEBE estar en `ThemeDimens`
+3. ¿Estoy usando dimensiones en un `Modifier`? → DEBE usar `ThemeDimens`
+4. ¿Estoy usando `fontSize` o `lineHeight`? → DEBE usar `ThemeDimens`
+
+### ⚠️ Excepciones (MUY LIMITADAS)
+
+**ÚNICAMENTE se permiten `.dp` y `.sp` hardcodeados en:**
+- **Dentro de `ThemeDimens.kt`** (es el único lugar donde se definen)
+- Valores calculados dinámicamente basados en `ThemeDimens`:
+  ```kotlin
+  val calculatedSize = ThemeDimens.NORMAL_SPACING * 2 // ✅ Basado en ThemeDimens
+  ```
+- Valores técnicos de Material Design que no están en ThemeDimens (consultar primero si existe)
+
+**NUNCA en:**
+- Funciones `@Composable`
+- Modificadores de `Modifier`
+- Parámetros de componentes UI
+- Valores de `fontSize`, `lineHeight`, `letterSpacing`
+- Padding, margin, spacing
+- Alturas, anchos, tamaños
+- Border radius, elevation, stroke width
+
+### 📝 Checklist Antes de Proponer Código
+
+Antes de escribir cualquier código con dimensiones, verificar:
+
+- [ ] ¿Hay valores `.dp` o `.sp`? → Verificar si existe en `ThemeDimens`
+- [ ] ¿El valor no existe en `ThemeDimens`? → Agregarlo primero a `ThemeDimens`
+- [ ] ¿Todos los modificadores usan `ThemeDimens`? → Revisar TODOS los valores numéricos
+- [ ] ¿Los tamaños de texto usan `ThemeDimens`? → Verificar `fontSize`, `lineHeight`
+
+### 🎯 Ejemplo Correcto vs Incorrecto
+
+**❌ INCORRECTO:**
+```kotlin
+@Composable
+fun MyScreen() {
+    Column(
+        modifier = Modifier
+            .padding(16.dp) // ❌ PROHIBIDO
+            .height(200.dp) // ❌ PROHIBIDO
+    ) {
+        Spacer(modifier = Modifier.height(24.dp)) // ❌ PROHIBIDO
+        
+        Text(
+            text = "Título",
+            fontSize = 18.sp // ❌ PROHIBIDO
+        )
+        
+        Button(
+            modifier = Modifier
+                .height(48.dp) // ❌ PROHIBIDO
+                .padding(8.dp), // ❌ PROHIBIDO
+            onClick = { }
+        ) {
+            Text("Botón")
+        }
+    }
+}
+```
+
+**✅ CORRECTO:**
+```kotlin
+@Composable
+fun MyScreen() {
+    Column(
+        modifier = Modifier
+            .padding(ThemeDimens.NORMAL_SPACING) // ✅ Desde ThemeDimens
+            .height(ThemeDimens.HTML_TEXT_MAX_HEIGHT) // ✅ Desde ThemeDimens
+    ) {
+        Spacer(modifier = Modifier.height(ThemeDimens.LG_SPACING)) // ✅
+        
+        Text(
+            text = "Título",
+            fontSize = ThemeDimens.FONT_SIZE_TITLE_LARGE // ✅
+        )
+        
+        Button(
+            modifier = Modifier
+                .height(ThemeDimens.BUTTON_HEIGHT) // ✅
+                .padding(ThemeDimens.SM_SPACING), // ✅
+            onClick = { }
+        ) {
+            Text("Botón")
+        }
+    }
+}
+```
+
+### 🔧 Cuando Encuentres Dimensiones Hardcodeadas
+
+**SI encuentras `.dp` o `.sp` hardcodeados en código existente:**
+
+1. **Identificar el valor:** ¿Qué dimensión es? (padding, height, fontSize, etc.)
+2. **Verificar ThemeDimens:** ¿Existe una constante equivalente en `ThemeDimens`?
+3. **Si existe:** Reemplazar el valor hardcodeado por la constante de `ThemeDimens`
+4. **Si NO existe:** 
+   - Agregar la constante a `ThemeDimens` con un nombre descriptivo
+   - Documentar su uso si es específico de un componente
+   - Reemplazar el valor hardcodeado por la nueva constante
+5. **Verificar:** Asegurar que el cambio no rompe el diseño
+
+### 📚 Valores Comunes en ThemeDimens
+
+**Espaciado:**
+- `ThemeDimens.XS_SPACING` (4.dp)
+- `ThemeDimens.SM_SPACING` (8.dp)
+- `ThemeDimens.NORMAL_SPACING` (16.dp)
+- `ThemeDimens.LG_SPACING` (24.dp)
+- `ThemeDimens.XL_SPACING` (32.dp)
+
+**Componentes:**
+- `ThemeDimens.BUTTON_HEIGHT` (48.dp)
+- `ThemeDimens.INPUT_HEIGHT` (36.dp)
+- `ThemeDimens.ICON_SIZE_SM` (16.dp)
+- `ThemeDimens.ICON_SIZE_MD` (24.dp)
+- `ThemeDimens.ICON_SIZE_LG` (32.dp)
+
+**Texto:**
+- `ThemeDimens.TEXT_SIZE_SM` (12.sp)
+- `ThemeDimens.TEXT_SIZE_MD` (14.sp)
+- `ThemeDimens.TEXT_SIZE_LG` (16.sp)
+- `ThemeDimens.FONT_SIZE_BODY_LARGE` (16.sp)
+- `ThemeDimens.FONT_SIZE_TITLE_LARGE` (22.sp)
+
+**Ver el archivo completo:** `composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/core/ui/design/ThemeDimens.kt`
+
+### 📚 Referencias
+
+- ADR-0029: Sistema de Dimensiones con ThemeDimens
+- `composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/core/ui/design/ThemeDimens.kt` - Archivo completo de dimensiones
+
+---
+
+## ⚠️ RECORDATORIO CRÍTICO
+
+**CADA VEZ que escribas código:**
+1. Si hay un número con `.dp` o `.sp` → DEBE estar en `ThemeDimens`
+2. Si estás en una función `@Composable` → TODAS las dimensiones DEBEN venir de `ThemeDimens`
+3. Si propones código con dimensiones hardcodeadas → EL CÓDIGO ESTÁ INCORRECTO
+
+**NO HAY EXCUSAS. NO HAY EXCEPCIONES PARA UI.**
+
+**El único lugar donde se permiten `.dp` y `.sp` hardcodeados es dentro del archivo `ThemeDimens.kt`.**

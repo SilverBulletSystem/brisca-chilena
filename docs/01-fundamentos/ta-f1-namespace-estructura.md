@@ -8,8 +8,12 @@ Validar el namespace actual y definir la estructura de módulos/carpetas base si
 
 ## Alcance
 - Confirmar namespace `cl.silverbullet.multiplatform.brisca` (no renombrar si ya es correcto).
-- Estructura esperada: `core`, `commons`, `features`, `designsystem`, `magicsdui`, `inkribbon`, `toad`, `flags`, `network`, `storage`.
-- README breve en `composeApp` con el árbol objetivo.
+- Estructura esperada:
+  - `core/` (DI, network, security, storage, platform).
+  - `commons/` (cache, onboarding, version, notificaciones y reutilizables no core).
+  - `features/` (solo funcionalidades Brisca, ej: `mesa`).
+  - `designsystem`, `magicsdui`, `inkribbon`, `toad`, `flags`.
+- README breve en `composeApp` con el árbol objetivo y ejemplos.
 - `.gitignore` alineado al proyecto base (excluir build/, .idea/, *.iml, .DS_Store, outputs Gradle/Xcode).
 
 ## Diseño (pasos documentados)
@@ -19,8 +23,22 @@ Validar el namespace actual y definir la estructura de módulos/carpetas base si
 4) Primer commit (si aplica): `chore(init): initialize repository structure` incluyendo docs y estructura, sin binarios.
 
 ## Verificación futura
-- Antes de flavors (F2): `./gradlew :composeApp:assembleDebug` debe compilar.
-- Tras definir flavors (F2): `assembleMockDebug` debe compilar.
+- Antes de ambientes (F3): `./gradlew :composeApp:assembleDebug` debe compilar.
+- Tras definir ambientes (F3): `assembleMockDebug` debe compilar.
 
 ## No incluido
 - Wiring de DI, lógica de features o creación de módulos Gradle separados.
+
+## Pull Request (contenido esperado)
+**Titulo sugerido:** `docs(ht-f1): namespace y estructura base (#XX)`
+
+**Incluye:**
+- Actualizacion de `docs/01-fundamentos/ta-f4-namespace-estructura.md` (este documento).
+- Actualizacion de `docs/01-fundamentos/backlog.md` (si aplica).
+- Nota de verificacion (resultado esperado de `assembleDebug`).
+
+**Checklist:**
+- [ ] Solo documentacion (sin codigo).
+- [ ] Enlace a la epica `docs/01-fundamentos/epica.md`.
+- [ ] Cumple `docs/git-workflow.md`.
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.

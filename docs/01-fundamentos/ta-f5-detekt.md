@@ -1,14 +1,14 @@
-# TA-F6 — Detekt (reglas Cursor)
+# TA-F5 — Detekt (reglas Cursor)
 
 ## Objetivo
 Diseñar la adopción de Detekt usando la configuración del proyecto base, adaptada al namespace actual y las reglas del usuario (Cursor). Sin ejecución de la herramienta.
 
 ## Rama
-- Crear desde `main`: `feat/ht-f6-detekt`.
+- Crear desde `main`: `feat/ht-f5-detekt`.
 
 ## Alcance
 - Portar `detekt.yml` del proyecto base, ajustar rutas/namespace.
-- Integrar tarea `detekt` al Makefile (documentado).
+- Integrar tareas `detekt` y `detekt-fix` al Makefile (documentado).
 
 ## Diseño
 1) Configuración:
@@ -21,7 +21,9 @@ Diseñar la adopción de Detekt usando la configuración del proyecto base, adap
      - Capas limpias: presentación no depende de data/infrastructure directa.
    - Baseline: decidir si se genera o se evita (documentar preferencia; ideal evitar baseline inicial).
 2) Build integration (doc):
-   - Tarea Gradle `detekt` ya existe por plugin; añadir comando en Makefile: `make detekt -> ./gradlew detekt`.
+   - Tarea Gradle `detekt` ya existe por plugin; añadir comando en Makefile:
+     - `make detekt -> ./gradlew detekt`
+     - `make detekt-fix -> ./gradlew detekt --auto-correct`
 3) Reportes:
    - Output en `build/reports/detekt/detekt.html` (documentar ruta).
 
@@ -32,6 +34,7 @@ Diseñar la adopción de Detekt usando la configuración del proyecto base, adap
 - Checklist futura:
   - [ ] `detekt.yml` copiado y ajustado.
   - [ ] Makefile tiene target `detekt`.
+  - [ ] Makefile tiene target `detekt-fix`.
   - [ ] Sin baseline o baseline documentado.
 
 ## No incluido

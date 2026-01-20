@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+
+# Regla: Diseno antes de codigo
+
+## Principio
+En Brisca, se disena todo el software antes de implementar codigo. La ejecucion debe seguir esta secuencia:
+
+1) Vision y arquitectura (alto nivel).
+2) Epicas y backlog (alto nivel).
+3) Diseno detallado por epica y TA (Nivel 4).
+4) Validacion del diseno.
+5) Implementacion.
+
+## Reglas
+- No implementar codigo si falta el diseno detallado correspondiente.
+- Las PR de esta fase deben ser solo documentacion.
+- Cada cambio debe indicar su documento de diseno asociado.
+- Spikes solo para resolver dudas de diseno, no para producir features.
+
+## Checklist antes de cualquier codigo
+- [ ] Existe diseno detallado aprobado.
+- [ ] Estan definidas dependencias y riesgos.
+- [ ] Estan definidos criterios de aceptacion y verificaciones.
