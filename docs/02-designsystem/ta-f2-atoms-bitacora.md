@@ -8,51 +8,102 @@
 - `feat/ht-ds-f2-atoms`
 
 ## Objetivo
-Definir el diseño de la bitácora de átomos y sus estados, usando el catálogo ya definido en TA-DS-F1. Sin implementación de código.
+Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados y validación visual. Sin implementación de código.
 
 ## Alcance
-- Estados a mostrar por átomo (solo los definidos en esta historia).
+- Catálogo completo de átomos del sistema de diseño.
+- Estados a mostrar por átomo.
 - Diseño de pantalla “Bitácora de Átomos”: layout, agrupación, props a mostrar.
 - Ruta y comando Make para abrir esta pantalla.
 
 ## Dependencias
-- TA-DS-F1 (catálogo mínimo y tokens).
+- TA-DS-F1 (tokens y theming).
 - TA-DS-F2A (rutas y comandos Make).
 
 ## Diseño (doc)
-### 1) Catálogo mínimo de átomos (de TA-DS-F1)
-- `DuiText` (Title/Body)
-- `DuiColorSwatch`
-- `DuiSpacer`
+### 1) Catálogo completo de átomos (Dui)
+- `DuiText` (Title/Subtitle/Body/Caption)
+- `DuiIcon`
+- `DuiButton` (filled/tonal/outlined/text + icon)
+- `DuiFab`
 - `DuiDivider`
+- `DuiSpacer`
+- `DuiChip`/`DuiTag`
+- `DuiBadge` (incl. numérica)
+- `DuiProgress` (linear/circular)
+- `DuiRadio`
+- `DuiSwitch`
+- `DuiColorSwatch`
 
 ### 2) Estados y props por átomo (cerrado)
 **DuiText**
-- Variantes: `Title`, `Body`.
+- Variantes: `Title`, `Subtitle`, `Body`, `Caption`.
 - Estados: `normal`, `disabled` (usar `onSurfaceVariant`).
 - Tamaños: usar escala definida en TA-DS-F1.
+
+**DuiIcon**
+- Estados: `normal`, `disabled`.
+- Tamaños: `16.dp`, `24.dp`, `32.dp`.
+
+**DuiButton**
+- Variantes: filled, tonal, outlined, text.
+- Estados: normal, disabled, loading.
+- Con icono y sin icono.
+
+**DuiFab**
+- Estados: normal, disabled.
+- Con icono obligatorio.
+
+**DuiDivider**
+- Mostrar un divider estándar con `DIVIDER_HEIGHT`.
+
+**DuiSpacer**
+- Mostrar tamaños: `SPACE_4`, `SPACE_8`, `SPACE_12`.
+
+**DuiChip / DuiTag**
+- Estados: normal, selected, disabled.
+
+**DuiBadge**
+- Estados: normal.
+- Variante numérica y punto.
+
+**DuiProgress**
+- Linear y circular.
+- Estados: normal e indeterminado.
+
+**DuiRadio**
+- Estados: unchecked, checked, disabled.
+
+**DuiSwitch**
+- Estados: off, on, disabled.
 
 **DuiColorSwatch**
 - Mostrar 6 swatches: `primary`, `secondary`, `tertiary`, `surface`, `background`, `error`.
 - Tamaño: `24.dp`.
 - Borde: `outline` con `BORDER_WIDTH`.
 
-**DuiSpacer**
-- Mostrar tamaños: `SPACE_4`, `SPACE_8`, `SPACE_12`.
-
-**DuiDivider**
-- Mostrar un divider estándar con `DIVIDER_HEIGHT`.
-
 ### 3) Bitácora de Átomos (pantalla)
 - **Título:** `DuiText.Title` → “Bitácora de átomos”.
 - **Sección Tipografía:**
-  - `DuiText.Title` normal y disabled.
-  - `DuiText.Body` normal y disabled.
+  - `DuiText` en Title/Subtitle/Body/Caption (normal y disabled).
+- **Sección Iconografía:**
+  - `DuiIcon` en 16/24/32 (normal y disabled).
+- **Sección Botones:**
+  - `DuiButton` en 4 variantes + estados (normal/disabled/loading) con y sin icono.
+  - `DuiFab` normal/disabled.
+- **Sección Layout:**
+  - `DuiSpacer` 4/8/12.
+  - `DuiDivider`.
+- **Sección Chips/Badges:**
+  - `DuiChip`/`DuiTag` normal/selected/disabled.
+  - `DuiBadge` punto y numérica.
+- **Sección Progreso:**
+  - `DuiProgress` linear/circular (normal/indeterminado).
+- **Sección Inputs básicos:**
+  - `DuiRadio` unchecked/checked/disabled.
+  - `DuiSwitch` off/on/disabled.
 - **Sección Colores:**
   - Fila `DuiColorSwatch` con los 6 colores del tema.
-- **Sección Layout:**
-  - `DuiSpacer` con etiquetas de tamaño (4/8/12).
-  - `DuiDivider` estándar.
 
 ### 4) Navegación/Make
 - Ruta: `app://bitacora/atoms`.
@@ -63,15 +114,32 @@ Definir el diseño de la bitácora de átomos y sus estados, usando el catálogo
 Bitácora de átomos
 ────────────────────────────────────────
 [Sección: Tipografía]
-Title (normal)   Title (disabled)
-Body (normal)    Body (disabled)
+Title / Subtitle / Body / Caption (normal + disabled)
 
-[Sección: Colores]
-[●][●][●][●][●][●]  (primary, secondary, tertiary, surface, background, error)
+[Sección: Iconografía]
+Icon 16 / 24 / 32 (normal + disabled)
+
+[Sección: Botones]
+Button filled/tonal/outlined/text (normal/disabled/loading)
+Fab (normal/disabled)
 
 [Sección: Layout]
-Spacer 4   Spacer 8   Spacer 12
-Divider ───────────────────────
+Spacer 4 / 8 / 12
+Divider
+
+[Sección: Chips/Badges]
+Chip/Tag (normal/selected/disabled)
+Badge (dot/number)
+
+[Sección: Progreso]
+Progress linear/circular (normal/indeterminado)
+
+[Sección: Inputs básicos]
+Radio (unchecked/checked/disabled)
+Switch (off/on/disabled)
+
+[Sección: Colores]
+[●][●][●][●][●][●]
 ```
 
 ## Entregables (documento)
@@ -80,12 +148,12 @@ Divider ───────────────────────
 - Ruta y comando Make esperado.
 
 ## Verificación futura
-- Estados cubren los átomos definidos en TA-DS-F1.
+- Estados cubren todos los átomos definidos en esta historia.
 - La pantalla respeta el wireframe definido.
 
 ## Criterios de aceptacion
-- La bitácora muestra las 3 secciones con los átomos definidos.
-- Se visualizan estados normal/disabled para `DuiText`.
+- La bitácora muestra todas las secciones definidas.
+- Se visualizan los estados por átomo según esta historia.
 - Se visualiza la fila de 6 swatches.
 - `run-bitacora-atoms` abre la pantalla correcta.
 
