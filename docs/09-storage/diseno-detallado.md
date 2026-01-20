@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 9 Storage (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](09-storage/epica.md)
+- [Volver a Backlog](09-storage/backlog.md)
+
 ## Contexto
 Storage local con Settings MP y SQDelight.
 

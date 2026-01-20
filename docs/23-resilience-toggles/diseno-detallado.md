@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 23 Resilience Toggles (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](23-resilience-toggles/epica.md)
+- [Volver a Backlog](23-resilience-toggles/backlog.md)
+
 ## Contexto
 TaskOverToggle y CallToSeniorToggle para apagar features ante errores repetidos.
 

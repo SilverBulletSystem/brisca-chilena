@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 4 Inkribbon (State Record) (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](04-inkribbon/epica.md)
+- [Volver a Backlog](04-inkribbon/backlog.md)
+
 ## Contexto
 State Record registra estados y acciones para reproducir sesiones y depurar errores.
 

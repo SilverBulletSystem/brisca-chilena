@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 12 Web admin (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](12-web/epica.md)
+- [Volver a Backlog](12-web/backlog.md)
+
 ## Contexto
 Web admin minimo para flags y SDUI samples usando mockserver.
 

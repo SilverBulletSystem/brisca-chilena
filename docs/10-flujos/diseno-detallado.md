@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 10 Flujos del cliente (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](10-flujos/epica.md)
+- [Volver a Backlog](10-flujos/backlog.md)
+
 ## Contexto
 Flujos MVP servidos por SDUI y renderizados con DS.
 

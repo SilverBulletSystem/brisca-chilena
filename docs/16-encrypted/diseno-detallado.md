@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 16 Encrypted Storage (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](16-encrypted/epica.md)
+- [Volver a Backlog](16-encrypted/backlog.md)
+
 ## Contexto
 Proteccion de datos locales con cifrado.
 

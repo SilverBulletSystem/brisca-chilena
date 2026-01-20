@@ -17,3 +17,4 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - Ajuste de enlaces internos en epica de Fundamentos.
 - Navegacion de retorno en backlog y TAs de Fundamentos.
 - Navegacion de retorno en todas las historias tecnicas.
+- Navegacion de retorno en todos los disenos detallados.

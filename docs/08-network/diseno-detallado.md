@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 8 Network (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](08-network/epica.md)
+- [Volver a Backlog](08-network/backlog.md)
+
 ## Contexto
 Capa de red con Ktor y Firestore minimo, configurada por ambiente.
 

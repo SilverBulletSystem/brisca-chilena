@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 1 Fundamentos (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](01-fundamentos/epica.md)
+- [Volver a Backlog](01-fundamentos/backlog.md)
+
 ## 1. Contexto y objetivo
 La Epica 1 define la base tecnica del proyecto Brisca para garantizar consistencia arquitectonica, builds reproducibles y reglas de calidad. Esta epica debe alinearse con el proyecto base `ipchile-multiplatform` y sus ADRs.
 

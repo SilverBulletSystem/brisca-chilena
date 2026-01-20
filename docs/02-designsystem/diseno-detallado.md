@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 2 Design System (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](02-designsystem/epica.md)
+- [Volver a Backlog](02-designsystem/backlog.md)
+
 ## Contexto
 El Design System es la base visual y funcional para SDUI y UI nativa. Define tokens, accesibilidad y catalogos de componentes con bitacoras.
 

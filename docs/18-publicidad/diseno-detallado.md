@@ -1,5 +1,9 @@
 # Diseno detallado - Epica 18 Publicidad (Nivel 4)
 
+## Navegacion
+- [Volver a Epica](18-publicidad/epica.md)
+- [Volver a Backlog](18-publicidad/backlog.md)
+
 ## Contexto
 Publicidad propia gestionada por el equipo, no terceros.
 
