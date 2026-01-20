@@ -1,57 +1,63 @@
 # Plantilla y estándar de Pull Request (cross-épica)
 
-## Título
-- Formato sugerido (alineado a commits): `<tipo>(<scope>): <descripción breve>`
-  - Ej: `feat(ui): add login screen`
-  - Tipos: feat, fix, docs, style, refactor, test, chore, ci, build, other.
-  - Scope para historias técnicas: `ht-XX` (ej. `feat(ht-02): ...`).
+## 1) Título
+- Formato obligatorio: `<tipo>(<scope>): <descripcion breve>`
+- Tipos: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `build`, `other`.
+- Scope para historias técnicas: `ht-XX` (ej: `docs(ht-06): ...`).
 
-## Secciones obligatorias
-1) **Descripción**
-   - Qué se cambió e intención del cambio.
-2) **Tipo de cambio**
-   - [ ] feat
-   - [ ] fix
-   - [ ] docs
-   - [ ] style
-   - [ ] refactor
-   - [ ] test
-   - [ ] chore
-   - [ ] ci
-   - [ ] build
-   - [ ] other (especificar)
-3) **Pruebas realizadas**
-   - Comandos ejecutados o “no aplica” (justificar).
-4) **Checklist**
-   - [ ] Cumple `docs/git-workflow.md` (ramas/commits)
-   - [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]` (obligatoria para cambios de sistema)
-   - [ ] Sin binarios/artefactos generados
-   - [ ] Docs actualizadas si aplica
-   - [ ] Pruebas declaradas
-5) **Impacto**
-   - Riesgos/regresiones potenciales
-   - Flags/ambientes tocados (mock/dev/prod)
-   - i18n/tema/accesibilidad si aplica
-6) **Evidencia**
-   - Capturas/logs/links a pruebas si aplica
+## 2) Contexto y diseño
+- Epic: `docs/<epica>/epica.md`
+- Backlog: `docs/<epica>/backlog.md`
+- TA(s): `docs/<epica>/ta-*.md`
+- ADR(s): `docs/architecture/decisions/adr-*.md` (si aplica)
 
-## Changelog (Keep a Changelog + SemVer)
-- Cada PR con impacto en el sistema agrega entrada en `CHANGELOG.md` → `[Unreleased]` → sección adecuada:
-  - Added: nuevas funcionalidades/componentes/pantallas.
-  - Changed: cambios de comportamiento, refactors visibles, config.
-  - Fixed: bugs corregidos.
-- Formato de bullet conciso y técnico.
-- Versionado: las entradas permanecen en `[Unreleased]` hasta corte de release.
- - Si no aplica entrada, explicitarlo en la sección de Checklist.
+## 3) Descripción (obligatoria)
+- Qué se cambió.
+- Por qué se cambió.
+- Qué queda fuera del alcance.
 
-## Rama y merge
-- Rama desde `main` con prefijo correcto (ver `docs/git-workflow.md`).
-- Revisor: al menos 1.
-- Estrategia: “Squash and merge”.
+## 4) Lista de cambios
+- Bullet list corta (3-7 puntos).
+- Evitar duplicar el changelog.
+
+## 5) Tipo de cambio (marcar uno)
+- [ ] feat
+- [ ] fix
+- [ ] docs
+- [ ] style
+- [ ] refactor
+- [ ] test
+- [ ] chore
+- [ ] ci
+- [ ] build
+- [ ] other (especificar)
+
+## 6) Pruebas realizadas
+- Comandos ejecutados o “no aplica” con justificación.
+
+## 7) Changelog (obligatorio si hay impacto en el sistema)
+- `CHANGELOG.md` → `[Unreleased]` → sección adecuada:
+  - Added / Changed / Fixed
+- Ejemplo:
+  - `- DS: agrega bitácora de organismos flags/monitores`
+
+## 8) Impacto y riesgos
+- Riesgos/regresiones posibles.
+- Flags/ambientes tocados (mock/dev/prod).
+- i18n/tema/accesibilidad si aplica.
+
+## 9) Evidencia
+- Capturas/logs/links si aplica.
+
+## 10) Checklist final
+- [ ] Cumple `docs/git-workflow.md` (rama/commits).
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+- [ ] Sin binarios/artefactos generados.
+- [ ] Docs actualizadas si aplica.
+- [ ] Pruebas declaradas.
+- [ ] `make detekt` pasa sin findings nuevos.
 
 ## Ejemplos rápidos
-- Título: `feat(ht-03): add environment selector`
+- Título: `docs(ht-06): i18n base es/en`
 - Changelog (Unreleased > Added):
-  - `- Selector de ambientes: menú para mock/dev/prod con persistencia local`
-- Changelog (Unreleased > Fixed):
-  - `- Splash: corrige detección de sesión activa al volver de background`
+  - `- i18n base: AppLanguage + StringsProvider + Splash`

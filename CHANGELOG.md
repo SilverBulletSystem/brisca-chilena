@@ -61,6 +61,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F6 define guía de accesibilidad con reglas numéricas y checklist.
 - TA-DS-F7 define reglas i18n estrictas y contratos de bitácoras.
 - ADR-0002 define estrategia de idiomas escalable.
+- Mejora de plantilla de Pull Request y template en .github.
 - Epica 02: orden de ejecución actualizado (F1 antes de F2).
 - TA-DS-F2 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
