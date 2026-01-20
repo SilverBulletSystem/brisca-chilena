@@ -12,6 +12,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 
 ### Changed
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
+- Refinamiento de Epica 02 Design System (epica, backlog, diseno).
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
 - Ajuste de enlaces internos en epica de Fundamentos.
