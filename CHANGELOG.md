@@ -51,6 +51,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F3 excluye moléculas ya creadas (DuiCard y swatch row).
 - TA-DS-F3 agrega DuiRemoteImage y tamaños IMAGE_*.
 - TA-DS-F3 define biblioteca y código para imágenes remotas.
+- Epica 02: renumeración de TA para eliminar salto (F4A-D, F5, F6).
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.

@@ -37,7 +37,7 @@ Excluye:
 - **Estructura de temas**:
   - `default`, `daltonicA`, `daltonicB` (nombres por definir en TA-DS-F1).
 - **Interfaces de strings**:
-  - Por bitácora/pantalla DS (TA-DS-F7).
+  - Por bitácora/pantalla DS (TA-DS-F6).
 
 ## 5. UI y UX
 - Bitácoras con lista de categorías y detalles por componente.

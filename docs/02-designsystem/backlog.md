@@ -28,41 +28,41 @@
 - Verificacion: bitácora de moléculas documentada.
 - Dependencias: TA-DS-F2B.
 
-## TA-DS-F5A Organismos generales
+## TA-DS-F4A Organismos generales
 - Objetivo: definir bitácora y estados de organismos base (catálogo ya en TA-DS-F1).
 - Entregables: estados/props y bitácora de organismos generales.
 - Verificacion: bitácora de organismos generales documentada.
 - Dependencias: TA-DS-F3.
 
-## TA-DS-F5B Organismos juego
+## TA-DS-F4B Organismos juego
 - Objetivo: definir bitácora y estados de organismos de juego (catálogo ya en TA-DS-F1).
 - Entregables: estados/props y bitácora de organismos de juego.
 - Verificacion: bitácora de organismos de juego documentada.
 - Dependencias: TA-DS-F3.
 
-## TA-DS-F5C Organismos chat/soporte
+## TA-DS-F4C Organismos chat/soporte
 - Objetivo: definir bitácora y estados de organismos de chat/soporte (catálogo ya en TA-DS-F1).
 - Entregables: estados/props y bitácora de organismos de chat/soporte.
 - Verificacion: bitácora de organismos de chat/soporte documentada.
 - Dependencias: TA-DS-F3.
 
-## TA-DS-F5D Organismos flags/monitores
+## TA-DS-F4D Organismos flags/monitores
 - Objetivo: definir bitácora y estados de organismos flags/monitores (catálogo ya en TA-DS-F1).
 - Entregables: estados/props y bitácora de organismos flags/monitores.
 - Verificacion: bitácora de organismos flags/monitores documentada.
 - Dependencias: TA-DS-F3.
 
-## TA-DS-F6 Accesibilidad
+## TA-DS-F5 Accesibilidad
 - Objetivo: checklist de accesibilidad y reglas de contraste.
 - Entregables: guía de accesibilidad para Dui.
 - Verificacion: checklist aplicada a cada componente.
-- Dependencias: TA-DS-F1 a TA-DS-F5.
+- Dependencias: TA-DS-F1 a TA-DS-F4.
 
-## TA-DS-F7 i18n estricto
+## TA-DS-F6 i18n estricto
 - Objetivo: reglas de i18n en DS sin strings literales.
 - Entregables: interfaces de strings por bitácora o pantalla DS.
 - Verificacion: checklist i18n en componentes Dui.
 - Dependencias: Epica 1 (i18n base).
 
 ## Notas
-- Orden sugerido: F1 → F2A → F2B → F3 → F5A/B/C/D → F6 → F7.
+- Orden sugerido: F1 → F2A → F2B → F3 → F4A/B/C/D → F5 → F6.
