@@ -2,4 +2,4 @@
 
 Listado de ADRs del proyecto.
 
-- [ADR-0001 Estandar de iconos](adr-0001-estandar-iconos.md)
+- [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)

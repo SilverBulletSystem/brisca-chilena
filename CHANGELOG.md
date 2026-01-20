@@ -12,6 +12,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - ADR-0001 para estandar de iconos.
 - Indice de ADRs.
 - README con sección ADRs para navegación.
+- ADR index con link absoluto al ADR-0001.
 
 ### Changed
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
