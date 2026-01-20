@@ -53,15 +53,15 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - `outline`, `outlineVariant`
 - `scrim`, `inverseSurface`, `inverseOnSurface`, `inversePrimary`
 
-**Paleta default (light) — valores iniciales obligatorios:**
-- `primary`: `#6750A4`
+**Paleta default (light) — valores obligatorios (morado + amarillo):**
+- `primary`: `#6A1B9A`
 - `onPrimary`: `#FFFFFF`
-- `primaryContainer`: `#EADDFF`
-- `onPrimaryContainer`: `#21005D`
-- `secondary`: `#625B71`
-- `onSecondary`: `#FFFFFF`
-- `secondaryContainer`: `#E8DEF8`
-- `onSecondaryContainer`: `#1D192B`
+- `primaryContainer`: `#E9D5FF`
+- `onPrimaryContainer`: `#2D004F`
+- `secondary`: `#FBC02D`
+- `onSecondary`: `#3B2E00`
+- `secondaryContainer`: `#FFF4C2`
+- `onSecondaryContainer`: `#3A2E00`
 - `tertiary`: `#7D5260`
 - `onTertiary`: `#FFFFFF`
 - `tertiaryContainer`: `#FFD8E4`
@@ -83,15 +83,15 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - `inverseOnSurface`: `#F4EFF4`
 - `inversePrimary`: `#D0BCFF`
 
-**Paleta default (dark) — valores iniciales obligatorios:**
-- `primary`: `#D0BCFF`
-- `onPrimary`: `#381E72`
-- `primaryContainer`: `#4F378B`
-- `onPrimaryContainer`: `#EADDFF`
-- `secondary`: `#CCC2DC`
-- `onSecondary`: `#332D41`
-- `secondaryContainer`: `#4A4458`
-- `onSecondaryContainer`: `#E8DEF8`
+**Paleta default (dark) — valores obligatorios (morado + amarillo):**
+- `primary`: `#D7B8FF`
+- `onPrimary`: `#3A0B59`
+- `primaryContainer`: `#4B1D72`
+- `onPrimaryContainer`: `#F2E7FF`
+- `secondary`: `#FFD54F`
+- `onSecondary`: `#3A2E00`
+- `secondaryContainer`: `#5C4A00`
+- `onSecondaryContainer`: `#FFE7A0`
 - `tertiary`: `#EFB8C8`
 - `onTertiary`: `#492532`
 - `tertiaryContainer`: `#633B48`
@@ -113,21 +113,40 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - `inverseOnSurface`: `#313033`
 - `inversePrimary`: `#6750A4`
 
-**Variantes daltónicas (MVP) — tabla de semillas obligatorias:**
-- La generación de `ColorScheme` para variantes se hace con `ColorScheme.fromSeed` y **semilla fija por variante**.
-- No hay ajustes manuales adicionales: la semilla define el esquema completo (light/dark).
+**Variantes daltónicas — equivalentes para morado/amarillo:**
+Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el resto de roles usa la paleta default.
 
-| Variante | Seed color (HEX) | contrastLevel |
-|---|---|---|
-| DEFAULT | `#6750A4` | `0.0` |
-| DEUTERANOPIA | `#0072B2` | `0.0` |
-| TRITANOPIA | `#009E73` | `0.0` |
-| ACHROMATOPSIA | `#9E9E9E` | `0.0` |
-| HIGH_CONTRAST | `#000000` | `1.0` |
+**Deuteranopia**
+- Light:
+  - `primary`: `#0072B2`, `onPrimary`: `#FFFFFF`, `primaryContainer`: `#D6ECFF`, `onPrimaryContainer`: `#001D36`
+  - `secondary`: `#E69F00`, `onSecondary`: `#2B1F00`, `secondaryContainer`: `#FFE4B5`, `onSecondaryContainer`: `#2B1F00`
+- Dark:
+  - `primary`: `#9CCEFF`, `onPrimary`: `#003352`, `primaryContainer`: `#00507A`, `onPrimaryContainer`: `#D6ECFF`
+  - `secondary`: `#FFC857`, `onSecondary`: `#3A2E00`, `secondaryContainer`: `#7A5A00`, `onSecondaryContainer`: `#FFE4B5`
 
-**Regla de implementación:**
-- Para cada variante, usar `ColorScheme.fromSeed(seedColor = <seed>, darkTheme = true|false, contrastLevel = <valor>)`.
-- No se redefine ningún role manualmente en estas variantes.
+**Tritanopia**
+- Light:
+  - `primary`: `#009E73`, `onPrimary`: `#FFFFFF`, `primaryContainer`: `#C8F4E3`, `onPrimaryContainer`: `#003525`
+  - `secondary`: `#CC79A7`, `onSecondary`: `#3A1A2B`, `secondaryContainer`: `#F8D7E6`, `onSecondaryContainer`: `#3A1A2B`
+- Dark:
+  - `primary`: `#76D7B5`, `onPrimary`: `#003A2A`, `primaryContainer`: `#006B4A`, `onPrimaryContainer`: `#C8F4E3`
+  - `secondary`: `#E6A6C7`, `onSecondary`: `#4A2236`, `secondaryContainer`: `#6B3A53`, `onSecondaryContainer`: `#F8D7E6`
+
+**Achromatopsia**
+- Light:
+  - `primary`: `#616161`, `onPrimary`: `#FFFFFF`, `primaryContainer`: `#E0E0E0`, `onPrimaryContainer`: `#1B1B1B`
+  - `secondary`: `#9E9E9E`, `onSecondary`: `#1B1B1B`, `secondaryContainer`: `#F0F0F0`, `onSecondaryContainer`: `#1B1B1B`
+- Dark:
+  - `primary`: `#CFCFCF`, `onPrimary`: `#1B1B1B`, `primaryContainer`: `#7A7A7A`, `onPrimaryContainer`: `#F2F2F2`
+  - `secondary`: `#B0B0B0`, `onSecondary`: `#1B1B1B`, `secondaryContainer`: `#5C5C5C`, `onSecondaryContainer`: `#F2F2F2`
+
+**High Contrast**
+- Light:
+  - `primary`: `#000000`, `onPrimary`: `#FFFFFF`, `primaryContainer`: `#FFFFFF`, `onPrimaryContainer`: `#000000`
+  - `secondary`: `#4D4D4D`, `onSecondary`: `#FFFFFF`, `secondaryContainer`: `#E6E6E6`, `onSecondaryContainer`: `#000000`
+- Dark:
+  - `primary`: `#FFFFFF`, `onPrimary`: `#000000`, `primaryContainer`: `#B3B3B3`, `onPrimaryContainer`: `#000000`
+  - `secondary`: `#E6E6E6`, `onSecondary`: `#000000`, `secondaryContainer`: `#4D4D4D`, `onSecondaryContainer`: `#FFFFFF`
 
 ### 3) Tipografía (tokens + mapeo)
 **Familia base:** `Default/System` (sin fuente custom en esta historia).
@@ -222,7 +241,7 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 
 ## Verificación futura
 - Tokens cubren todos los roles usados por átomos/moléculas/organismos Dui.
-- Temas daltónicos definidos a nivel de tokens (en MVP con valores iguales al default).
+- Variantes daltónicas definen primary/secondary y containers según tabla.
 
 ## No incluido
 - Implementación de temas en código ni UI.
