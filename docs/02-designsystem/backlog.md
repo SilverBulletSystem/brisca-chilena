@@ -17,39 +17,39 @@
 - Dependencias: estructura de navegación definida.
 
 ## TA-DS-F2B Atomos y bitacora
-- Objetivo: definir catálogo de átomos Dui y estados.
-- Entregables: inventario de átomos, estados y bitácora por categoría.
+- Objetivo: definir estados y bitácora de átomos (catálogo ya en TA-DS-F1).
+- Entregables: estados y bitácora por categoría.
 - Verificacion: bitácora de átomos documentada.
 - Dependencias: TA-DS-F1.
 
 ## TA-DS-F3 Moleculas y bitacora
-- Objetivo: definir catálogo de moléculas Dui y variantes.
-- Entregables: inventario de moléculas, estados y bitácora.
+- Objetivo: definir estados/variantes y bitácora de moléculas (catálogo ya en TA-DS-F1).
+- Entregables: estados/variantes y bitácora.
 - Verificacion: bitácora de moléculas documentada.
 - Dependencias: TA-DS-F2B.
 
 ## TA-DS-F5A Organismos generales
-- Objetivo: definir organismos base de layout y navegación.
-- Entregables: listado de organismos generales con estados.
+- Objetivo: definir bitácora y estados de organismos base (catálogo ya en TA-DS-F1).
+- Entregables: estados/props y bitácora de organismos generales.
 - Verificacion: bitácora de organismos generales documentada.
 - Dependencias: TA-DS-F3.
 
 ## TA-DS-F5B Organismos juego
-- Objetivo: definir organismos específicos de juego.
-- Entregables: listado de organismos de juego con estados.
+- Objetivo: definir bitácora y estados de organismos de juego (catálogo ya en TA-DS-F1).
+- Entregables: estados/props y bitácora de organismos de juego.
 - Verificacion: bitácora de organismos de juego documentada.
 - Dependencias: TA-DS-F3.
 
 ## TA-DS-F5C Organismos chat/soporte
-- Objetivo: definir organismos de chat y soporte.
-- Entregables: listado de organismos de chat/soporte con estados.
+- Objetivo: definir bitácora y estados de organismos de chat/soporte (catálogo ya en TA-DS-F1).
+- Entregables: estados/props y bitácora de organismos de chat/soporte.
 - Verificacion: bitácora de organismos de chat/soporte documentada.
 - Dependencias: TA-DS-F3.
 
 ## TA-DS-F5D Organismos flags/monitores
-- Objetivo: definir organismos para flags/monitores.
-- Entregables: listado de organismos de flags/monitores con estados.
-- Verificacion: bitácora de organismos de flags/monitores documentada.
+- Objetivo: definir bitácora y estados de organismos flags/monitores (catálogo ya en TA-DS-F1).
+- Entregables: estados/props y bitácora de organismos flags/monitores.
+- Verificacion: bitácora de organismos flags/monitores documentada.
 - Dependencias: TA-DS-F3.
 
 ## TA-DS-F6 Accesibilidad

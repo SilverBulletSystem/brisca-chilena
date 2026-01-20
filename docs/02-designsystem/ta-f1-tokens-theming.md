@@ -204,6 +204,83 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
   - `setMode(ThemeMode)`
 - Persistencia **no** se implementa aquí (se documenta como futura).
 
+### 7) Catálogo completo DS (definido en esta historia)
+**Átomos (Dui):**
+- `DuiText` (Title/Subtitle/Body/Caption)
+- `DuiIcon`
+- `DuiButton` (filled/tonal/outlined/text + icon)
+- `DuiFab`
+- `DuiDivider`
+- `DuiSpacer`
+- `DuiChip`/`DuiTag`
+- `DuiBadge` (incl. numérica)
+- `DuiProgress` (linear/circular)
+- `DuiRadio`
+- `DuiSwitch`
+
+**Moléculas (Dui):**
+- `DuiIconButton`
+- `DuiTextField` (single/password, con iconos/label)
+- `DuiCheckbox`
+- `DuiToggle` (switch con label/estado)
+- `DuiListItem` (leading/trailing)
+- `DuiSettingsItem`
+- `DuiCard`
+- `DuiBanner`
+- `DuiSnackbar`
+- `DuiDialog`/`DuiBottomSheet`
+- `DuiDropdown`/`DuiSelect`
+- `DuiTabs`/`DuiFilterChips`
+- `DuiAccordion`
+- `DuiAvatar`
+- `DuiItemCard`
+- `DuiTypingIndicator`
+- `DuiMessageStatus`
+- Botones con identidad: `DuiLoginButton`, `DuiRegisterButton`, `DuiRecoverButton`, `DuiVerifyAccountButton`, `DuiLogoutButton`
+- Selectores: `DuiLanguageSelector`/`DuiLanguageOption`, `DuiSoundToggle`
+
+**Organismos (Dui) — generales:**
+- `DuiAppScaffold` (top/bottom bars, drawer)
+- `DuiTopBar`
+- `DuiBottomNav`/`DuiBottomBar`
+- `DuiNavigationRail`/`DuiDrawer`/`DuiSideMenu`
+- `DuiList`/`DuiSection`/`DuiGrid`
+- `DuiSettingsList`
+- `DuiEmptyState`, `DuiErrorState`, `DuiLoading`
+- `DuiThemeSelector`
+- `DuiEnvironmentSelector`/`DuiEnvironmentItem`
+- `DuiLogoutDialog`
+- `DuiSoundSetting`
+
+**Organismos (Dui) — juego:**
+- `DuiCardFace`/`DuiNaipe`
+- `DuiCardDeck`/`DuiShuffleControl`
+- `DuiDealControl`
+- `DuiHand`/`DuiPlayList`/`DuiCardHand`
+- Acciones: `DuiRenuncio`, `DuiCobrarRenuncio`, `DuiVale`, `DuiCobrarVale`, `DuiAcceptPlay`, `DuiRejectPlay`, `DuiReady`, `DuiStartMatch`, `DuiLeaveMatch`
+- Estado/turno: `DuiTurnState`, `DuiTimer`/`DuiCountdown`
+- Score: `DuiScoreboard1v1`, `DuiScoreboard2v2`, `DuiScoreTable1v1`, `DuiScoreTable2v2`
+- `DuiTeamPanel`/`DuiPlayerStatus`
+- Match/session: `DuiMatchInviteCard`, `DuiLobbyList`/`DuiPlayerSeat`
+- `DuiPauseOverlay`/`DuiResumeButton`
+- `DuiMatchHistoryList`
+- `DuiAchievementItem`, `DuiCapoteBanner`
+
+**Organismos (Dui) — chat/soporte:**
+- `DuiMessageBubble`
+- `DuiMessageInput` + send
+- `DuiMessageList`
+- `DuiTypingIndicator`
+- `DuiAttachmentAction`
+- `DuiSupportForm`
+
+**Organismos (Dui) — flags/monitores:**
+- `DuiFlagList` (con `DuiToggle`)
+- `DuiTable`/two-column item
+- `DuiLogList`
+- `DuiTimeline`
+- Filtros (`DuiFilterChips`/`DuiSelect`)
+
 ## UI y UX
 - El DS no define pantallas de negocio; solo temas y tokens.
 - Se requiere **menú mínimo de temas** para validar variantes y modos.
@@ -265,10 +342,12 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - Lista de tokens por categoría (colores, tipografía, dimens, shapes).
 - Tabla/resumen de temas y roles.
 - Pauta de integración con `ThemeManager`.
+- Catálogo completo de átomos, moléculas y organismos.
 
 ## Verificación futura
 - Tokens cubren todos los roles usados por átomos/moléculas/organismos Dui.
 - Variantes daltónicas definen primary/secondary y containers según tabla.
+- Catálogo DS completo queda centralizado en esta historia.
 
 ## No incluido
 - Implementación de temas en código ni UI.

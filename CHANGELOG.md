@@ -21,6 +21,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F1 usa tema morado/amarillo y equivalentes daltónicos explícitos.
 - TA-DS-F1 agrega sección de Pull Request.
 - TA-DS-F1 agrega menú mínimo de temas y comandos Make de prueba.
+- Catálogo DS se centraliza en TA-DS-F1; bitácoras se enfocan en estados.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
 - Ajuste de enlaces internos en epica de Fundamentos.

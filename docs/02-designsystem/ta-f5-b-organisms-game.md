@@ -8,26 +8,25 @@
 - `feat/ht-ds-f5-b-organisms-game`
 
 ## Objetivo
-Definir catálogo y bitácora para organismos de juego (naipe, score, lobby, pausa, historial, logros) con navegación Make. Sin implementación.
+Definir bitácora para organismos de juego (naipe, score, lobby, pausa, historial, logros) usando el catálogo ya definido en TA-DS-F1. Sin implementación.
 
 ## Alcance
-- Organismos de juego: `DuiCardFace`/`DuiNaipe`, `DuiCardDeck`/`DuiShuffleControl`, `DuiDealControl`, `DuiHand`/`DuiPlayList`/`DuiCardHand`, acciones `DuiRenuncio`, `DuiCobrarRenuncio`, `DuiVale`, `DuiCobrarVale`, `DuiAcceptPlay`, `DuiRejectPlay`, `DuiReady`, `DuiStartMatch`, `DuiLeaveMatch`, estado/turno `DuiTurnState`, `DuiTimer`/`DuiCountdown`, score `DuiScoreboard1v1`/`DuiScoreboard2v2`/`DuiScoreTable1v1`/`DuiScoreTable2v2`, `DuiTeamPanel`/`DuiPlayerStatus`, lobby/partida `DuiMatchInviteCard`, `DuiLobbyList`/`DuiPlayerSeat`, `DuiPauseOverlay`/`DuiResumeButton`, `DuiMatchHistoryList`, logros `DuiAchievementItem`, `DuiCapoteBanner`.
 - Bitácora de juego: secciones y escenarios (1v1/2v2, pausa, invitación, historial, capote).
 - Navegación/Make: comando para abrir la bitácora de juego sin interacción manual.
 
 ## Diseño (doc)
-1) Catálogo de organismos de juego con props y estados (turno, timers, score, acciones).
+1) Props y estados relevantes (turno, timers, score, acciones).
 2) Pantalla “Bitácora Organismos Juego”: secciones por flujo (invitación/lobby, barajar/repartir, acciones, score, pausa/historial/logros).
 3) Ruta interna propuesta: `app://bitacora/organisms/game`.
 4) Target Make propuesto: `make run-bitacora-organisms-game`.
 
 ## Entregables (documento)
-- Catálogo de organismos de juego y props.
+- Props/estados por organismo de juego.
 - Diseño de pantalla de bitácora de juego.
 - Ruta y comando Make definidos.
 
 ## Verificación futura
-- Cobertura de organismos de juego completa.
+- Props/estados cubren organismos definidos en TA-DS-F1.
 - Comando/ruta documentados para QA/dev.
 
 ## No incluido

@@ -8,26 +8,25 @@
 - `feat/ht-ds-f5-c-organisms-chat`
 
 ## Objetivo
-Definir catálogo y bitácora para organismos de chat/soporte con navegación Make. Sin implementación.
+Definir bitácora para organismos de chat/soporte usando el catálogo ya definido en TA-DS-F1. Sin implementación.
 
 ## Alcance
-- Organismos chat/soporte: `DuiMessageBubble`, `DuiMessageInput` + send, `DuiMessageList`, `DuiTypingIndicator`, `DuiAttachmentAction`, `DuiSupportForm`.
 - Bitácora: secciones/escenarios (estado typing, mensajes con/sin attachments, soporte con campos obligatorios).
 - Navegación/Make: comando para abrir la bitácora de chat/soporte sin interacción manual.
 
 ## Diseño (doc)
-1) Catálogo con props/estados: mensajes propios/remotos, estado enviado/leído, typing on/off, adjuntos on/off.
+1) Props/estados: mensajes propios/remotos, estado enviado/leído, typing on/off, adjuntos on/off.
 2) Pantalla “Bitácora Organismos Chat/Soporte”: agrupación por escenarios (chat normal, soporte, typing, adjuntos).
 3) Ruta interna propuesta: `app://bitacora/organisms/chat`.
 4) Target Make propuesto: `make run-bitacora-organisms-chat`.
 
 ## Entregables (documento)
-- Catálogo y props de organismos de chat/soporte.
+- Props/estados de organismos de chat/soporte.
 - Diseño de pantalla de bitácora de chat/soporte.
 - Ruta y comando Make definidos.
 
 ## Verificación futura
-- Cobertura de organismos de chat/soporte completa.
+- Props/estados cubren organismos definidos en TA-DS-F1.
 - Comando/ruta documentados.
 
 ## No incluido
