@@ -113,9 +113,21 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - `inverseOnSurface`: `#313033`
 - `inversePrimary`: `#6750A4`
 
-**Variantes daltónicas (MVP):**
-- Deuteranopia, Tritanopia, Achromatopsia, High Contrast **repiten los mismos valores** del tema default (light/dark).
-- Razón: se requiere implementación sin decisiones de color en esta etapa; la calibración de paletas será una historia de accesibilidad posterior.
+**Variantes daltónicas (MVP) — tabla de semillas obligatorias:**
+- La generación de `ColorScheme` para variantes se hace con `ColorScheme.fromSeed` y **semilla fija por variante**.
+- No hay ajustes manuales adicionales: la semilla define el esquema completo (light/dark).
+
+| Variante | Seed color (HEX) | contrastLevel |
+|---|---|---|
+| DEFAULT | `#6750A4` | `0.0` |
+| DEUTERANOPIA | `#0072B2` | `0.0` |
+| TRITANOPIA | `#009E73` | `0.0` |
+| ACHROMATOPSIA | `#9E9E9E` | `0.0` |
+| HIGH_CONTRAST | `#000000` | `1.0` |
+
+**Regla de implementación:**
+- Para cada variante, usar `ColorScheme.fromSeed(seedColor = <seed>, darkTheme = true|false, contrastLevel = <valor>)`.
+- No se redefine ningún role manualmente en estas variantes.
 
 ### 3) Tipografía (tokens + mapeo)
 **Familia base:** `Default/System` (sin fuente custom en esta historia).
