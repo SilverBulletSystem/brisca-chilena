@@ -22,7 +22,6 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 
 ## Dependencias
 - Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
-- ADR-0017 (Atomic Design), ADR-0019 (i18n), ADR-0029 (ThemeDimens).
 
 ## Modelo de dominio
 - **Token**: valor atómico reutilizable (color, tipografía, dimensión, shape).
