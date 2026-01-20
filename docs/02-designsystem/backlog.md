@@ -10,10 +10,10 @@
 - Verificacion: tokens y mapping documentados.
 - Dependencias: Epica 1 (i18n base y ThemeDimens).
 
-## TA-DS-F2A Make shortcuts bitacoras
-- Objetivo: definir rutas internas y comandos Make para abrir bitácoras.
-- Entregables: rutas/deeplinks y targets Make.
-- Verificacion: comandos `make run-bitacora-*` documentados.
+## TA-DS-F2A Bitácoras mínimas + shortcuts Make
+- Objetivo: crear pantallas mínimas de bitácoras y definir rutas/comandos Make para abrirlas.
+- Entregables: bitácoras mínimas (átomos, moléculas, organismos) + rutas/deeplinks + targets Make.
+- Verificacion: `make run-bitacora-*` abre una pantalla existente y navegable.
 - Dependencias: estructura de navegación definida.
 
 ## TA-DS-F2B Atomos y bitacora
