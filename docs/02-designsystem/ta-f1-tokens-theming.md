@@ -247,7 +247,7 @@ Regla: solo se reemplazan roles **primary/secondary** y sus containers/on*; el r
 - El DS no define pantallas de negocio; solo temas y tokens.
 - Bitácora de temas con listado de todos los temas soportados.
 
-**Bitácora de temas (alcance mínimo):**
+**Bitácora de temas (pantalla: `ThemeCatalogScreen`):**
 - Lista de tarjetas (una por tema soportado).
 - Cada tarjeta incluye:
   - Título (nombre del tema).
