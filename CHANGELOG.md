@@ -54,6 +54,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - TA-DS-F3 define biblioteca y código para imágenes remotas.
 - Epica 02: renumeración de TA para eliminar salto (F4A-D, F5, F6).
 - TA-DS-F4A define bitácora de organismos generales con wireframe.
+- TA-DS-F4B define bitácora de organismos juego con wireframe.
 - TA-DS-F1 elimina referencias a ADRs inexistentes.
 - Indice de documentacion con enlaces completos.
 - Mejora de navegacion del indice para GitHub Pages.
