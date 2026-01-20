@@ -14,6 +14,7 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - README con sección ADRs para navegación.
 - ADR index con link absoluto al ADR-0001.
 - ADR-0001 agrega volver al listado.
+- Sidebar: quitar “Listado de ADRs”.
 
 ### Changed
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
