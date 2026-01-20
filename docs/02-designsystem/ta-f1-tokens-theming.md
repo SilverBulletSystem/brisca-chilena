@@ -16,7 +16,22 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
 - `ThemeDimens`: espaciados, tamaños de ítems touch (>=48dp), alturas de inputs/dropdowns, radios.
 - Shapes: esquinas por jerarquía (card, dialog, chip).
 - Estructura de temas: default + variantes daltónicos (Deuteranopia, Tritanopia, Achromatopsia, High Contrast) definidas en tokens.
- - Contrato de `ThemeManager` y selección de variante/tema.
+- Contrato de `ThemeManager` y selección de variante/tema.
+
+## Dependencias
+- Epica 1: reglas de `ThemeDimens`, `MaterialTheme` y i18n base.
+- ADR-0017 (Atomic Design), ADR-0019 (i18n), ADR-0029 (ThemeDimens).
+
+## Modelo de dominio
+- **Token**: valor atómico reutilizable (color, tipografía, dimensión, shape).
+- **Theme**: conjunto de tokens agrupados por rol.
+- **ThemeVariant**: variante visual (default, daltónicos).
+- **ThemeMode**: modo de color (light/dark/system).
+
+## Contratos y datos
+- Los tokens se definen como constantes tipadas (Color, TextStyle, Dp).
+- Los nombres de roles deben coincidir con `MaterialTheme.colorScheme` y `MaterialTheme.typography`.
+- `ThemeManager` expone selección actual y setters para variante y modo.
 
 ## Diseño (doc)
 ### 1) Estructura de archivos esperada
@@ -155,6 +170,38 @@ Diseñar la definición completa de tokens (colores, tipografía, `ThemeDimens`,
   - `setVariant(ThemeVariant)`
   - `setMode(ThemeMode)`
 - Persistencia **no** se implementa aquí (se documenta como futura).
+
+## UI y UX
+- El DS no define pantallas de negocio; solo temas y tokens.
+- Bitácoras usarán estos tokens en historias posteriores.
+
+## Flujos y secuencias
+1) Selección de variante de tema (default o daltónica).
+2) Selección de modo (light/dark/system).
+3) Aplicación de tokens en `DuiTheme`.
+
+## Seguridad y privacidad
+- No aplica (sin PII ni persistencia en esta historia).
+
+## Performance
+- Sin impacto relevante; tokens son constantes en memoria.
+
+## Observabilidad
+- No se requieren eventos ni logs en esta historia.
+
+## Testing
+- Checklist de consistencia: roles completos y mapeo correcto.
+- Verificación manual de que `MaterialTheme` recibe todos los tokens.
+
+## Criterios de aceptacion
+- Tokens definidos con roles completos y valores explícitos.
+- Tipografía mapeada a `MaterialTheme.typography` con tamaños/pesos definidos.
+- `ThemeDimens` y shapes con valores definidos.
+- `ThemeManager` con contrato de selección de variante/modo.
+
+## Pendientes y riesgos
+- Ajuste futuro de paletas daltónicas reales.
+- Riesgo de inconsistencias si se agregan roles fuera del estándar.
 
 ## Entregables (documento)
 - Lista de tokens por categoría (colores, tipografía, dimens, shapes).
