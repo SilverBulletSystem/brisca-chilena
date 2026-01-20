@@ -8,19 +8,20 @@
 - `feat/ht-ds-f2-make-shortcuts`
 
 ## Objetivo
-Definir y crear bitácoras mínimas, además de rutas/deeplinks y comandos Make para abrirlas sin interacción manual (patrón `make run-bitacora`).
+Definir y crear bitácoras mínimas (incluida la de temas), además de rutas/deeplinks y comandos Make para abrirlas sin interacción manual (patrón `make run-bitacora`).
 
 ## Alcance
-- Bitácoras mínimas reales (pantallas destino) para átomos, moléculas y organismos.
-- Rutas internas para bitácoras de átomos, moléculas y organismos (general, juego, chat, flags).
+- Bitácoras mínimas reales (pantallas destino) para temas, átomos, moléculas y organismos.
+- Rutas internas para bitácoras de temas, átomos, moléculas y organismos (general, juego, chat, flags).
 - Targets Make que lancen la app en cada ruta.
 
 ## Diseño (doc)
 1) Bitácoras mínimas:
-   - Crear pantallas destino con layout básico (título + lista vacía/placeholder).
+   - Crear pantallas destino con layout básico.
    - Deben ser navegables y renderizar sin fallas.
-   - No requieren catálogo completo aún (eso va en TA-DS-F2B/F3/F5).
+   - La bitácora de temas **no** es placeholder: debe renderizar la lista definida en TA-DS-F1.
 2) Rutas propuestas:
+   - Temas: `app://bitacora/theme`
    - Átomos: `app://bitacora/atoms`
    - Moléculas: `app://bitacora/molecules`
    - Organismos:
@@ -29,6 +30,7 @@ Definir y crear bitácoras mínimas, además de rutas/deeplinks y comandos Make 
      - Chat/Soporte: `app://bitacora/organisms/chat`
      - Flags/Monitores: `app://bitacora/organisms/flags`
 3) Targets Make propuestos (explícitos):
+   - `make run-bitacora-theme`
    - `make run-bitacora-atoms`
    - `make run-bitacora-molecules`
    - `make run-bitacora-organisms-general`
