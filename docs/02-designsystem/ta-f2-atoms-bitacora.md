@@ -43,7 +43,11 @@ Definir y crear el catálogo completo de átomos Dui y su bitácora, con estados
 
 **DuiIcon**
 - Estados: `normal`, `disabled`.
-- Tamaños: `16.dp`, `24.dp`, `32.dp`.
+- Tamaños: `ThemeDimens.ICON_SM`, `ThemeDimens.ICON_MD`, `ThemeDimens.ICON_LG`.
+- Si no existen, crear en `ThemeDimens`:
+  - `ICON_SM = 16.dp`
+  - `ICON_MD = 24.dp`
+  - `ICON_LG = 32.dp`
 
 **DuiButton**
 - Variantes: filled, tonal, outlined, text.
