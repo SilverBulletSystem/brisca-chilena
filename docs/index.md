@@ -23,6 +23,8 @@ Bienvenido. Usa este índice para navegar toda la documentación del proyecto.
 
 ## ADRs
 - [ADR-0001 Estandar de iconos](architecture/decisions/adr-0001-estandar-iconos.md)
+- [ADR-0002 Estrategia de idiomas escalable](architecture/decisions/adr-0002-estrategia-idiomas.md)
+- [ADR-0003 Renderer SDUI con mapa de estrategias](architecture/decisions/adr-0003-renderer-strategy.md)
 
 ## Epicas
 ### Epica 01 - Fundamentos
