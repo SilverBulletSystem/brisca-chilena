@@ -20,8 +20,8 @@
 - Verificacion: respuesta 200 y body no vacio.
 
 ## HT-F4 Ktor y ambientes (mock/dev/prod)
-- Objetivo: definir ambientes, flavors Android y Mockoon CLI para pruebas.
-- Entregables: contrato `NetworkEnvironment`, `mock/dev/prod`, puertos 3002/3003/3004, comandos make.
+- Objetivo: definir ambientes, flavors Android y **Mockoon CLI obligatorio** para pruebas.
+- Entregables: contrato `NetworkEnvironment`, `mock/dev/prod` diferenciados por **puertos 3002/3003/3004**, comandos Make con Mockoon CLI.
 - Verificacion: `env-start|check|stop` operativos por ambiente.
 
 ## HT-F5 Detekt (spike reglas extra)

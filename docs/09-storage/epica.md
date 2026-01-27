@@ -1,5 +1,17 @@
 # Epica 9 — Storage
 
+## Navegacion
+- [Backlog tecnico](09-storage/backlog.md)
+- [Diseno detallado](09-storage/diseno-detallado.md)
+- Historias tecnicas:
+  - [TA-STORAGE-F0 Dominio](09-storage/ta-f0-domain.md)
+  - [TA-STORAGE-F1 Settings](09-storage/ta-f1-settings.md)
+  - [TA-STORAGE-F2 DB config](09-storage/ta-f2-dbconfig.md)
+  - [TA-STORAGE-F3 Factories/DI](09-storage/ta-f3-di.md)
+  - [TA-STORAGE-F4 Smokes](09-storage/ta-f4-smokes.md)
+  - [TA-STORAGE-F5 Make](09-storage/ta-f5-make.md)
+  - [TA-STORAGE-F6 Testing](09-storage/ta-f6-testing.md)
+
 ## Contexto
 Settings MP y SQDelight para persistencia local.
 

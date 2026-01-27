@@ -5,7 +5,7 @@
 - [Volver a Backlog](01-fundamentos/backlog.md)
 
 ## Objetivo
-Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/prod` de forma consistente con el proyecto, incluyendo el detalle de implementación esperado.
+Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/prod` de forma consistente con el proyecto, incluyendo el detalle de implementación esperado. Mockoon CLI es obligatorio como infraestructura de mockserver y los ambientes se diferencian por puertos.
 
 ## Rama
 - Crear desde `main`: `feat/ht-f4-ktor-ambientes`.
@@ -53,6 +53,7 @@ Diseñar la configuración de red con Ktor para resolver ambientes `mock/dev/pro
      - Prod: `prod-release`.
      - `prod-debug` solo para depurar errores puntuales.
 7) Mockoon CLI (estructura y convenciones):
+   - Infraestructura de mockserver transversal (no acoplada a SDUI).
    - Estructura:
      - `mockserver/brisca-mockoon.json` (config principal).
      - `mockserver/README.md` (uso local).

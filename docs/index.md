@@ -69,7 +69,10 @@ Bienvenido. Usa este índice para navegar toda la documentación del proyecto.
   - [TA-F4 Make](03-magicsdui/ta-f4-make.md)
   - [TA-F5 Samples](03-magicsdui/ta-f5-samples.md)
   - [TA-F6 Flags + ambientes](03-magicsdui/ta-f6-flags-ambientes.md)
-  - [TA-F7 Testing](03-magicsdui/ta-f7-testing.md)
+  - [TA-F7 Login Screen](03-magicsdui/ta-f7-login-screen.md)
+  - [TA-F8 Splash Screen](03-magicsdui/ta-f8-splash-screen.md)
+  - [TA-F9 Home Screen](03-magicsdui/ta-f9-home-screen.md)
+  - [TA-F10 Integration Test](03-magicsdui/ta-f10-testing.md)
 
 ### Epica 04 - Inkribbon (State Record)
 - [Epica](04-inkribbon/epica.md)

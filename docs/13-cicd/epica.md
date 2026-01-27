@@ -1,5 +1,16 @@
 # Epica 13 — CI/CD + Calidad
 
+## Navegacion
+- [Backlog tecnico](13-cicd/backlog.md)
+- [Diseno detallado](13-cicd/diseno-detallado.md)
+- Historias tecnicas:
+  - [TA-CICD-F0 Workflows](13-cicd/ta-f0-workflows.md)
+  - [TA-CICD-F1 Make](13-cicd/ta-f1-make.md)
+  - [TA-CICD-F2 Detekt](13-cicd/ta-f2-detekt.md)
+  - [TA-CICD-F3 Smokes](13-cicd/ta-f3-smokes.md)
+  - [TA-CICD-F4 Publish](13-cicd/ta-f4-publish.md)
+  - [TA-CICD-F5 Gates](13-cicd/ta-f5-gates.md)
+
 ## Contexto
 Workflows CI/CD, detekt, smokes y gates de calidad.
 

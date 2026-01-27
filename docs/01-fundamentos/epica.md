@@ -24,11 +24,13 @@ Definir el modulo Fundamentos del proyecto con enfoque DDD, integracion con el e
 - Integracion con flags/ambientes si aplica.
 - UI o herramientas asociadas (si aplica).
 - Observabilidad y testing.
+- Infra de mockserver para ambientes (Mockoon CLI) con puertos diferenciados.
 
 ## Entregables
 - Modelo de dominio y contratos.
 - Flujos principales y casos borde.
 - Plan de pruebas y observabilidad.
+- Mockoon CLI documentado para mock/dev/prod (diferenciados por puertos).
 
 ## Fuera de alcance
 - Implementacion productiva completa si no corresponde al MVP.

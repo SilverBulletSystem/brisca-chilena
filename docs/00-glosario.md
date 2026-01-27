@@ -12,6 +12,12 @@ Unidad de trabajo concreta para implementar una parte de una epica.
 ## Diseno detallado (Nivel 4)
 Definicion precisa de contratos, flujos, riesgos y verificaciones.
 
+## AST (Abstract Syntax Tree)
+Representacion en arbol del contrato SDUI ya validado y normalizado, usado por el renderer.
+
+## i18n (Internationalization)
+Estrategia para soportar multiples idiomas sin textos hardcodeados; en Brisca se usa interfaces de strings por pantalla.
+
 ## ADR (Architecture Decision Record)
 Registro de una decision arquitectonica y su razon.
 

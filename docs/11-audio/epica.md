@@ -1,5 +1,16 @@
 # Epica 11 — Audio ES/EN
 
+## Navegacion
+- [Backlog tecnico](11-audio/backlog.md)
+- [Diseno detallado](11-audio/diseno-detallado.md)
+- Historias tecnicas:
+  - [TA-AUDIO-F0 Dominio](11-audio/ta-f0-domain.md)
+  - [TA-AUDIO-F1 Catalogo](11-audio/ta-f1-catalog.md)
+  - [TA-AUDIO-F2 Toggle](11-audio/ta-f2-toggle.md)
+  - [TA-AUDIO-F3 Hooks](11-audio/ta-f3-hooks.md)
+  - [TA-AUDIO-F4 Spike descarga](11-audio/ta-f4-spike-download.md)
+  - [TA-AUDIO-F5 Testing](11-audio/ta-f5-testing.md)
+
 ## Contexto
 Soporte de audio por eventos con ES/EN y toggle.
 
