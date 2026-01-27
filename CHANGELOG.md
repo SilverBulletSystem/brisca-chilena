@@ -30,6 +30,21 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 - README: quitar “Listado de ADRs”.
 
 ### Changed
+- Epica 03 MagicsDui: refinamiento completo a nivel 4 (implementación) con diseño detallado, interfaces, estructuras y tests explícitos.
+- TA-SDUI-F0 Domain: transformado a nivel 4 con data classes, value objects, responsabilidades detalladas y tests unitarios explícitos.
+- TA-SDUI-F1 Contract: clarificado separación DTO/Entity, agregado mapping DTO -> Entity y tests unitarios explícitos.
+- TA-SDUI-F2 Parser: transformado a nivel 4 con interfaces, reglas de validación detalladas y 7 tests unitarios explícitos.
+- TA-SDUI-F3 Renderer: transformado a nivel 4 con interfaces, ejemplo de render y 5 tests unitarios explícitos.
+- TA-SDUI-F4 Make/Deeplinks: renombrado `SduiSampleConfig` a `SduiScreenConfig` y actualizado a nivel 4 con estructura Makefile y tests.
+- TA-SDUI-F5 Samples: detallado con JSON completos para login, home, errors, flags, invalid y version-unsupported.
+- TA-SDUI-F6 Flags y ambientes: agregado sample `flags.json` y 4 tests unitarios explícitos.
+- Rutas de samples cambiadas de `sdui/samples/` a `sdui/screen/`.
+- Comandos Make renombrados de `run-sdui-sample-*` a `run-sdui-screen-*`.
+- Fallback siempre a pantalla clásica equivalente (eliminadas referencias a "pantalla SDUI de error").
+- Tests unitarios movidos desde TA-F10 a sus respectivas historias (TA-F2, TA-F3, TA-F6).
+- TA-F10 renombrado de "Testing" a "Integration Test" y enfocado solo en tests de integración, logs y Make.
+- Reorganización de TAs: Testing (ahora Integration Test) movido al final como TA-F10.
+- Renumeración de pantallas: Login (F7), Splash (F8), Home (F9), Integration Test (F10).
 - Refinamiento de Epica 01 Fundamentos y sus historias tecnicas.
 - Refinamiento de Epica 02 Design System (epica, backlog, diseno).
 - Docsify: deshabilitar cache para reflejar cambios al instante.
