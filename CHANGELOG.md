@@ -6,6 +6,18 @@ The format is based on Keep a Changelog, and this project adheres to SemVer.
 
 ## [Unreleased]
 ### Added
+- Refinamiento nivel 4 de Epica 03 MagicsDui (SDUI): diseño detallado completo con interfaces, estructuras y tests explícitos.
+- TA-SDUI-F7 Login Screen: pantalla Login en variantes clásica y SDUI con wireframe, i18n, tests y registro en logs.
+- TA-SDUI-F8 Splash Screen: pantalla Splash en variantes clásica y SDUI con validaciones, navegación y registro en logs.
+- TA-SDUI-F9 Home Screen: pantalla Home en variantes clásica y SDUI con carrusel, tabs y registro en logs.
+- TA-SDUI-F10 Integration Test: tests de integración para flujo completo SDUI, fallback y comandos Make.
+- Wireframes para Login, Splash y Home screens.
+- ADR-0003 Renderer SDUI con mapa de estrategias.
+- Sample `flags.json` movido a TA-F6 (Flags y ambientes).
+- DTOs para Login en `data/model/` con `ErrorResponseDto` en módulo `error`.
+- Tests unitarios movidos a sus respectivas historias técnicas (TA-F2, TA-F3, TA-F6).
+
+### Changed
 - Documentacion base: glosario, plantillas y guia de estilo.
 - Guia de GitHub Pages para publicar la documentacion.
 - Docsify con sidebar, navbar y cover para GitHub Pages.

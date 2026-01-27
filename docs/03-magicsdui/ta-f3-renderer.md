@@ -18,6 +18,73 @@ Diseñar el mapeo de nodos SDUI al árbol de componentes Dui (átomos/moléculas
 - Usa el AST de dominio (no JSON crudo), con acciones validadas por NavigationGuard y estilos por StyleResolution.
 
 ## Diseño (doc)
+1) Interfaces y firmas (nivel 4)
+Package sugerido (presentation/renderer): `composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/magicsdui/presentation/renderer`
+
+```kotlin
+interface NodeRenderer {
+  @Composable fun render(node: Node): Unit
+}
+
+class SduiRenderer(
+  private val renderers: Map<NodeType, NodeRenderer>
+) {
+  fun render(node: Node): @Composable () -> Unit {
+    val renderer = renderers[node.type] ?: DefaultRenderer
+    return { renderer.render(node) }
+  }
+}
+
+interface SduiActionHandler {
+  fun handle(action: NodeAction)
+}
+```
+
+Responsabilidades:
+- `SduiRenderer`: coordina el render usando mapa de estrategias (ver ADR-0003).
+- `NodeRenderer`: contrato para renderizar un tipo especifico de nodo.
+- Los tamanos se resuelven desde `Node.style.spacingRole` (mapeado a `ThemeDimens`) o defaults del DS por tipo de componente.
+- `SduiActionHandler`: traduce acciones SDUI a intents/rutas de Decompose.
+
+Referencia: [ADR-0003 Renderer SDUI con mapa de estrategias](../architecture/decisions/adr-0003-renderer-strategy.md)
+
+Ejemplo de render (paso a paso, usando mapa de renderers):
+```kotlin
+// 1) Renderer especifico para Button (atom)
+class ButtonRenderer(
+  private val stringsProvider: StringsProvider,
+  private val actionHandler: SduiActionHandler
+) : NodeRenderer {
+  @Composable
+  override fun render(node: Node) {
+    val props = node.props as ButtonProps
+    val spacing = node.style?.spacingRole?.toThemeDimens() ?: ThemeDimens.SPACE_8
+    val text = stringsProvider.resolve(props.labelKey)
+    val color = resolveColor(node.style?.colorRole)
+    
+    DuiButton(
+      text = text,
+      onClick = { actionHandler.handle(node.actions.first()) },
+      modifier = Modifier.padding(spacing),
+      colors = ButtonDefaults.buttonColors(containerColor = color),
+      enabled = node.state == NodeState.Enabled
+    )
+  }
+}
+
+// 2) Registro de renderers (al inicializar SduiRenderer)
+val renderers = mapOf(
+  NodeType.Atom.Button to ButtonRenderer(stringsProvider, actionHandler),
+  NodeType.Atom.Text to TextRenderer(stringsProvider),
+  NodeType.Molecule.TextField to TextFieldRenderer(stringsProvider),
+  // ... resto de tipos
+)
+
+// 3) Uso del renderer coordinador
+val renderer = SduiRenderer(renderers)
+renderer.render(node) // busca en mapa, no when gigante
+```
+
 1) Mapeo SDUI type → Dui
    - Átomos: `text`→DuiText (role/title/body/etc.), `icon`→DuiIcon, `button`→DuiButton, `fab`→DuiFab, `divider`→DuiDivider, `spacer`→DuiSpacer, `chip/tag`→DuiChip, `badge`→DuiBadge, `progress`→DuiProgress, `radio`→DuiRadio, `switchSimple`→DuiSwitch.
    - Moléculas: `iconButton`→DuiIconButton, `textField`→DuiTextField, `checkbox`→DuiCheckbox, `toggle`→DuiToggle, `listItem`→DuiListItem, `settingsItem`→DuiSettingsItem, `card`→DuiCard, `banner`→DuiBanner, `snackbar`→DuiSnackbar, `dialog/bottomSheet`→DuiDialog/DuiBottomSheet, `dropdown/select`→DuiDropdown/DuiSelect, `tabs/filterChips`→DuiTabs/DuiFilterChips, `accordion`→DuiAccordion, `avatar`→DuiAvatar, `itemCard`→DuiItemCard, `typingIndicator`→DuiTypingIndicator, `messageStatus`→DuiMessageStatus, botones identitarios → wrappers de DuiButton, selectores idioma/sonido → wrappers de DuiToggle/Select.
@@ -49,18 +116,102 @@ Diseñar el mapeo de nodos SDUI al árbol de componentes Dui (átomos/moléculas
    - Si falta label accesible en un interactivo, usar la key como label y warning.
 
 6) Fallback y logging
-   - Si un nodo no se puede renderizar (tipo no soportado/prop crítica faltante): omitir y loggear warning; si es nodo raíz crítico, render de error SDUI.
+   - Si un nodo no se puede renderizar (tipo no soportado/prop crítica faltante): omitir y loggear warning; si es nodo raíz crítico, hacer fallback a pantalla clásica equivalente y registrar en Toad.
    - Logging estructurado (para Toad/State Record): nodo/type/id, motivo, severidad (warning/error).
 7) Guardrails de carga/render
-   - Respetar límites definidos por parser (tamaño/profundidad/payload). Si el AST viene marcado como truncado, mostrar fallback de error en lugar de render parcial.
+   - Respetar límites definidos por parser (tamaño/profundidad/payload). Si el AST viene marcado como truncado, hacer fallback a pantalla clásica equivalente y registrar en Toad.
 
-## Entregables (documento)
-- Tabla de mapeo SDUI → Dui por tipo.
-- Reglas de estilos/estados, acciones, i18n y accesibilidad.
-- Manejo de fallback y logging.
+## Implementacion esperada (nivel 4)
+Checklist para cuando se implemente:
+- Implementar `SduiRenderer` y `SduiActionHandler` en presentation.
+- Asegurar mapeo 1:1 entre `NodeType` y componentes Dui.
+- Usar `SduiLogger` para warnings de render.
+- Registrar eventos de render en `SduiInkribbonRecorder`.
 
-## Verificación futura
-- Cobertura de todos los tipos definidos en el contrato.
+## Tests unitarios obligatorios (nivel 4)
 
-## No incluido
-- Implementación del renderer en código.
+**Ubicación:** `composeApp/src/commonTest/kotlin/.../sdui/renderer/`
+
+### Test: RenderNode_TextNode_RendersDuiText
+
+**Given:**
+- `Node` con `type == NodeType.Atom.Text`
+- `Node.props == TextProps(textKey = "login_title")`
+- `SduiRenderer` implementado
+- Mock de `StringsProvider`
+
+**Expect:**
+- Renderer retorna composable que renderiza `DuiText`
+- Texto resuelto desde `StringsProvider` usando `textKey`
+- Sin errores de render
+
+### Test: RenderNode_ButtonNode_RendersDuiButton
+
+**Given:**
+- `Node` con `type == NodeType.Atom.Button`
+- `Node.props == ButtonProps(labelKey = "login_cta")`
+- `Node.actions == [NodeAction(type = DispatchIntent, target = "login")]`
+- `SduiRenderer` implementado
+- Mock de `StringsProvider` y `SduiActionHandler`
+
+**Expect:**
+- Renderer retorna composable que renderiza `DuiButton`
+- Texto resuelto desde `StringsProvider` usando `labelKey`
+- Acción configurada correctamente
+- Sin errores de render
+
+### Test: RenderNode_TextFieldNode_RendersDuiTextField
+
+**Given:**
+- `Node` con `type == NodeType.Molecule.TextField`
+- `Node.props == TextFieldProps(labelKey = "login_email", placeholderKey = "login_email_hint")`
+- `SduiRenderer` implementado
+- Mock de `StringsProvider`
+
+**Expect:**
+- Renderer retorna composable que renderiza `DuiTextField`
+- Label y placeholder resueltos desde `StringsProvider`
+- Sin errores de render
+
+### Test: RenderNode_UnknownType_LogsWarning
+
+**Given:**
+- `Node` con `type` no soportado
+- `SduiRenderer` implementado
+
+**Expect:**
+- Renderer omite el nodo
+- Warning registrado en `SduiToadRecorder`
+- No se lanza excepción
+
+### Test: RenderNode_MissingProps_LogsWarning
+
+**Given:**
+- `Node` con `type == NodeType.Atom.Text` pero sin `props.textKey`
+- `SduiRenderer` implementado
+
+**Expect:**
+- Renderer omite el nodo
+- Warning registrado en `SduiToadRecorder`
+- No se lanza excepción
+
+Base de tests KMP:
+- Ubicacion: `composeApp/src/commonTest/kotlin/...`
+- Framework: `kotlin.test` + `kotlinx.coroutines.test`
+- Comando: `./gradlew :composeApp:commonTest`
+- Agregar target `make test` que invoque ese comando.
+
+## Pull Request (contenido esperado)
+**Titulo sugerido:** `feat(ht-sdui-f3): renderer sdui (#XX)`
+
+**Incluye:**
+- Renderer y handler de acciones.
+- Tests unitarios obligatorios.
+- Actualizacion de docs si cambia el contrato.
+
+**Checklist:**
+- [ ] Enlace a la epica `docs/03-magicsdui/epica.md`.
+- [ ] Cumple `docs/git-workflow.md`.
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+- [ ] `make detekt` pasa sin findings nuevos.
+- [ ] `./gradlew :composeApp:commonTest` ejecuta tests unitarios SDUI.

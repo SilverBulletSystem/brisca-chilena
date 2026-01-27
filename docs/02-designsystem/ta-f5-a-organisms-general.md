@@ -26,6 +26,7 @@ Definir y crear el catálogo de organismos generales y su bitácora, con estados
 - `DuiBottomNav` / `DuiBottomBar`
 - `DuiNavigationRail` / `DuiDrawer` / `DuiSideMenu`
 - `DuiList` / `DuiSection` / `DuiGrid`
+- `DuiCarousel`
 - `DuiSettingsList`
 - `DuiEmptyState` / `DuiErrorState` / `DuiLoading`
 - `DuiThemeCatalog` (bitácora de temas)
@@ -55,6 +56,10 @@ Definir y crear el catálogo de organismos generales y su bitácora, con estados
 - Section: título + 3 ítems.
 - Grid: 2 columnas, 4 ítems.
 
+**DuiCarousel**
+- Estados: 3 items, 1 seleccionado.
+- Uso: carrusel horizontal con snapping por item.
+
 **DuiSettingsList**
 - 5 items con toggle/valor.
 
@@ -80,7 +85,7 @@ Definir y crear el catálogo de organismos generales y su bitácora, con estados
 - **Sección Navegación:**
   - `DuiTopBar`, `DuiBottomNav`, `DuiNavigationRail`, `DuiDrawer`, `DuiSideMenu`.
 - **Sección Layout:**
-  - `DuiAppScaffold`, `DuiList`, `DuiSection`, `DuiGrid`.
+  - `DuiAppScaffold`, `DuiList`, `DuiSection`, `DuiGrid`, `DuiCarousel`.
 - **Sección Estados:**
   - `DuiEmptyState`, `DuiErrorState`, `DuiLoading`.
 - **Sección Settings:**

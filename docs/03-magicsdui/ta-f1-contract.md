@@ -8,7 +8,7 @@
 - `feat/ht-sdui-f1-contract`
 
 ## Objetivo
-Definir el contrato SDUI (entrada externa) con versionado, granularidad (organismo/molécula/átomo), flags/ambientes, estilos y navegación. El contrato es independiente del transporte (HTTP/GraphQL/mock); se modela como DTO externo y se traduce a un modelo de dominio SDUI antes del render. Debe ser implementable sin ambigüedad.
+Definir el contrato SDUI (entrada externa) con versionado, granularidad (organismo/molécula/átomo), flags/ambientes, estilos y navegación. El contrato es independiente del transporte (HTTP/GraphQL/mock) y no depende de JSON; se modela como DTO externo y se traduce a un modelo de dominio SDUI antes del render. Debe ser implementable sin ambigüedad.
 
 ## Alcance
 - Esquema base: nodos, layout, props, estilos, eventos, navegación.
@@ -20,19 +20,53 @@ Definir el contrato SDUI (entrada externa) con versionado, granularidad (organis
 - Guardrails: límites de tamaño/profundidad y assets permitidos (solo iconos/tokens locales en MVP; sin media remota).
 
 ## Diseño (doc)
-1) Estructura raíz
-```json
-{
-  "schemaVersion": "1.0.0",
-  "screen": {
-    "id": "home",
-    "type": "screen",
-    "env": ["mock","dev","prod"],
-    "flags": ["home_enabled"],
-    "layout": { ... organismo ... }
-  }
-}
+1) Interfaces del contrato (DTO externo)
+Nota DDD: el contrato externo es DTO y vive fuera de dominio. En dominio solo van Entity/VO.
+Package sugerido (data/contract): `composeApp/src/commonMain/kotlin/cl/silverbullet/multiplatform/brisca/magicsdui/data/dto`
+
+```kotlin
+data class SduiScreenDto(
+  val schemaVersion: String,
+  val screenId: String,
+  val root: SduiNodeDto
+)
+
+data class SduiNodeDto(
+  val id: String,
+  val type: String,
+  val props: Map<String, Any?>,
+  val children: List<SduiNodeDto> = emptyList(),
+  val flags: List<String> = emptyList(),
+  val env: List<String> = emptyList(),
+  val style: Map<String, String> = emptyMap(),
+  val state: String? = null,
+  val actions: List<SduiActionDto> = emptyList()
+)
+
+data class SduiActionDto(
+  val type: String,
+  val target: String,
+  val extras: Map<String, String> = emptyMap()
+)
 ```
+
+Responsabilidades:
+- `SduiScreenDto`: contrato de una pantalla completa (version + screenId + nodo raiz).
+- `SduiNodeDto`: nodo generico sin tipado fuerte; se valida y transforma en dominio.
+- `SduiActionDto`: accion declarada por el contrato (allowlist en parser).
+
+1.1) Mapping DTO -> Entity (paso a paso)
+- `SduiScreenDto.schemaVersion` -> `SchemaVersion`
+- `SduiScreenDto.screenId` -> `ScreenId`
+- `SduiScreenDto.root` -> `Node` (via parser)
+- `SduiNodeDto.id` -> `NodeId`
+- `SduiNodeDto.type` -> `NodeType` (segregado: Organism/Molecule/Atom)
+- `SduiNodeDto.props` -> `NodeProps` tipado (TextProps/TextFieldProps/ButtonProps)
+- `SduiNodeDto.children` -> `List<Node>`
+- `SduiNodeDto.flags` -> `List<FlagKey>`
+- `SduiNodeDto.env` -> `List<EnvValue>`
+- `SduiNodeDto.style` -> `NodeStyle` (roles)
+- `SduiNodeDto.actions` -> `List<NodeAction>`
 
 2) Campos obligatorios por nodo
 - `id`: string único en el árbol.
@@ -46,17 +80,17 @@ Definir el contrato SDUI (entrada externa) con versionado, granularidad (organis
 - `analytics`: opcional; `{ "tag": "stringKey|eventName", "attributes": { ... } }` para trazabilidad.
 
 3) Versionado
-- `schemaVersion` global (ej. `"1.0.0"`). Si no es soportada → fallback a pantalla de error SDUI genérica.
+- `schemaVersion` global (ej. `"1.0.0"`). Si no es soportada → fallback a pantalla clásica equivalente.
 - `version` por nodo opcional para migraciones; si no soportada, omitir nodo o fallback seguro (error state).
 - Política sugerida: aceptar misma major (1.x.x), warning en minor superior, rechazar major superior hasta soporte.
 
--4) Granularidad y tipos (alineado a Dui Brisca)
+4) Granularidad y tipos (alineado a Dui Brisca)
 - Organismos (nombres lógicos, mapean a Dui*): `appScaffold`, `topBar`, `bottomNav`, `navRail`, `drawer`, `sideMenu`, `list`, `section`, `grid`, `settingsList`, `logoutDialog`, `soundSetting`, `emptyState`, `errorState`, `loadingState`; juego: `cardFace`/`naipe`, `cardDeck`/`shuffleControl`, `dealControl`, `cardHand`/`hand`/`playList`, `renuncio`, `cobrarRenuncio`, `vale`, `cobrarVale`, `acceptPlay`, `rejectPlay`, `ready`, `startMatch`, `leaveMatch`, `turnState`, `timer`/`countdown`, `scoreboard1v1`, `scoreboard2v2`, `scoreTable1v1`, `scoreTable2v2`, `teamPanel`/`playerStatus`, `matchInviteCard`, `lobbyList`/`playerSeat`, `pauseOverlay`/`resumeButton`, `matchHistoryList`, `achievementItem`, `capoteBanner`; chat/soporte: `messageBubble`, `messageInput`, `messageList`, `typingIndicator`, `attachmentAction`, `supportForm`; flags/monitores: `flagList`, `table`, `logList`, `timeline`, `filterChips`/`filterSelect`. **Selectores de ambiente/tema son organismos del cliente y quedan fuera del contrato SDUI (no provienen del backend).**
 - Moléculas: `iconButton`, `textField`, `checkbox`, `toggle`, `listItem`, `settingsItem`, `card`, `banner`, `snackbar`, `dialog`/`bottomSheet`, `dropdown`/`select`, `tabs`/`filterChips`, `accordion`, `avatar`, `itemCard`, `typingIndicator`, `messageStatus`, botones identitarios (`loginButton`, `registerButton`, `recoverButton`, `verifyAccountButton`, `logoutButton`), selectores (`languageSelector`/`languageOption`, `soundToggle`).
 - Átomos: `text`, `icon`, `button`, `fab`, `divider`, `spacer`, `chip`/`tag`, `badge`, `progress`, `radio`, `switchSimple`.
 Cada `type` debe mapearse 1:1 a un componente Dui con prefijo al renderizar (ver TA F3 renderer).
 
-5) Props (ejemplos por nivel, alineados a Dui)
+5) Props (ejemplos por nivel, alineados a Dui; ejemplos en JSON solo ilustrativos)
 - `button` (DuiButton): `{ "label": "stringKey", "icon": "iconName?", "style": "filled|tonal|outlined|text", "size": "s|m|l", "action": { "type": "deeplink", "target": "app://..." } }`
 - `textField` (DuiTextField): `{ "label": "stringKey", "placeholder": "stringKey", "leadingIcon": "iconName?", "state": "default|error", "helperText": "stringKey?" }`
 - `card/listItem` (DuiCard/DuiListItem): `{ "title": "stringKey", "subtitle": "stringKey?", "icon": "iconName?", "trailing": "stringKey?|badge?", "action": { ... } }`
@@ -110,18 +144,6 @@ Cada `type` debe mapearse 1:1 a un componente Dui con prefijo al renderizar (ver
 { "id":"list-news","type":"list","children":[ { "type":"card", "id":"news-1", "props":{ "title":"news_title_1", "action":{"type":"deeplink","target":"app://news/1"} } } ] }
 ```
 
-## Entregables (documento)
-- Esquema con campos y reglas.
-- Tabla de tipos por nivel con props esperadas.
-- Reglas de versionado, flags/ambientes y navegación.
-- Guardrails de seguridad (allowlist de acciones, dominios permitidos), límites de payload/árbol y notas de assets soportados.
-
-## Verificación futura
-- Contrato cubre todos los componentes Dui necesarios.
-- Estrategia de fallback definida para versiones no soportadas y flags/ambiente faltantes.
-- Asegura desac acoplamiento a transporte (HTTP/GraphQL): contrato se consume como DTO y se traduce a modelo de dominio antes de render.
-- Incluye campos de analytics opcionales y restricciones de acciones/targets/domínios.
-
 ## Alineación con Design System (Brisca)
 - Tipos SDUI deben mapear 1:1 a la taxonomía Dui definida en la épica DS:
   - Átomos (ej: `text`, `icon`, `button`, `chip`, `badge`, `progress`, `radio`, `switch`).
@@ -130,16 +152,23 @@ Cada `type` debe mapearse 1:1 a un componente Dui con prefijo al renderizar (ver
 - Estilos: solo roles de tokens del DS (colores, tipografía, `ThemeDimens`, shapes). Sin valores crudos en el contrato.
 - Estados: usar estados soportados en DS (focus/pressed/disabled/error; hover solo Web/Desktop).
 - i18n: las `props` de texto deben referenciar keys de strings (interfaces por pantalla); nunca literales.
-- Navegación: las rutas/acciones deben ser compatibles con los atajos Make de DS bitácoras y SDUI (run-bitacora-*, run-sdui-sample-*).
+- Navegación: las rutas/acciones deben ser compatibles con los atajos Make de DS bitácoras y SDUI (run-bitacora-*, run-sdui-screen-*).
 
-## Entregables (documento)
-- Esquema propuesto con campos y reglas.
-- Tabla de tipos por nivel y ejemplos de nodos.
-- Reglas de versionado y fallback.
+## Implementacion esperada (nivel 4)
+Checklist para cuando se implemente:
+- Crear DTOs exactamente como estan definidos en este documento.
+- Implementar el mapping DTO -> Entity sin cambios de nombres.
 
-## Verificación futura
-- Contrato cubre todos los componentes Dui necesarios.
-- Estrategia de fallback definida para versiones no soportadas.
+## Pull Request (contenido esperado)
+**Titulo sugerido:** `feat(ht-sdui-f1): contrato sdui (#XX)`
 
-## No incluido
-- Implementación de Mockoon ni código.
+**Incluye:**
+- DTOs del contrato y validaciones de campos.
+- Actualizacion de docs si cambia el contrato.
+
+**Checklist:**
+- [ ] Enlace a la epica `docs/03-magicsdui/epica.md`.
+- [ ] Cumple `docs/git-workflow.md`.
+- [ ] Entrada en `CHANGELOG.md` bajo `[Unreleased]`.
+- [ ] `make detekt` pasa sin findings nuevos.
+ - [ ] `./gradlew :composeApp:commonTest` ejecuta tests unitarios SDUI.
